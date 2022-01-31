@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Vormkracht10\\UploadcareTransformation\\": "src"
+            "Vormkracht10\\UploadcareTransformations\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Vormkracht10\\UploadcareTransformation\\Tests\\": "tests"
+            "Vormkracht10\\UploadcareTransformations\\Tests\\": "tests"
         }
     },
     "scripts": {

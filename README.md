@@ -25,7 +25,7 @@ composer require vormkracht10/php-uploadcare-transformations
 ## Usage
 
 ```php
-$skeleton = new Vormkracht10\UploadcareTransformation();
+$skeleton = new Vormkracht10\UploadcareTransformations\UploadcareTransformation();
 echo $skeleton->echoPhrase('Hello, Vormkracht10!');
 ```
 
@@ -49,8 +49,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Bas van Dinther](https://github.com/baspa)
-- [All Contributors](../../contributors)
+-   [Bas van Dinther](https://github.com/baspa)
+-   [All Contributors](../../contributors)
 
 ## License
 
