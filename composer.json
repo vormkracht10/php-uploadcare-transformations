@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "vormkracht10/php-uploadcare-transformations",
+    "description": "Composer package for generating URLs using Uploadcare for image transformations and processing.",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "vormkracht10",
+        "php-uploadcare-transformations"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/vormkracht10/php-uploadcare-transformations",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Bas van Dinther",
+            "email": "bas@vormkracht10.nl",
             "role": "Developer"
         }
     ],
@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "Vormkracht10\\UploadcareTransformation\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Vormkracht10\\UploadcareTransformation\\Tests\\": "tests"
         }
     },
     "scripts": {
