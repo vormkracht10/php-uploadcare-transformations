@@ -2,8 +2,6 @@
 
 namespace Vormkracht10\UploadcareTransformation;
 
-use Vormkracht10\UploadcareTransformation\Methods;
-
 class UploadcareTransformationClass extends Methods
 {
     protected string $uuid;
@@ -11,7 +9,7 @@ class UploadcareTransformationClass extends Methods
     protected string $url;
     protected string $baseUrl;
 
-    public function __construct($uuid) 
+    public function __construct($uuid)
     {
         $this->uuid = $uuid;
         $this->transformations = [];
@@ -39,13 +37,13 @@ class UploadcareTransformationClass extends Methods
         if (isset($this->transformations['resize'])) {
             if (isset($this->transformations['resize']['height']) && isset($this->transformations['resize']['width'])) {
                 $url .= '/resize/' . $this->transformations['resize']['width'] . 'x' . $this->transformations['resize']['height'];
-            } 
-            
-            if (isset($this->transformations['resize']['height']) && !isset($this->transformations['resize']['width'])) {
+            }
+
+            if (isset($this->transformations['resize']['height']) && ! isset($this->transformations['resize']['width'])) {
                 $url .= '/resize/x' . $this->transformations['resize']['height'];
             }
 
-            if (!isset($this->transformations['resize']['height']) && isset($this->transformations['resize']['width'])) {
+            if (! isset($this->transformations['resize']['height']) && isset($this->transformations['resize']['width'])) {
                 $url .= '/resize/' . $this->transformations['resize']['width'] . 'x';
             }
         }
