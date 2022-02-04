@@ -68,7 +68,7 @@ class Transformations
      * @param int $y
      * @return self
      */
-    public function crop(int $width, int $height, int|string $x, ?int $y): self
+    public function crop(int $width, int $height, int|string $x, int $y = null): self
     {
         // Check if $x is a (valid) shortcut
         if (is_string($x) && ! in_array($x, $this->offsetShortcuts)) {
