@@ -2,7 +2,7 @@
 
 namespace Vormkracht10\UploadcareTransformations;
 
-use Vormkracht10\UploadcareTransformation\Methods\Transformations;
+use Vormkracht10\UploadcareTransformations\Methods\Transformations;
 
 class UploadcareTransformation extends Transformations
 {
@@ -37,16 +37,18 @@ class UploadcareTransformation extends Transformations
         }
 
         if (isset($this->transformations['resize'])) {
-            if (isset($this->transformations['resize']['height']) && isset($this->transformations['resize']['width'])) {
-                $url .= '/resize/' . $this->transformations['resize']['width'] . 'x' . $this->transformations['resize']['height'];
+            $resizePrefix = $this->transformations['resize']['stretch'] ? '/stretch/' . $this->transformations['resize']['mode'] . '/-/resize/' : '/resize/';
+        
+            if ($this->transformations['resize']['height'] == null && $this->transformations['resize']['width'] !== null) {
+                $url .= $resizePrefix . $this->transformations['resize']['width'] . 'x';
             } 
             
-            if (isset($this->transformations['resize']['height']) && !isset($this->transformations['resize']['width'])) {
-                $url .= '/resize/x' . $this->transformations['resize']['height'];
+            if ($this->transformations['resize']['height'] !== null && $this->transformations['resize']['width'] == null) {
+                $url .= $resizePrefix . $this->transformations['resize']['height'] . 'x';
             }
 
-            if (!isset($this->transformations['resize']['height']) && isset($this->transformations['resize']['width'])) {
-                $url .= '/resize/' . $this->transformations['resize']['width'] . 'x';
+            if ($this->transformations['resize']['height'] !== null && $this->transformations['resize']['width'] !== null) {
+                $url .= $resizePrefix . $this->transformations['resize']['width'] . 'x' . $this->transformations['resize']['height'];
             }
         }
 

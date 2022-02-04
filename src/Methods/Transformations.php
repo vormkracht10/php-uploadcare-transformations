@@ -1,10 +1,11 @@
 <?php
 
-namespace Vormkracht10\UploadcareTransformation\Methods;
+namespace Vormkracht10\UploadcareTransformations\Methods;
 
 class Transformations
 {
-    protected $offsetShortcuts = ['center', 'top', 'bottom', 'left', 'right'];
+    protected array $offsetShortcuts = ['center', 'top', 'bottom', 'left', 'right'];
+    protected array $resizeModes = ['on', 'off', 'fill'];
 
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
@@ -23,23 +24,15 @@ class Transformations
     /**
      * Resizes an image to one or two dimensions.
      *
-     * @param int $width
-     * @param int $height
+     * @param integer|null $width
+     * @param integer|null $height
+     * @param boolean $stretch
+     * @param string|null $mode
      * @return self
      */
-    public function resize(int $width = null, int $height = null): self
+    public function resize(int $width = null, int $height = null, bool $stretch = false, string $mode = null): self
     {
-        if (! $height && $width) {
-            $this->transformations['resize'] = ['width' => $width];
-        }
-
-        if ($height && ! $width) {
-            $this->transformations['resize'] = ['height' => $height];
-        }
-
-        if ($height && $width) {
-            $this->transformations['resize'] = ['width' => $width, 'height' => $height];
-        }
+        $this->transformations['resize'] = ['width' => $width, 'height' => $height, 'stretch' => $stretch, 'mode' => $mode];
 
         return $this;
     }
