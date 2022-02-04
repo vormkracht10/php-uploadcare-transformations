@@ -32,6 +32,11 @@ class Transformations
      */
     public function resize(int $width = null, int $height = null, bool $stretch = false, string $mode = null): self
     {
+        // Check if $mode is a valid resize mode
+        if ($mode !== null && !in_array($mode, $this->resizeModes)) {
+            throw new \InvalidArgumentException('Invalid resize mode. Valid modes are: ' . implode(', ', $this->resizeModes));
+        }
+
         $this->transformations['resize'] = ['width' => $width, 'height' => $height, 'stretch' => $stretch, 'mode' => $mode];
 
         return $this;
