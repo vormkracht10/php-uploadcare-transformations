@@ -38,11 +38,11 @@ class UploadcareTransformation extends Transformations
 
         if (isset($this->transformations['resize'])) {
             $resizePrefix = $this->transformations['resize']['stretch'] ? '/stretch/' . $this->transformations['resize']['mode'] . '/-/resize/' : '/resize/';
-        
+
             if ($this->transformations['resize']['height'] == null && $this->transformations['resize']['width'] !== null) {
                 $url .= $resizePrefix . $this->transformations['resize']['width'] . 'x';
-            } 
-            
+            }
+
             if ($this->transformations['resize']['height'] !== null && $this->transformations['resize']['width'] == null) {
                 $url .= $resizePrefix . $this->transformations['resize']['height'] . 'x';
             }
