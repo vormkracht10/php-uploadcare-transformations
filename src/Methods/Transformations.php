@@ -1,8 +1,8 @@
 <?php 
 
-namespace Vormkracht10\UploadcareTransformation;
+namespace Vormkracht10\UploadcareTransformation\Methods;
 
-class Methods
+class Transformations
 {
     protected $offsetShortcuts = ['center', 'top', 'bottom', 'left', 'right'];
 
