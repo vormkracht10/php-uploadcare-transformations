@@ -59,13 +59,11 @@ class UploadcareTransformation extends Transformations
         if (isset($this->transformations['crop'])) {
             if (isset($this->transformations['crop']['align'])) {
                 $url .= '/crop/' . $this->transformations['crop']['width'] . 'x' . $this->transformations['crop']['height'] . '/' . $this->transformations['crop']['align'];
-            } 
-            
+            }
+
             if (isset($this->transformations['crop']['x']) && isset($this->transformations['crop']['y'])) {
                 $url .= '/crop/' . $this->transformations['crop']['width'] . 'x' . $this->transformations['crop']['height'] . '/' . $this->transformations['crop']['x'] . ',' . $this->transformations['crop']['y'];
-            }
-            
-            else {
+            } else {
                 $url .= '/crop/' . $this->transformations['crop']['width'] . 'x' . $this->transformations['crop']['height'];
             }
         }
@@ -77,9 +75,7 @@ class UploadcareTransformation extends Transformations
 
             if (isset($this->transformations['crop_by_ratio']['align']) && isset($this->transformations['crop_by_ratio']['x'])) {
                 $url .= '/crop/' . $this->transformations['crop_by_ratio']['ratio'] . '/' . $this->transformations['crop_by_ratio']['align'];
-            }
-            
-            else {
+            } else {
                 $url .= '/crop/' . $this->transformations['crop_by_ratio']['ratio'] . 'x' . $this->transformations['crop_by_ratio']['height'];
             }
         }

@@ -4,12 +4,11 @@ namespace Vormkracht10\UploadcareTransformations\Methods;
 
 class Methods
 {
-
     /**
      * Check if value is a valid percentage format.
      *
      * @param string $value
-     * @return boolean
+     * @return bool
      */
     public function isValidPercentage(string $value): bool
     {
