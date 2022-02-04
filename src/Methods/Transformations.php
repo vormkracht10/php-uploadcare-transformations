@@ -24,9 +24,9 @@ class Transformations
     /**
      * Resizes an image to one or two dimensions.
      *
-     * @param integer|null $width
-     * @param integer|null $height
-     * @param boolean $stretch
+     * @param int|null $width
+     * @param int|null $height
+     * @param bool $stretch
      * @param string|null $mode
      * @return self
      */
