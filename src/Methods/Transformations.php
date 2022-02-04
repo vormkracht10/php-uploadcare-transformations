@@ -72,6 +72,7 @@ class Transformations
      */
     public function crop(int $width, int $height, int|string $x, ?int $y): self
     {
+        // Check if $x is a (valid) shortcut
         if (is_string($x) && ! in_array($x, $this->offsetShortcuts)) {
             throw new \InvalidArgumentException('Invalid offset value.');
         }
