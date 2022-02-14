@@ -2,10 +2,15 @@
 
 namespace Vormkracht10\UploadcareTransformations\Methods;
 
-class Transformations extends Methods
+use Vormkracht10\UploadcareTransformations\Traits\Methods;
+
+class Transformations
 {
+    use Methods;
+
     protected array $offsetShortcuts = ['center', 'top', 'bottom', 'left', 'right'];
     protected array $resizeModes = ['on', 'off', 'fill'];
+    protected array $tags = ['face', 'image'];
 
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
@@ -122,6 +127,49 @@ class Transformations extends Methods
 
         if (!$offsetX && !$offsetY) {
             $this->transformations['crop_by_ratio'] = ['ratio' => $ratio];
+        }
+
+        return $this;
+    }
+
+    /**
+     * Crops the image to the object specified by the :tag parameter.
+     *
+     * @param string $tag one of the tags
+     * @param string $ratio two numbers greater than zero separated by :
+     * @param string $width in percentages e.g. 50p
+     * @param string $heigt in percentages e.g. 50p
+     * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
+     * @param string $offsetY horizontal and vertical offsets in percents or shortcuts.
+     * @return self
+     */
+    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $heigt = null, string $offsetX = null, string $offsetY = null): self
+    {
+        // Check if tag is valid
+        if (! in_array($tag, $this->tags)) {
+            throw new \InvalidArgumentException('Invalid tag');
+        }
+
+        // Check if ratio is valid 
+        if (isset($ratio) && ! preg_match('/^[0-9]+:[0-9]+$/', $ratio)) {
+            throw new \InvalidArgumentException('Invalid ratio.');
+        }
+
+        // Check if valid percentages
+        if (isset($width) && ! $this->isValidPercentage($width) || isset($height) && ! $this->isValidPercentage($heigt)) {
+            throw new \InvalidArgumentException('Invalid percentage.');
+        }
+
+        // Check if offsetX is a string and if it is a valid offset shortcut or percentage
+        if (!in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && !$this->isValidPercentage($offsetX)) {
+            throw new \InvalidArgumentException("Invalid offset shortcut or percentage.");
+        }
+
+        // Check if alignment is set by shortcut or percentages
+        if (!$offsetY) {
+            $this->transformations['crop_by_objects'] = ['tag' => $tag, 'ratio' => $ratio, 'width' => $width, 'height' => $heigt, 'align' => $offsetX];
+        } else {
+            $this->transformations['crop_by_objects'] = ['tag' => $tag, 'ratio' => $ratio, 'width' => $width, 'height' => $heigt, 'x' => $offsetX, 'y' => $offsetY];
         }
 
         return $this;
