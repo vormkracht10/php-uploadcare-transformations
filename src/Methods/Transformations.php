@@ -150,7 +150,7 @@ class Transformations
             throw new \InvalidArgumentException('Invalid tag');
         }
 
-        // Check if ratio is valid 
+        // Check if ratio is valid
         if (isset($ratio) && ! preg_match('/^[0-9]+:[0-9]+$/', $ratio)) {
             throw new \InvalidArgumentException('Invalid ratio.');
         }
@@ -161,12 +161,12 @@ class Transformations
         }
 
         // Check if offsetX is a string and if it is a valid offset shortcut or percentage
-        if (!in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && !$this->isValidPercentage($offsetX)) {
+        if (! in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && ! $this->isValidPercentage($offsetX)) {
             throw new \InvalidArgumentException("Invalid offset shortcut or percentage.");
         }
 
         // Check if alignment is set by shortcut or percentages
-        if (!$offsetY) {
+        if (! $offsetY) {
             $this->transformations['crop_by_objects'] = ['tag' => $tag, 'ratio' => $ratio, 'width' => $width, 'height' => $heigt, 'align' => $offsetX];
         } else {
             $this->transformations['crop_by_objects'] = ['tag' => $tag, 'ratio' => $ratio, 'width' => $width, 'height' => $heigt, 'x' => $offsetX, 'y' => $offsetY];
