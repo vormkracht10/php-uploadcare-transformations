@@ -65,25 +65,25 @@ class Transformations
     /**
      * Crops an image by using specified dimensions and alignment.
      *
-     * @param int $width in pixels or percents 
+     * @param int $width in pixels or percents
      * @param int $height in pixels or percents
-     * @param int|string $offsetX horizontal and vertical offsets in pixels or percents (e.g. 50p) or shortcuts. 
+     * @param int|string $offsetX horizontal and vertical offsets in pixels or percents (e.g. 50p) or shortcuts.
      * @param int|string $offsetY
      * @return self
      */
     public function crop(int|string $width, int|string $height, int|string $offsetX, int|string $offsetY = null): self
     {
         // If width, height or offsetY is a string, we should check if it is valid
-        if (is_string($width) && !$this->isValidPercentage($width) || is_string($height) && !$this->isValidPercentage($height) || is_string($offsetY) && !$this->isValidPercentage($offsetY)) {
+        if (is_string($width) && ! $this->isValidPercentage($width) || is_string($height) && ! $this->isValidPercentage($height) || is_string($offsetY) && ! $this->isValidPercentage($offsetY)) {
             throw new \InvalidArgumentException("Invalid percentage.");
         }
 
         // Check if offsetX is a string and if it is a valid offset shortcut or percentage
-        if (is_string($offsetX) && !in_array($offsetX, $this->offsetShortcuts) && !$this->isValidPercentage($offsetX)) {
+        if (is_string($offsetX) && ! in_array($offsetX, $this->offsetShortcuts) && ! $this->isValidPercentage($offsetX)) {
             throw new \InvalidArgumentException("Invalid offset shortcut or percentage.");
         }
 
-        if (is_string($offsetX) && in_array($offsetX, $this->offsetShortcuts) && !$this->isValidPercentage($offsetX)) {
+        if (is_string($offsetX) && in_array($offsetX, $this->offsetShortcuts) && ! $this->isValidPercentage($offsetX)) {
             $this->transformations['crop'] = ['width' => $width, 'height' => $height, 'align' => $offsetX];
         } else {
             $this->transformations['crop'] = ['width' => $width, 'height' => $height, 'x' => $offsetX, 'y' => $offsetY];
@@ -94,21 +94,21 @@ class Transformations
 
     /**
      * Crops the image to the specified aspect ratio, cutting off the rest of the image.
-     * 
+     *
      * @param string $ratio two numbers greater than zero separated by :
-     * @param int|string $offsetX horizontal and vertical offsets in pixels or percents or shortcuts. 
+     * @param int|string $offsetX horizontal and vertical offsets in pixels or percents or shortcuts.
      * @param int $offsetY horizontal and vertical offsets in pixels or percents or shortcuts.
      * @return self
      */
     public function cropByRatio(string $ratio, int|string $offsetX, int|string $offsetY = null): self
     {
         // Check if offsetX is a string and if it is a valid offset shortcut or percentage
-        if (is_string($offsetX) && !in_array($offsetX, $this->offsetShortcuts) && !$this->isValidPercentage($offsetX)) {
+        if (is_string($offsetX) && ! in_array($offsetX, $this->offsetShortcuts) && ! $this->isValidPercentage($offsetX)) {
             throw new \InvalidArgumentException("Invalid offset shortcut or percentage.");
         }
 
         // Check if offsetY is a string and if it is a valid percentage
-        if (is_string($offsetY) && !$this->isValidPercentage($offsetY)) {
+        if (is_string($offsetY) && ! $this->isValidPercentage($offsetY)) {
             throw new \InvalidArgumentException("Invalid offset percentage.");
         }
 
@@ -119,13 +119,13 @@ class Transformations
 
         if (is_string($offsetX) && in_array($offsetX, $this->offsetShortcuts)) {
             $this->transformations['crop_by_ratio'] = ['ratio' => $ratio, 'align' => $offsetX];
-        } 
-        
-        if (!is_string($offsetX) && $offsetY) {
+        }
+
+        if (! is_string($offsetX) && $offsetY) {
             $this->transformations['crop_by_ratio'] = ['ratio' => $ratio, 'x' => $offsetX, 'y' => $offsetY];
         }
 
-        if (!$offsetX && !$offsetY) {
+        if (! $offsetX && ! $offsetY) {
             $this->transformations['crop_by_ratio'] = ['ratio' => $ratio];
         }
 
