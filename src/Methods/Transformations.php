@@ -69,7 +69,7 @@ class Transformations
      * @param int $width in pixels or percents.
      * @param int $height in pixels or percents.
      * @param int|string $offsetX horizontal and vertical offsets in pixels or percents (e.g. 50p) or shortcuts.
-     * @param int|string $offsetY 
+     * @param int|string $offsetY
      * @return self
      */
     public function crop(int|string $width, int|string $height, int|string $offsetX, int|string $offsetY = null): self
@@ -179,16 +179,16 @@ class Transformations
     /**
      * Scales an image until it fully covers the specified dimensions; the rest gets cropped.
      *
-     * @param integer $width in pixels.
-     * @param integer $height in pixels.
-     * @param integer $offsetX horizontal and vertical offsets in percents or shortcuts.
-     * @param integer|null $offsetY horizontal and vertical offsets in percents.
+     * @param int $width in pixels.
+     * @param int $height in pixels.
+     * @param int $offsetX horizontal and vertical offsets in percents or shortcuts.
+     * @param int|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
     public function scaleCrop(int $width, int $height, string $offsetX = null, $offsetY = null): self
     {
         // Check if offsetX is a string and if it is a valid offset shortcut or percentage
-        if (!in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && !$this->isValidPercentage($offsetX)) {
+        if (! in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && ! $this->isValidPercentage($offsetX)) {
             throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
         }
 
@@ -198,7 +198,7 @@ class Transformations
         }
 
         // Check if alignment is set by shortcut or percentages
-        if (!$offsetY) {
+        if (! $offsetY) {
             $this->transformations['scale_crop'] = ['width' => $width, 'height' => $height, 'align' => $offsetX];
         } else {
             $this->transformations['scale_crop'] = ['width' => $width, 'height' => $height, 'x' => $offsetX, 'y' => $offsetY];
@@ -210,11 +210,11 @@ class Transformations
     /**
      * Switching the crop type to one of the smart modes enables the content-aware mechanics.
      *
-     * @param integer $width in pixels.
-     * @param integer $height in pixels.
+     * @param int $width in pixels.
+     * @param int $height in pixels.
      * @param string $type one of the types.
-     * @param integer $offsetX horizontal and vertical offsets in percents or shortcuts.
-     * @param integer|null $offsetY horizontal and vertical offsets in percents.
+     * @param int $offsetX horizontal and vertical offsets in percents or shortcuts.
+     * @param int|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
     public function smartCrop(int $width, int $height, string $type, string $offsetX = null, string $offsetY = null): self
@@ -225,7 +225,7 @@ class Transformations
         }
 
         // Check if offsetX is a string and if it is a valid offset shortcut or percentage
-        if (!in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && !$this->isValidPercentage($offsetX)) {
+        if (! in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && ! $this->isValidPercentage($offsetX)) {
             throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
         }
 
@@ -233,9 +233,9 @@ class Transformations
         if (isset($offsetY) && ! $this->isValidPercentage($offsetY)) {
             throw new \InvalidArgumentException('Invalid offset percentage.');
         }
-        
+
         // Check if alignment is set by shortcut or percentages
-        if (!$offsetY) {
+        if (! $offsetY) {
             $this->transformations['smart_crop'] = ['width' => $width, 'height' => $height, 'type' => $type, 'align' => $offsetX];
         } else {
             $this->transformations['smart_crop'] = ['width' => $width, 'height' => $height, 'type' => $type, 'x' => $offsetX, 'y' => $offsetY];
@@ -257,4 +257,3 @@ class Transformations
         return $this;
     }
 }
-
