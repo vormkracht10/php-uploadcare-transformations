@@ -127,6 +127,25 @@ trait Methods
             }
         }
 
+        if (isset($this->transformations['scale_crop'])) {
+            $transformation = $this->transformations['scale_crop'];
+
+            if (!isset($transformation['x']) && !isset($transformation['y']) && !isset($transformation['align'])) {
+                // -/scale_crop/:dimensions/
+                $url .= '/scale_crop/' . $transformation['width'] . 'x' . $transformation['height'];
+            }
+
+            if (isset($transformation['width']) && isset($transformation['height']) && isset($transformation['align'])) {
+                // -/scale_crop/:dimensions/:alignment/
+                $url .= '/scale_crop/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['align'];
+            }
+
+            elseif (isset($transformation['width']) && isset($transformation['height']) && isset($transformation['x']) && isset($transformation['y'])) {
+                // -/scale_crop/:dimensions/:alignment/
+                $url .= '/scale_crop/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['x'] . ',' . $transformation['y'];
+            }
+        }
+
         return $url;
     }
 

@@ -15,8 +15,8 @@ class Transformations
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
      *
-     * @param int $width in pixels
-     * @param int $height in pixels
+     * @param int $width in pixels.
+     * @param int $height in pixels.
      * @return self
      */
     public function preview(int $width, int $height): self
@@ -29,10 +29,10 @@ class Transformations
     /**
      * Resizes an image to one or two dimensions.
      *
-     * @param int|null $width in pixels
-     * @param int|null $height in pixels
+     * @param int|null $width in pixels.
+     * @param int|null $height in pixels.
      * @param bool $stretch
-     * @param string|null $mode one of the resize modes
+     * @param string|null $mode one of the resize modes.
      * @return self
      */
     public function resize(int $width = null, int $height = null, bool $stretch = false, string $mode = null): self
@@ -65,10 +65,10 @@ class Transformations
     /**
      * Crops an image by using specified dimensions and alignment.
      *
-     * @param int $width in pixels or percents
-     * @param int $height in pixels or percents
+     * @param int $width in pixels or percents.
+     * @param int $height in pixels or percents.
      * @param int|string $offsetX horizontal and vertical offsets in pixels or percents (e.g. 50p) or shortcuts.
-     * @param int|string $offsetY
+     * @param int|string $offsetY 
      * @return self
      */
     public function crop(int|string $width, int|string $height, int|string $offsetX, int|string $offsetY = null): self
@@ -97,7 +97,7 @@ class Transformations
      *
      * @param string $ratio two numbers greater than zero separated by :
      * @param int|string $offsetX horizontal and vertical offsets in pixels or percents or shortcuts.
-     * @param int $offsetY horizontal and vertical offsets in pixels or percents or shortcuts.
+     * @param int $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
     public function cropByRatio(string $ratio, int|string $offsetX, int|string $offsetY = null): self
@@ -135,12 +135,12 @@ class Transformations
     /**
      * Crops the image to the object specified by the :tag parameter.
      *
-     * @param string $tag one of the tags
+     * @param string $tag one of the tags.
      * @param string $ratio two numbers greater than zero separated by :
-     * @param string $width in percentages e.g. 50p
-     * @param string $heigt in percentages e.g. 50p
+     * @param string $width in percentages e.g. 50p.
+     * @param string $heigt in percentages e.g. 50p.
      * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
-     * @param string $offsetY horizontal and vertical offsets in percents or shortcuts.
+     * @param string $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
     public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $heigt = null, string $offsetX = null, string $offsetY = null): self
@@ -174,4 +174,31 @@ class Transformations
 
         return $this;
     }
+
+    /**
+     * Scales an image until it fully covers the specified dimensions; the rest gets cropped.
+     *
+     * @param integer $width in pixels.
+     * @param integer $height in pixels.
+     * @param integer $offsetX horizontal and vertical offsets in percents or shortcuts.
+     * @param integer|null $offsetY horizontal and vertical offsets in percents.
+     * @return self
+     */
+    public function scaleCrop(int $width, int $height, int $offsetX, int $offsetY = null): self
+    {
+        // Check if offsetX is a string and if it is a valid offset shortcut or percentage
+        if (!in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && !$this->isValidPercentage($offsetX)) {
+            throw new \InvalidArgumentException("Invalid offset shortcut or percentage.");
+        }
+
+        // Check if alignment is set by shortcut or percentages
+        if (!$offsetY) {
+            $this->transformations['scale_crop'] = ['width' => $width, 'height' => $height, 'align' => $offsetX];
+        } else {
+            $this->transformations['scale_crop'] = ['width' => $width, 'height' => $height, 'x' => $offsetX, 'y' => $offsetY];
+        }
+
+        return $this;
+    }
 }
+
