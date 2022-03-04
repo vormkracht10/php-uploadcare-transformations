@@ -11,6 +11,7 @@ class Transformations
     protected array $offsetShortcuts = ['center', 'top', 'bottom', 'left', 'right'];
     protected array $resizeModes = ['on', 'off', 'fill'];
     protected array $tags = ['face', 'image'];
+    protected array $types = ['smart', 'smart_faces_objects', 'smart_faces_points', 'smart_objects_faces_points', 'smart_objects_faces', 'smart_objects_points', 'smart_points', 'smart_objects', 'smart_faces'];
 
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
@@ -75,12 +76,12 @@ class Transformations
     {
         // If width, height or offsetY is a string, we should check if it is valid
         if (is_string($width) && ! $this->isValidPercentage($width) || is_string($height) && ! $this->isValidPercentage($height) || is_string($offsetY) && ! $this->isValidPercentage($offsetY)) {
-            throw new \InvalidArgumentException("Invalid percentage.");
+            throw new \InvalidArgumentException('Invalid percentage.');
         }
 
         // Check if offsetX is a string and if it is a valid offset shortcut or percentage
         if (is_string($offsetX) && ! in_array($offsetX, $this->offsetShortcuts) && ! $this->isValidPercentage($offsetX)) {
-            throw new \InvalidArgumentException("Invalid offset shortcut or percentage.");
+            throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
         }
 
         if (is_string($offsetX) && in_array($offsetX, $this->offsetShortcuts) && ! $this->isValidPercentage($offsetX)) {
@@ -104,12 +105,12 @@ class Transformations
     {
         // Check if offsetX is a string and if it is a valid offset shortcut or percentage
         if (is_string($offsetX) && ! in_array($offsetX, $this->offsetShortcuts) && ! $this->isValidPercentage($offsetX)) {
-            throw new \InvalidArgumentException("Invalid offset shortcut or percentage.");
+            throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
         }
 
         // Check if offsetY is a string and if it is a valid percentage
         if (is_string($offsetY) && ! $this->isValidPercentage($offsetY)) {
-            throw new \InvalidArgumentException("Invalid offset percentage.");
+            throw new \InvalidArgumentException('Invalid offset percentage.');
         }
 
         // Check if ratio is valid (two numbers greater
@@ -143,7 +144,7 @@ class Transformations
      * @param string $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $heigt = null, string $offsetX = null, string $offsetY = null): self
+    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $heigt = null, int|string $offsetX = null, int $offsetY = null): self
     {
         // Check if tag is valid
         if (! in_array($tag, $this->tags)) {
@@ -162,7 +163,7 @@ class Transformations
 
         // Check if offsetX is a string and if it is a valid offset shortcut or percentage
         if (!in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && !$this->isValidPercentage($offsetX)) {
-            throw new \InvalidArgumentException("Invalid offset shortcut or percentage.");
+            throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
         }
 
         // Check if alignment is set by shortcut or percentages
@@ -184,11 +185,16 @@ class Transformations
      * @param integer|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function scaleCrop(int $width, int $height, int $offsetX, int $offsetY = null): self
+    public function scaleCrop(int $width, int $height, string $offsetX = null, $offsetY = null): self
     {
         // Check if offsetX is a string and if it is a valid offset shortcut or percentage
         if (!in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && !$this->isValidPercentage($offsetX)) {
-            throw new \InvalidArgumentException("Invalid offset shortcut or percentage.");
+            throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
+        }
+
+        // Check if offsetY is a valid percentage
+        if (isset($offsetY) && ! $this->isValidPercentage($offsetY)) {
+            throw new \InvalidArgumentException('Invalid offset percentage.');
         }
 
         // Check if alignment is set by shortcut or percentages
@@ -196,6 +202,43 @@ class Transformations
             $this->transformations['scale_crop'] = ['width' => $width, 'height' => $height, 'align' => $offsetX];
         } else {
             $this->transformations['scale_crop'] = ['width' => $width, 'height' => $height, 'x' => $offsetX, 'y' => $offsetY];
+        }
+
+        return $this;
+    }
+
+    /**
+     * Switching the crop type to one of the smart modes enables the content-aware mechanics.
+     *
+     * @param integer $width in pixels.
+     * @param integer $height in pixels.
+     * @param string $type one of the types.
+     * @param integer $offsetX horizontal and vertical offsets in percents or shortcuts.
+     * @param integer|null $offsetY horizontal and vertical offsets in percents.
+     * @return self
+     */
+    public function smartCrop(int $width, int $height, string $type, string $offsetX = null, string $offsetY = null): self
+    {
+        // Check if type is valid
+        if (! in_array($type, $this->types)) {
+            throw new \InvalidArgumentException('Invalid type.');
+        }
+
+        // Check if offsetX is a string and if it is a valid offset shortcut or percentage
+        if (!in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && !$this->isValidPercentage($offsetX)) {
+            throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
+        }
+
+        // Check if offsetY is a valid percentage
+        if (isset($offsetY) && ! $this->isValidPercentage($offsetY)) {
+            throw new \InvalidArgumentException('Invalid offset percentage.');
+        }
+        
+        // Check if alignment is set by shortcut or percentages
+        if (!$offsetY) {
+            $this->transformations['smart_crop'] = ['width' => $width, 'height' => $height, 'type' => $type, 'align' => $offsetX];
+        } else {
+            $this->transformations['smart_crop'] = ['width' => $width, 'height' => $height, 'type' => $type, 'x' => $offsetX, 'y' => $offsetY];
         }
 
         return $this;
