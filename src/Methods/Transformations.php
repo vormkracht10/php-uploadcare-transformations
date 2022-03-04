@@ -243,5 +243,18 @@ class Transformations
 
         return $this;
     }
+
+    /**
+     * Sets the fill color used with crop, stretch or when converting an alpha channel enabled image to JPEG.
+     *
+     * @param string $color in hexadecimal notation with optional transparency.
+     * @return self
+     */
+    public function setFill(string $color): self
+    {
+        $this->transformations['set_fill'] = ['color' => $color];
+
+        return $this;
+    }
 }
 

@@ -145,7 +145,7 @@ trait Methods
                 $url .= '/scale_crop/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['x'] . ',' . $transformation['y'];
             }
         }
-        
+
         if (isset($this->transformations['smart_crop'])) {
             $transformation = $this->transformations['smart_crop'];
 
@@ -163,6 +163,13 @@ trait Methods
                 // -/smart_crop/:dimensions/:type/:alignment
                 $url .= '/smart_crop/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['type'] . '/' . $transformation['x'] . ',' . $transformation['y'];
             }
+        }
+
+        if (isset($this->transformations['set_fill'])) {
+            $transformation = $this->transformations['set_fill'];
+
+            $url .= '/set_fill/' . $transformation['color'];
+
         }
 
         return $url;
