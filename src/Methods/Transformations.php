@@ -256,5 +256,22 @@ class Transformations
 
         return $this;
     }
+
+    /**
+     * Sets the object's size in the image from 1 to 100.
+     *
+     * @param string integer between 1 and 100.
+     * @return self
+     */
+    public function zoomObjects(int $zoom): self
+    {
+        if ($zoom < 1 || $zoom > 100) {
+            throw new \InvalidArgumentException('Invalid zoom.');
+        }
+
+        $this->transformations['zoom_objects'] = ['zoom' => $zoom];
+
+        return $this;
+    }
 }
 

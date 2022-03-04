@@ -142,8 +142,15 @@ trait Methods
         if (isset($this->transformations['set_fill'])) {
             $transformation = $this->transformations['set_fill'];
 
+            // -/set_fill/:color
             $url .= '/set_fill/' . $transformation['color'];
 
+        }
+
+        if (isset($this->transformations['zoom_objects'])) {
+            $transformation = $this->transformations['zoom_objects'];
+            // -/zoom_objects/:zoom
+            $url .= '/zoom_objects/' . $transformation['zoom'];
         }
 
         return $url;
