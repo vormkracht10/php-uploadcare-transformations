@@ -140,21 +140,21 @@ trait Methods
 
         if (isset($this->transformations['zoom_objects'])) {
             $transformation = $this->transformations['zoom_objects'];
-            
+
             // -/zoom_objects/:zoom
             $url .= '/zoom_objects/' . $transformation['zoom'];
         }
 
         if (isset($this->transformations['format'])) {
             $transformation = $this->transformations['format'];
-            
+
             // -/format/:format
             $url .= '/format/' . $transformation['format'];
         }
 
         if (isset($this->transformations['quality'])) {
             $transformation = $this->transformations['quality'];
-            
+
             // -/quality/:quality
             $url .= '/quality/' . $transformation['quality'];
         }

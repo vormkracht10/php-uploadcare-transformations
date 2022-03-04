@@ -293,12 +293,12 @@ class Transformations
     }
 
     /**
-     * Sets output JPEG and WebP quality. 
+     * Sets output JPEG and WebP quality.
      *
      * @param string $quality one of the qualities.
      * @return self
      */
-    public function quality(string $quality): self 
+    public function quality(string $quality): self
     {
         if (! in_array($quality, $this->qualities)) {
             throw new \InvalidArgumentException('Invalid quality.');
@@ -307,5 +307,4 @@ class Transformations
 
         return $this;
     }
-
 }
