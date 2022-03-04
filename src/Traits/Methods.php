@@ -104,17 +104,13 @@ trait Methods
         if (isset($this->transformations['scale_crop'])) {
             $transformation = $this->transformations['scale_crop'];
 
-            if (!isset($transformation['x']) && !isset($transformation['y']) && !isset($transformation['align'])) {
+            if (! isset($transformation['x']) && ! isset($transformation['y']) && ! isset($transformation['align'])) {
                 // -/scale_crop/:dimensions/
                 $url .= '/scale_crop/' . $transformation['width'] . 'x' . $transformation['height'];
-            }
-
-            elseif (isset($transformation['width']) && isset($transformation['height']) && isset($transformation['align'])) {
+            } elseif (isset($transformation['width']) && isset($transformation['height']) && isset($transformation['align'])) {
                 // -/scale_crop/:dimensions/:alignment/
                 $url .= '/scale_crop/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['align'];
-            }
-
-            elseif (isset($transformation['width']) && isset($transformation['height']) && isset($transformation['x']) && isset($transformation['y'])) {
+            } elseif (isset($transformation['width']) && isset($transformation['height']) && isset($transformation['x']) && isset($transformation['y'])) {
                 // -/scale_crop/:dimensions/:alignment/
                 $url .= '/scale_crop/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['x'] . ',' . $transformation['y'];
             }
@@ -123,17 +119,13 @@ trait Methods
         if (isset($this->transformations['smart_crop'])) {
             $transformation = $this->transformations['smart_crop'];
 
-            if (!isset($transformation['align']) && !isset($transformation['x']) && !isset($transformation['y'])) {
+            if (! isset($transformation['align']) && ! isset($transformation['x']) && ! isset($transformation['y'])) {
                 // -/smart_crop/:dimensions/:type
                 $url .= '/smart_crop/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['type'];
-            } 
-
-            elseif (isset($transformation['align'])) {
+            } elseif (isset($transformation['align'])) {
                 // -/smart_crop/:dimensions/:type/:alignment
                 $url .= '/smart_crop/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['type'] . '/' . $transformation['align'];
-            }
-
-            elseif (isset($transformation['x']) && isset($transformation['y'])) {
+            } elseif (isset($transformation['x']) && isset($transformation['y'])) {
                 // -/smart_crop/:dimensions/:type/:alignment
                 $url .= '/smart_crop/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['type'] . '/' . $transformation['x'] . ',' . $transformation['y'];
             }
@@ -144,7 +136,6 @@ trait Methods
 
             // -/set_fill/:color
             $url .= '/set_fill/' . $transformation['color'];
-
         }
 
         if (isset($this->transformations['zoom_objects'])) {
