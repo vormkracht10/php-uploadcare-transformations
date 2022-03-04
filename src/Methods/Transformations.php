@@ -12,6 +12,8 @@ class Transformations
     protected array $resizeModes = ['on', 'off', 'fill'];
     protected array $tags = ['face', 'image'];
     protected array $types = ['smart', 'smart_faces_objects', 'smart_faces_points', 'smart_objects_faces_points', 'smart_objects_faces', 'smart_objects_points', 'smart_points', 'smart_objects', 'smart_faces'];
+    protected array $formats = ['jpeg', 'png', 'webp', 'auto'];
+    protected array $qualities = ['smart', 'smart_retina', 'normal', 'better', 'best', 'lighter', 'lightest'];
 
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
@@ -273,4 +275,37 @@ class Transformations
 
         return $this;
     }
+
+    /**
+     * Converts an image to a different format.
+     *
+     * @param string $format one of the formats.
+     * @return self
+     */
+    public function format(string $format): self
+    {
+        if (! in_array($format, $this->formats)) {
+            throw new \InvalidArgumentException('Invalid format.');
+        }
+        $this->transformations['format'] = ['format' => $format];
+
+        return $this;
+    }
+
+    /**
+     * Sets output JPEG and WebP quality. 
+     *
+     * @param string $quality one of the qualities.
+     * @return self
+     */
+    public function quality(string $quality): self 
+    {
+        if (! in_array($quality, $this->qualities)) {
+            throw new \InvalidArgumentException('Invalid quality.');
+        }
+        $this->transformations['quality'] = ['quality' => $quality];
+
+        return $this;
+    }
+
 }
