@@ -308,4 +308,17 @@ class Transformations
         return $this;
     }
 
+    /**
+     * Returns a progressive image.
+     *
+     * @param boolean $progressive
+     * @return self
+     */
+    public function progressive(bool $progressive): self
+    {
+        $this->transformations['progressive'] = ['progressive' => $progressive];
+
+        return $this;
+    }
+
 }
