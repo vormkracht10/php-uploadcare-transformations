@@ -321,4 +321,83 @@ class Transformations
         return $this;
     }
 
+    /**
+     * Adjust color properties of an image.
+     *
+     * @param string $color
+     * @param integer $value
+     * @return self
+     */
+    public function basicColorAdjustments(string $color, int $value): self
+    {
+        // 
+
+        return $this;
+    }
+
+    /**
+     * Auto-enhances an image by performing the following operations: auto levels, auto contrast, and saturation sharpening.
+     *
+     * @param string $enhance
+     * @param integer $strength
+     * @return self
+     */
+    public function enhance(string $enhance, int $strength): self
+    {
+        // 
+
+        return $this;
+    }
+
+    /**
+     * Desaturates images. The operation has no additional parameters and simply produces a grayscale image output when applied.
+     *
+     * @return self
+     */
+    public function grayscale(): self
+    {
+        // 
+
+        return $this;
+    }
+
+    /**
+     * Inverts images rendering a 'negative' of the input.
+     *
+     * @return self
+     */
+    public function inverting(): self
+    {
+        // 
+
+        return $this;
+    }
+
+    /**
+     * Set how Uploadcare behaves depending on different color profiles of uploaded images. See their documentation to learn more about the possible outcomes.
+     * https://uploadcare.com/docs/transformations/image/colors/#image-color-profile-management
+     *
+     * @param string $profile
+     * @return self
+     */
+    public function convertToSRGB(string $profile): self
+    {
+        // 
+
+        return $this;
+    }
+
+    /**
+     * Define which RGB color profile sizes will be considered “small” and “large” when using srgb in fast or icc modes. The number stands for the ICC profile size in kilobytes.
+     *
+     * @param integer $number
+     * @return self
+     */
+    public function iccProfileSizeThreshold(int $number): self
+    {
+        // 
+
+        return $this;
+    }
+
 }
