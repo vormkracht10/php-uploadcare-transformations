@@ -311,7 +311,7 @@ class Transformations
     /**
      * Returns a progressive image.
      *
-     * @param boolean $progressive
+     * @param bool $progressive
      * @return self
      */
     public function progressive(bool $progressive): self
@@ -325,12 +325,12 @@ class Transformations
      * Adjust color properties of an image.
      *
      * @param string $color
-     * @param integer $value
+     * @param int $value
      * @return self
      */
     public function basicColorAdjustments(string $color, int $value): self
     {
-        // 
+        //
 
         return $this;
     }
@@ -339,12 +339,12 @@ class Transformations
      * Auto-enhances an image by performing the following operations: auto levels, auto contrast, and saturation sharpening.
      *
      * @param string $enhance
-     * @param integer $strength
+     * @param int $strength
      * @return self
      */
     public function enhance(string $enhance, int $strength): self
     {
-        // 
+        //
 
         return $this;
     }
@@ -356,7 +356,7 @@ class Transformations
      */
     public function grayscale(): self
     {
-        // 
+        //
 
         return $this;
     }
@@ -368,7 +368,7 @@ class Transformations
      */
     public function inverting(): self
     {
-        // 
+        //
 
         return $this;
     }
@@ -382,7 +382,7 @@ class Transformations
      */
     public function convertToSRGB(string $profile): self
     {
-        // 
+        //
 
         return $this;
     }
@@ -390,12 +390,12 @@ class Transformations
     /**
      * Define which RGB color profile sizes will be considered “small” and “large” when using srgb in fast or icc modes. The number stands for the ICC profile size in kilobytes.
      *
-     * @param integer $number
+     * @param int $number
      * @return self
      */
     public function iccProfileSizeThreshold(int $number): self
     {
-        // 
+        //
 
         return $this;
     }
