@@ -18,7 +18,6 @@ class Transformations
     protected array $resizeModes = ['on', 'off', 'fill'];
     protected array $tags = ['face', 'image'];
     protected array $types = ['smart', 'smart_faces_objects', 'smart_faces_points', 'smart_objects_faces_points', 'smart_objects_faces', 'smart_objects_points', 'smart_points', 'smart_objects', 'smart_faces'];
-    protected array $formats = ['jpeg', 'png', 'webp', 'auto'];
 
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
