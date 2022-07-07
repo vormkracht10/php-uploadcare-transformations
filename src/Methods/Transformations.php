@@ -8,6 +8,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Enums\Color;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
+use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
 
 class Transformations
 {
@@ -271,11 +272,7 @@ class Transformations
      */
     public function zoomObjects(int $zoom): self
     {
-        if ($zoom < 1 || $zoom > 100) {
-            throw new \InvalidArgumentException('Invalid zoom.');
-        }
-
-        $this->transformations['zoom_objects'] = ['zoom' => $zoom];
+        $this->transformations['zoom_objects'] = ZoomObjects::transform($zoom);
 
         return $this;
     }
