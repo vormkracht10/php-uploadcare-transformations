@@ -6,6 +6,7 @@ use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\Color;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
+use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 
 class Transformations
 {
@@ -16,7 +17,6 @@ class Transformations
     protected array $tags = ['face', 'image'];
     protected array $types = ['smart', 'smart_faces_objects', 'smart_faces_points', 'smart_objects_faces_points', 'smart_objects_faces', 'smart_objects_points', 'smart_points', 'smart_objects', 'smart_faces'];
     protected array $formats = ['jpeg', 'png', 'webp', 'auto'];
-    protected array $qualities = ['smart', 'smart_retina', 'normal', 'better', 'best', 'lighter', 'lightest'];
 
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
@@ -303,10 +303,7 @@ class Transformations
      */
     public function quality(string $quality): self
     {
-        if (! in_array($quality, $this->qualities)) {
-            throw new \InvalidArgumentException('Invalid quality.');
-        }
-        $this->transformations['quality'] = ['quality' => $quality];
+        $this->transformations['quality'] = Quality::transform($quality);
 
         return $this;
     }
