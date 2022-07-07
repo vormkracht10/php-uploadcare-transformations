@@ -10,7 +10,7 @@ class ZoomObjects implements TransformationInterface
     {
         $zoom = $args[0];
 
-        if (!self::validate('zoom', $zoom)) {
+        if (! self::validate('zoom', $zoom)) {
             throw new \InvalidArgumentException('Invalid zoom');
         }
 
