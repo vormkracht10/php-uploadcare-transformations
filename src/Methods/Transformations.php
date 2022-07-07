@@ -3,6 +3,7 @@
 namespace Vormkracht10\UploadcareTransformations\Methods;
 
 use Vormkracht10\UploadcareTransformations\Traits\Methods;
+use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 
 class Transformations
 {
@@ -330,7 +331,7 @@ class Transformations
      */
     public function basicColorAdjustments(string $color, int $value): self
     {
-        // 
+        $this->transformations['basic_color_adjustments'] = BasicColorAdjustments::transform($color, $value);
 
         return $this;
     }
