@@ -2,16 +2,10 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
+use Vormkracht10\UploadcareTransformations\Transformations\Enums\Color;
+
 class BasicColorAdjustments implements TransformationInterface
 {
-    public const BRIGHTNESS = 'brightness';
-    public const EXPOSURE = 'exposure';
-    public const GAMMA = 'gamma';
-    public const CONTRAST = 'contrast';
-    public const SATURATION = 'saturation';
-    public const VIBRANCE = 'vibrance';
-    public const WARMTH = 'warmth';
-
     public const VALUE = 'value';
     public const COLOR = 'color';
 
@@ -20,7 +14,7 @@ class BasicColorAdjustments implements TransformationInterface
         $color = $args[0];
         $value = $args[1];
 
-        if (! self::validate('color', $color)) {
+        if (!$color) {
             throw new \InvalidArgumentException('Invalid color');
         }
 
@@ -39,35 +33,21 @@ class BasicColorAdjustments implements TransformationInterface
         $value = $args[0];
         $comparisonValue = $args[1] ?? null;
 
-        if ($key === self::COLOR) {
-            $colors = [
-                self::BRIGHTNESS,
-                self::EXPOSURE,
-                self::GAMMA,
-                self::CONTRAST,
-                self::SATURATION,
-                self::VIBRANCE,
-                self::WARMTH,
-            ];
-
-            return in_array($value, $colors);
-        }
-
         if ($key === self::VALUE) {
             switch ($comparisonValue) {
-                case self::BRIGHTNESS:
+                case Color::BRIGHTNESS:
                     return $value >= -100 && $value <= 100;
-                case self::EXPOSURE:
+                case Color::EXPOSURE:
                     return $value >= -500 && $value <= 500;
-                case self::GAMMA:
+                case Color::GAMMA:
                     return $value >= 0 && $value <= 1000;
-                case self::CONTRAST:
+                case Color::CONTRAST:
                     return $value >= -100 && $value <= 500;
-                case self::SATURATION:
+                case Color::SATURATION:
                     return $value >= -100 && $value <= 500;
-                case self::VIBRANCE:
+                case Color::VIBRANCE:
                     return $value >= -100 && $value <= 500;
-                case self::WARMTH:
+                case Color::WARMTH:
                     return $value >= -100 && $value <= 100;
                 default:
                     return false;

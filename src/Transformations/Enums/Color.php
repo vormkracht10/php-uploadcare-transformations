@@ -2,13 +2,13 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations\Enums;
 
-enum Color
+enum Color: string
 {
-    case BRIGHTNESS;
-    case EXPOSURE;
-    case GAMMA;
-    case CONTRAST;
-    case SATURATION;
-    case VIBRANCE;
-    case WARMTH;
+    case BRIGHTNESS = 'brightness';
+    case EXPOSURE = 'exposure';
+    case GAMMA = 'gamma';
+    case CONTRAST = 'contrast';
+    case SATURATION = 'saturation';
+    case VIBRANCE = 'vibrance';
+    case WARMTH = 'warmth';
 }
