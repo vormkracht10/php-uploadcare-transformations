@@ -6,7 +6,6 @@ use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\CropType;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
-
 class SmartCrop implements TransformationInterface
 {
     use Methods;
@@ -29,19 +28,19 @@ class SmartCrop implements TransformationInterface
             throw new \InvalidArgumentException('Invalid crop type');
         }
 
-        if (!self::validate('width', $width)) {
+        if (! self::validate('width', $width)) {
             throw new \InvalidArgumentException('Invalid width');
         }
 
-        if (!self::validate('height', $height)) {
+        if (! self::validate('height', $height)) {
             throw new \InvalidArgumentException('Invalid height');
         }
 
-        if (!self::validate('offset_x', $offsetX)) {
+        if (! self::validate('offset_x', $offsetX)) {
             throw new \InvalidArgumentException('Invalid offset_x');
         }
 
-        if (!self::validate('offset_y', $offsetY)) {
+        if (! self::validate('offset_y', $offsetY)) {
             throw new \InvalidArgumentException('Invalid offset_y');
         }
 
