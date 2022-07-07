@@ -5,6 +5,7 @@ namespace Vormkracht10\UploadcareTransformations\Methods;
 use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\Color;
+use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 
@@ -287,10 +288,7 @@ class Transformations
      */
     public function format(string $format): self
     {
-        if (! in_array($format, $this->formats)) {
-            throw new \InvalidArgumentException('Invalid format.');
-        }
-        $this->transformations['format'] = ['format' => $format];
+        $this->transformations['format'] = Format::transform($format);
 
         return $this;
     }
@@ -298,7 +296,7 @@ class Transformations
     /**
      * Sets output JPEG and WebP quality.
      *
-     * @param string $quality one of the qualities.
+     * @param string $quality
      * @return self
      */
     public function quality(string $quality): self
