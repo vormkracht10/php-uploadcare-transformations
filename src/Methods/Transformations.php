@@ -5,6 +5,7 @@ namespace Vormkracht10\UploadcareTransformations\Methods;
 use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\Color;
+use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 
 class Transformations
 {
@@ -318,7 +319,7 @@ class Transformations
      */
     public function progressive(bool $progressive): self
     {
-        $this->transformations['progressive'] = ['progressive' => $progressive];
+        $this->transformations['progressive'] =  Progressive::transform($progressive);
 
         return $this;
     }
