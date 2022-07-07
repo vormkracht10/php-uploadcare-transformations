@@ -2,6 +2,8 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
+use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
+
 class Progressive implements TransformationInterface
 {
     public const PROGRESSIVE = 'progressive';

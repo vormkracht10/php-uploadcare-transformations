@@ -3,6 +3,7 @@
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\Quality as QualityEnum;
+use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class Quality implements TransformationInterface
 {

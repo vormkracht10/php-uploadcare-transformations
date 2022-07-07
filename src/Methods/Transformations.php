@@ -8,6 +8,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Enums\Color;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
+use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
 
 class Transformations
@@ -258,7 +259,7 @@ class Transformations
      */
     public function setFill(string $color): self
     {
-        $this->transformations['set_fill'] = ['color' => $color];
+        $this->transformations['set_fill'] = SetFill::transform($color);
 
         return $this;
     }

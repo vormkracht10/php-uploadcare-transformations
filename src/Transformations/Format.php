@@ -3,6 +3,7 @@
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\Format as FormatEnum;
+use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class Format implements TransformationInterface
 {

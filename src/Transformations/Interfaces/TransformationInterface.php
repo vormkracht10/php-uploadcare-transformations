@@ -1,6 +1,6 @@
 <?php
 
-namespace Vormkracht10\UploadcareTransformations\Transformations;
+namespace Vormkracht10\UploadcareTransformations\Transformations\Interfaces;
 
 interface TransformationInterface
 {
