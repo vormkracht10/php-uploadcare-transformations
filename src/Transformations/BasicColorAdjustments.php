@@ -14,7 +14,7 @@ class BasicColorAdjustments implements TransformationInterface
         $color = Color::tryFrom($args[0]);
         $value = $args[1];
 
-        if (!$color) {
+        if (! $color) {
             throw new \InvalidArgumentException('Invalid color');
         }
 
