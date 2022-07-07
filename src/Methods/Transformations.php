@@ -311,7 +311,7 @@ class Transformations
      */
     public function progressive(bool $progressive): self
     {
-        $this->transformations['progressive'] =  Progressive::transform($progressive);
+        $this->transformations['progressive'] = Progressive::transform($progressive);
 
         return $this;
     }

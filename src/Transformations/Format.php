@@ -23,6 +23,6 @@ class Format implements TransformationInterface
 
     public static function validate(string $key, ...$args): ?bool
     {
-       return null;
+        return null;
     }
 }
