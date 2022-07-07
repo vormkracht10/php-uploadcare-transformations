@@ -1,11 +1,9 @@
-<?php 
+<?php
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
-use Vormkracht10\UploadcareTransformations\Transformations\TransformationInterface;
-
-class BasicColorAdjustments implements TransformationInterface {
-    
+class BasicColorAdjustments implements TransformationInterface
+{
     public const BRIGHTNESS = 'brightness';
     public const EXPOSURE = 'exposure';
     public const GAMMA = 'gamma';
@@ -22,11 +20,11 @@ class BasicColorAdjustments implements TransformationInterface {
         $color = $args[0];
         $value = $args[1];
 
-        if (!self::validate('color', $color)) {
+        if (! self::validate('color', $color)) {
             throw new \InvalidArgumentException('Invalid color');
         }
 
-        if (!self::validate('value', $value, $color)) {
+        if (! self::validate('value', $value, $color)) {
             throw new \InvalidArgumentException('Invalid value');
         }
 
@@ -42,7 +40,6 @@ class BasicColorAdjustments implements TransformationInterface {
         $comparisonValue = $args[1] ?? null;
 
         if ($key === self::COLOR) {
-
             $colors = [
                 self::BRIGHTNESS,
                 self::EXPOSURE,
@@ -74,6 +71,7 @@ class BasicColorAdjustments implements TransformationInterface {
                     return $value >= -100 && $value <= 100;
                 default:
                     return false;
+
                     break;
             }
         }
