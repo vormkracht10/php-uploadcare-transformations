@@ -162,7 +162,7 @@ trait Methods
         if (isset($this->transformations['progressive'])) {
             $transformation = $this->transformations['progressive'];
             $value = ($transformation['progressive']) ? 'yes' : 'no';
-            
+
             // -/progressive/:value
             $url .= '/progressive/' . $value;
         }
