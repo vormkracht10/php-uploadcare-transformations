@@ -332,7 +332,7 @@ class Transformations
      */
     public function basicColorAdjustments(string $color, int $value): self
     {
-        $this->transformations['basic_color_adjustments'] = BasicColorAdjustments::transform(Color::tryFrom($color), $value);
+        $this->transformations['basic_color_adjustments'] = BasicColorAdjustments::transform($color, $value);
 
         return $this;
     }

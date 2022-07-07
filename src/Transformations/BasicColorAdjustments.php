@@ -11,7 +11,7 @@ class BasicColorAdjustments implements TransformationInterface
 
     public static function transform(...$args): array
     {
-        $color = $args[0];
+        $color = Color::tryFrom($args[0]);
         $value = $args[1];
 
         if (!$color) {
