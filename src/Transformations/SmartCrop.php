@@ -38,7 +38,7 @@ class SmartCrop implements TransformationInterface
             throw new \InvalidArgumentException('Invalid offset Y');
         }
 
-        if (!$offsetY) {
+        if (! $offsetY) {
             return [
                 self::WIDTH => $width,
                 self::HEIGHT => $height,
@@ -61,7 +61,7 @@ class SmartCrop implements TransformationInterface
         $value = $args[0];
 
         if ($key === self::OFFSET_X) {
-            return Offset::tryFrom($value) || self::isValidPercentage($value);   
+            return Offset::tryFrom($value) || self::isValidPercentage($value);
         }
 
         if ($key === self::OFFSET_Y) {
