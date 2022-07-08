@@ -7,6 +7,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
+use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
@@ -194,22 +195,7 @@ class Transformations
      */
     public function scaleCrop(int $width, int $height, string $offsetX = null, $offsetY = null): self
     {
-        // Check if offsetX is a string and if it is a valid offset shortcut or percentage
-        if (! in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && ! $this->isValidPercentage($offsetX)) {
-            throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
-        }
-
-        // Check if offsetY is a valid percentage
-        if (isset($offsetY) && ! $this->isValidPercentage($offsetY)) {
-            throw new \InvalidArgumentException('Invalid offset percentage.');
-        }
-
-        // Check if alignment is set by shortcut or percentages
-        if (! $offsetY) {
-            $this->transformations['scale_crop'] = ['width' => $width, 'height' => $height, 'align' => $offsetX];
-        } else {
-            $this->transformations['scale_crop'] = ['width' => $width, 'height' => $height, 'x' => $offsetX, 'y' => $offsetY];
-        }
+        $this->transformations['scale_crop'] = ScaleCrop::transform($width, $height, $offsetX, $offsetY);
 
         return $this;
     }
