@@ -4,7 +4,6 @@ namespace Vormkracht10\UploadcareTransformations\Transformations;
 
 use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\Offset;
-use Vormkracht10\UploadcareTransformations\Transformations\Enums\Tag;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class Crop implements TransformationInterface
@@ -61,7 +60,7 @@ class Crop implements TransformationInterface
         $value = $args[0];
 
         if ($key === self::OFFSET_X) {
-            return Offset::tryFrom($value) || self::isValidPercentage($value);   
+            return Offset::tryFrom($value) || self::isValidPercentage($value);
         }
 
         if ($key === self::OFFSET_Y || $key === self::WIDTH || $key === self::HEIGHT) {

@@ -3,19 +3,19 @@
 namespace Vormkracht10\UploadcareTransformations\Methods;
 
 use Vormkracht10\UploadcareTransformations\Traits\Methods;
+use Vormkracht10\UploadcareTransformations\Transformations\Crop;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
+use Vormkracht10\UploadcareTransformations\Transformations\Resize;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
 use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
+use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
 use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
-use Vormkracht10\UploadcareTransformations\Transformations\Crop;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
-use Vormkracht10\UploadcareTransformations\Transformations\Resize;
-use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
 
 class Transformations
 {
@@ -114,7 +114,7 @@ class Transformations
     public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $heigt = null, int|string $offsetX = null, int $offsetY = null): self
     {
         $this->transformations['crop_by_objects'] = CropByObjects::transform($tag, $ratio, $width, $heigt, $offsetX, $offsetY);
-   
+
         return $this;
     }
 
