@@ -12,6 +12,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
 use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
+use Vormkracht10\UploadcareTransformations\Transformations\Crop;
 use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
 
 class Transformations
@@ -84,21 +85,7 @@ class Transformations
      */
     public function crop(int|string $width, int|string $height, int|string $offsetX, int|string $offsetY = null): self
     {
-        // If width, height or offsetY is a string, we should check if it is valid
-        if (is_string($width) && ! $this->isValidPercentage($width) || is_string($height) && ! $this->isValidPercentage($height) || is_string($offsetY) && ! $this->isValidPercentage($offsetY)) {
-            throw new \InvalidArgumentException('Invalid percentage.');
-        }
-
-        // Check if offsetX is a string and if it is a valid offset shortcut or percentage
-        if (is_string($offsetX) && ! in_array($offsetX, $this->offsetShortcuts) && ! $this->isValidPercentage($offsetX)) {
-            throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
-        }
-
-        if (is_string($offsetX) && in_array($offsetX, $this->offsetShortcuts) && ! $this->isValidPercentage($offsetX)) {
-            $this->transformations['crop'] = ['width' => $width, 'height' => $height, 'align' => $offsetX];
-        } else {
-            $this->transformations['crop'] = ['width' => $width, 'height' => $height, 'x' => $offsetX, 'y' => $offsetY];
-        }
+        $this->transformations['crop'] = Crop::transform($width, $height, $offsetX, $offsetY);
 
         return $this;
     }
