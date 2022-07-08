@@ -16,12 +16,33 @@ composer require vormkracht10/php-uploadcare-transformations
 
 ## Usage
 
+<ol>
+    <li>
+        Include UploadcareTransformation.
+    </li>
+     <li>
+        Get the UUID of the file you want to show.
+    </li>
+     <li>
+        Set your CDN url (optional).
+    </li>
+     <li>
+        Create the transformation URL by chaining one or multiple methods to the UploadcareTransformation class. You can chain as much methods as you want. 
+    </li>
+    <li>Use the output of the transformation as image source.</li>
+</ol>
+
 ```php
+use Vormkracht10\UploadcareTransformations\UploadcareTransformation;
+
 $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
 $cdnUrl = 'https://example.com/cdn/';
 
-$transformation = new Vormkracht10\UploadcareTransformations\UploadcareTransformation($uuid, $cdn);
-echo $transformation->crop(320, '50p', 'center')->setFill('#ffffff')->getUrl();
+$transformation = (new UploadcareTransformation($uuid, $cdn));
+
+$url = $transformation->crop(320, '50p', 'center')->setFill('#ffffff')->getUrl();
+
+echo $transformation;
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/crop/320x50p/center/set_fill/#ffffff
 ```
 

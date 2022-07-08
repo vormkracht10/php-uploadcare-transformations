@@ -23,7 +23,7 @@ trait Methods
             $transformation = $this->transformations['resize'];
 
             // -/stretch/:mode/ (optional)
-            $resizePrefix = $transformation['resize']['stretch'] ? '/stretch/' . $transformation['mode'] . '/-/resize/' : '/resize/';
+            $resizePrefix = $transformation['stretch'] ? '/stretch/' . $transformation['mode'] . '/-/resize/' : '/resize/';
 
             if ($transformation['height'] == null && $transformation['width'] !== null) {
                 // -/resize/:one_or_two_dimensions/
@@ -41,7 +41,7 @@ trait Methods
             $transformation = $this->transformations['smart_resize'];
 
             // -/smart_resize/:dimensions/
-            $url .= '/smart/' . $transformation['smart_resize']['width'] . 'x' . $transformation['smart_resize']['height'];
+            $url .= '/smart/' . $transformation['width'] . 'x' . $transformation['height'];
         }
 
         if (isset($this->transformations['crop'])) {
@@ -70,7 +70,7 @@ trait Methods
                 $url .= '/crop/' . $transformation['ratio'] . '/' . $transformation['align'];
             } else {
                 // -/crop/:ratio/
-                $url .= '/crop/' . $transformation['ratio'] . 'x' . $transformation['height'];
+                $url .= '/crop/' . $transformation['ratio'];
             }
         }
 
@@ -176,7 +176,7 @@ trait Methods
      * @param string $value
      * @return bool
      */
-    public function isValidPercentage(string $value): bool
+    public static function isValidPercentage(string $value): bool
     {
         if (preg_match('/^[0-9]+p$/', $value)) {
             return true;
