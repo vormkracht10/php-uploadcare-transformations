@@ -2,13 +2,13 @@
 
 namespace Vormkracht10\UploadcareTransformations;
 
-use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Methods\Transformations;
+use Vormkracht10\UploadcareTransformations\Traits\Methods;
 
 class UploadcareTransformation extends Transformations
 {
-    use Methods; 
-    
+    use Methods;
+
     protected string $uuid;
     protected array $transformations;
     protected string $url;

@@ -7,7 +7,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 class Enhance implements TransformationInterface
 {
     public const STRENGTH = 'strength';
-    
+
     public static function transform(...$args): array
     {
         $strength = $args[0];
