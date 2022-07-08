@@ -23,7 +23,7 @@ trait Methods
             $transformation = $this->transformations['resize'];
 
             // -/stretch/:mode/ (optional)
-            $resizePrefix = $transformation['resize']['stretch'] ? '/stretch/' . $transformation['mode'] . '/-/resize/' : '/resize/';
+            $resizePrefix = $transformation['stretch'] ? '/stretch/' . $transformation['mode'] . '/-/resize/' : '/resize/';
 
             if ($transformation['height'] == null && $transformation['width'] !== null) {
                 // -/resize/:one_or_two_dimensions/

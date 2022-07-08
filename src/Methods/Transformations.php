@@ -14,6 +14,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
 use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\Resize;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
 
 class Transformations
@@ -22,8 +23,6 @@ class Transformations
 
     protected array $offsetShortcuts = ['center', 'top', 'bottom', 'left', 'right'];
     protected array $resizeModes = ['on', 'off', 'fill'];
-    protected array $tags = ['face', 'image'];
-    protected array $types = ['smart', 'smart_faces_objects', 'smart_faces_points', 'smart_objects_faces_points', 'smart_objects_faces', 'smart_objects_points', 'smart_points', 'smart_objects', 'smart_faces'];
 
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
@@ -50,12 +49,7 @@ class Transformations
      */
     public function resize(int $width = null, int $height = null, bool $stretch = false, string $mode = null): self
     {
-        // Check if $mode is a valid resize mode
-        if ($mode !== null && ! in_array($mode, $this->resizeModes)) {
-            throw new \InvalidArgumentException('Invalid resize mode. Valid modes are: ' . implode(', ', $this->resizeModes));
-        }
-
-        $this->transformations['resize'] = ['width' => $width, 'height' => $height, 'stretch' => $stretch, 'mode' => $mode];
+        $this->transformations['resize'] = Resize::transform($width, $height, $stretch, $mode);
 
         return $this;
     }

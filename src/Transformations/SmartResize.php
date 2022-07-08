@@ -2,13 +2,10 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
-use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class SmartResize implements TransformationInterface
 {
-    use Methods;
-
     public const WIDTH = 'width';
     public const HEIGHT = 'height';
 
