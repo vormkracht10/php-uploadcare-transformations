@@ -176,7 +176,7 @@ trait Methods
      * @param string $value
      * @return bool
      */
-    public function isValidPercentage(string $value): bool
+    public static function isValidPercentage(string $value): bool
     {
         if (preg_match('/^[0-9]+p$/', $value)) {
             return true;

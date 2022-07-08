@@ -4,6 +4,7 @@ namespace Vormkracht10\UploadcareTransformations\Transformations;
 
 use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\CropType;
+use Vormkracht10\UploadcareTransformations\Transformations\Enums\Offset;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class SmartCrop implements TransformationInterface
@@ -30,25 +31,28 @@ class SmartCrop implements TransformationInterface
         }
 
         if ($offsetX && ! self::validate('offset_x', $offsetX)) {
-            throw new \InvalidArgumentException('Invalid offset_x');
+            throw new \InvalidArgumentException('Invalid offset X');
         }
 
         if ($offsetY && ! self::validate('offset_y', $offsetY)) {
-            throw new \InvalidArgumentException('Invalid offset_y');
+            throw new \InvalidArgumentException('Invalid offset Y');
         }
 
-        // If $offsetY is not set
-        //  ['width' => $width, 'height' => $height, 'type' => $type, 'align' => $offsetX]
-
-        // If $offsetY is set
-        // ['width' => $width, 'height' => $height, 'type' => $type, 'x' => $offsetX, 'y' => $offsetY];
+        if (!$offsetY) {
+            return [
+                self::WIDTH => $width,
+                self::HEIGHT => $height,
+                self::TYPE => $type->value,
+                self::ALIGN => $offsetX,
+            ];
+        }
 
         return [
             self::WIDTH => $width,
             self::HEIGHT => $height,
+            self::TYPE => $type->value,
             self::OFFSET_X => $offsetX,
             self::OFFSET_Y => $offsetY,
-            self::TYPE => $type,
         ];
     }
 
@@ -57,7 +61,7 @@ class SmartCrop implements TransformationInterface
         $value = $args[0];
 
         if ($key === self::OFFSET_X) {
-            return CropType::tryFrom($value) || self::isValidPercentage($value);   
+            return Offset::tryFrom($value) || self::isValidPercentage($value);   
         }
 
         if ($key === self::OFFSET_Y) {
@@ -65,7 +69,7 @@ class SmartCrop implements TransformationInterface
         }
 
         if ($key === self::TYPE) {
-            return $value instanceof CropType;
+            return CropType::tryFrom($value);
         }
 
         return false;
