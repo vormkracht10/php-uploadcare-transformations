@@ -12,6 +12,10 @@ class Enhance implements TransformationInterface
     {
         $strength = $args[0];
 
+        if (! self::validate($strength)) {
+            throw new \InvalidArgumentException('Invalid strength');
+        }
+
         return [
             self::STRENGTH => $strength,
         ];
@@ -19,6 +23,13 @@ class Enhance implements TransformationInterface
 
     public static function validate(string $key, ...$args): ?bool
     {
-        return null;
+        $value = $args[0];
+
+        if ($key !== self::STRENGTH) {
+            // Check if value is between 0 and 100
+            return $value >= 0 && $value <= 100;
+        }
+
+        return false;
     }
 }
