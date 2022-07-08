@@ -295,12 +295,17 @@ class Transformations
         return $this;
     }
 
+    /**
+     * Applies one of predefined photo filters by its :name
+     *
+     * @param string $name one of the filters.
+     * @param int $value optional value for the filter.
+     * @return self
+     */
     public function filter(string $name, int $value = 100): self
     {
         $this->transformations['filter'] = Filter::transform($name, $value);
 
         return $this;
     }
-
-
 }
