@@ -214,7 +214,35 @@ trait Methods
 
             // -/filter/:name/:amount/
             $url .= '/filter/' . $transformation['name'] . '/' . $transformation['amount'];
-            
+        }
+
+
+        if (isset($this->transformations['blur'])) {
+            $transformation = $this->transformations['blur'];
+
+            // Strength and amount might be null
+            // -/blur/:strength/:amount
+            $url .= '/blur/' . $transformation['strength'] . '/' . $transformation['amount'];
+        }
+
+        if (isset($this->transformations['blur_region'])) {
+            $transformation = $this->transformations['blur_region'];
+        // -/blur_region/:two_dimensions/:two_coords/:strength/
+
+            $url .= '/blur_region/' . $transformation['dimension_x'] . 'x' . $transformation['dimension_y'] . '/' . $transformation['coordinate_x'] . ',' . $transformation['coordinate_y'] . '/' . $transformation['strength'];
+        }
+
+        if (isset($this->transformations['blur_faces'])) {
+            $transformation = $this->transformations['blur_faces'];
+            // -/blur_region/faces/:strength/
+            $url .= '/blur_region/faces/' . $transformation['strength'];
+        }
+
+        if (isset($this->transformations['sharpen'])) {
+            $transformation = $this->transformations['sharpen'];
+
+            // -/sharp/:strength/
+            $url .= '/sharp/' . $transformation['strength'];
         }
 
         return $url;

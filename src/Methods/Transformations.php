@@ -2,6 +2,7 @@
 
 namespace Vormkracht10\UploadcareTransformations\Methods;
 
+use Vormkracht10\UploadcareTransformations\Transformations\Blur;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
 use Vormkracht10\UploadcareTransformations\Transformations\Filter;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
@@ -9,10 +10,13 @@ use Vormkracht10\UploadcareTransformations\Transformations\Resize;
 use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
+use Vormkracht10\UploadcareTransformations\Transformations\Sharpen;
+use Vormkracht10\UploadcareTransformations\Transformations\BlurFaces;
 use Vormkracht10\UploadcareTransformations\Transformations\Grayscale;
 use Vormkracht10\UploadcareTransformations\Transformations\Inverting;
 use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\BlurRegion;
 use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
@@ -302,9 +306,66 @@ class Transformations
      * @param int $value optional value for the filter.
      * @return self
      */
-    public function filter(string $name, int $value = 100): self
+    public function filter(string $name, int $value = null): self
     {
         $this->transformations['filter'] = Filter::transform($name, $value);
+
+        return $this;
+    }
+
+    /**
+     * Blurs images by the :strength factor.
+     * 
+     * @param int $strength
+     * @param int $amount
+     * @return self
+     */
+    public function blur(int $strength = null, int $amount = null): self 
+    {
+        $this->transformations['blur'] = Blur::transform($strength, $amount);
+
+        return $this;
+    }
+
+    /**
+     * Blurs the specified region of the image by the :strength factor. 
+     * 
+     * @param int $dimensionX horizontal offset in pixels or percentages.
+     * @param int $dimensionY vertical offset in pixels or percentages.
+     * @param int $coordinateX in pixels or percentages. 
+     * @param int $coordinateY in pixels or percentages.
+     * @param int $strength
+     * @return self
+     */
+    public function blurRegion(int $dimensionX, int $dimensionY, int $coordinateX, int $coordinateY, int $strength = null): self 
+    {
+        $this->transformations['blur_region'] = BlurRegion::transform($dimensionX, $dimensionY, $coordinateX, $coordinateY, $strength);
+
+        return $this;
+    }
+
+    /**
+     * When faces is specified the regions are selected automatically by utilizing face detection.
+     * 
+     * @param int $strength
+     * @return self
+     */
+    public function blurFaces(int $strength = null): self 
+    {
+        $this->transformations['blur_faces'] = BlurFaces::transform($strength);
+
+        return $this;
+    }
+
+    /**
+     * Sharpens an image, might be especially useful with images that were subjected to downscaling.
+     * 
+     * @param int $strength
+     * @return self
+     */
+    public function sharpen(int $strength = null): self 
+    {
+        $this->transformations['sharpen'] = Sharpen::transform($strength);
 
         return $this;
     }
