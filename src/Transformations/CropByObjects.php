@@ -7,7 +7,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Enums\Offset;
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\Tag;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
-class ScaleCrop implements TransformationInterface
+class CropByObjects implements TransformationInterface
 {
     use Methods;
 
@@ -47,6 +47,8 @@ class ScaleCrop implements TransformationInterface
 
         if (!$offsetY) {
             return [
+                self::TAG => $tag,
+                self::RATIO => $ratio,
                 self::WIDTH => $width,
                 self::HEIGHT => $height,
                 self::ALIGN => $offsetX,
@@ -54,6 +56,8 @@ class ScaleCrop implements TransformationInterface
         }
 
         return [
+            self::TAG => $tag,
+            self::RATIO => $ratio,
             self::WIDTH => $width,
             self::HEIGHT => $height,
             self::OFFSET_X => $offsetX,
