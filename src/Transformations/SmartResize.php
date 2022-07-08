@@ -17,7 +17,7 @@ class SmartResize implements TransformationInterface
         return [
             self::WIDTH => $width,
             self::HEIGHT => $height,
- 
+
         ];
     }
 

@@ -27,7 +27,7 @@ class Resize implements TransformationInterface
             self::WIDTH => $width,
             self::HEIGHT => $height,
             self::STRETCH => $stretch,
-            self::MODE => $mode, 
+            self::MODE => $mode,
         ];
     }
 
