@@ -195,6 +195,20 @@ trait Methods
             $url .= '/inverting';
         }
 
+        if (isset($this->transformations['convert_to_srgb'])) {
+            $srgbTransformation = $this->transformations['convert_to_srgb'];
+
+            if (isset($this->transformations['icc_profile_size_threshold'])) {
+                $transformation = $this->transformations['icc_profile_size_threshold'];
+
+                // -/max_icc_size/:number
+                $url .= '/max_icc_size/' . $transformation['number'];
+            }
+
+            // -/srgb/:profile
+            $url .= '/srgb/' . $srgbTransformation['profile'];
+        }
+
         return $url;
     }
 

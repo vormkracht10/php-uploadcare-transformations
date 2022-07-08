@@ -2,22 +2,24 @@
 
 namespace Vormkracht10\UploadcareTransformations\Methods;
 
-use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
-use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
+use Vormkracht10\UploadcareTransformations\Transformations\Resize;
+use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
+use Vormkracht10\UploadcareTransformations\Transformations\Quality;
+use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
 use Vormkracht10\UploadcareTransformations\Transformations\Grayscale;
 use Vormkracht10\UploadcareTransformations\Transformations\Inverting;
-use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
-use Vormkracht10\UploadcareTransformations\Transformations\Quality;
-use Vormkracht10\UploadcareTransformations\Transformations\Resize;
 use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
-use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\ConvertToSRGB;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
+use Vormkracht10\UploadcareTransformations\Transformations\ICCProfileSizeThreshold;
 
 class Transformations
 {
@@ -265,7 +267,8 @@ class Transformations
     }
 
     /**
-     * Set how Uploadcare behaves depending on different color profiles of uploaded images. See their documentation to learn more about the possible outcomes.
+     * Set how Uploadcare behaves depending on different color profiles of uploaded images. 
+     * See their documentation to learn more about the possible outcomes.
      * https://uploadcare.com/docs/transformations/image/colors/#image-color-profile-management
      *
      * @param string $profile
@@ -273,20 +276,20 @@ class Transformations
      */
     public function convertToSRGB(string $profile): self
     {
-        //
+        $this->transformations['convert_to_srgb'] = ConvertToSRGB::transform($profile);
 
         return $this;
     }
 
     /**
-     * Define which RGB color profile sizes will be considered “small” and “large” when using srgb in fast or icc modes. The number stands for the ICC profile size in kilobytes.
+     * Define which RGB color profile sizes will be considered “small” and “large” when using srgb in fast or icc modes.
      *
-     * @param int $number
+     * @param int $number which stands for the ICC profile size in kilobytes.
      * @return self
      */
-    public function iccProfileSizeThreshold(int $number): self
+    public function iccProfileSizeThreshold(int $number = 10): self
     {
-        //
+        $this->transformations['icc_profile_size_threshold'] = ICCProfileSizeThreshold::transform($number);
 
         return $this;
     }
