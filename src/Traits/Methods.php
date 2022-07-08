@@ -167,6 +167,34 @@ trait Methods
             $url .= '/progressive/' . $value;
         }
 
+        if (isset($this->transformations['basic_color_adjustments'])) {
+            $transformation = $this->transformations['basic_color_adjustments'];
+
+            // -/:value/:color
+            $url .= '/basic_color_adjustments/' . $transformation['value'] . '/' . $transformation['color'];
+        }
+
+        if (isset($this->transformations['enhance'])) {
+            $transformation = $this->transformations['enhance'];
+
+            // -/enhance/:strength
+            $url .= '/enhance/' . $transformation['strength'];
+        }
+
+        if (isset($this->transformations['grayscale'])) {
+            $transformation = $this->transformations['grayscale'];
+
+            // -/grayscale
+            $url .= '/grayscale';
+        }
+
+        if (isset($this->transformations['inverting'])) {
+            $transformation = $this->transformations['inverting'];
+
+            // -/inverting
+            $url .= '/inverting';
+        }
+
         return $url;
     }
 

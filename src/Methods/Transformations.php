@@ -2,19 +2,22 @@
 
 namespace Vormkracht10\UploadcareTransformations\Methods;
 
-use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
-use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
-use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\Resize;
-use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
+use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
+use Vormkracht10\UploadcareTransformations\Transformations\Grayscale;
+use Vormkracht10\UploadcareTransformations\Transformations\Inverting;
+use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 
 class Transformations
 {
@@ -227,13 +230,12 @@ class Transformations
     /**
      * Auto-enhances an image by performing the following operations: auto levels, auto contrast, and saturation sharpening.
      *
-     * @param string $enhance
      * @param int $strength
      * @return self
      */
-    public function enhance(string $enhance, int $strength): self
+    public function enhance(int $strength = 50): self
     {
-        //
+        $this->transformations['enhance'] = Enhance::transform($strength);
 
         return $this;
     }
@@ -245,7 +247,7 @@ class Transformations
      */
     public function grayscale(): self
     {
-        //
+        $this->transformations['grayscale'] = Grayscale::transform();
 
         return $this;
     }
@@ -257,7 +259,7 @@ class Transformations
      */
     public function inverting(): self
     {
-        //
+        $this->transformations['inverting'] = Inverting::transform();
 
         return $this;
     }
