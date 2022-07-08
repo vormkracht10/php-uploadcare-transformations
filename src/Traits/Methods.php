@@ -41,7 +41,7 @@ trait Methods
             $transformation = $this->transformations['smart_resize'];
 
             // -/smart_resize/:dimensions/
-            $url .= '/smart/' . $transformation['smart_resize']['width'] . 'x' . $transformation['smart_resize']['height'];
+            $url .= '/smart/' . $transformation['width'] . 'x' . $transformation['height'];
         }
 
         if (isset($this->transformations['crop'])) {

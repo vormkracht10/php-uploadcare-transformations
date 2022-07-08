@@ -14,6 +14,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
 use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
 
 class Transformations
 {
@@ -69,7 +70,7 @@ class Transformations
      */
     public function smartResize(int $width, int $height): self
     {
-        $this->transformations['smart_resize'] = ['width' => $width, 'height' => $height];
+        $this->transformations['smart_resize'] = SmartResize::transform($width, $height);
 
         return $this;
     }
