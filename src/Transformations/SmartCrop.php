@@ -65,7 +65,7 @@ class SmartCrop implements TransformationInterface
         }
 
         if ($key === self::OFFSET_Y) {
-            return self::isValidPercentage($value);   
+            return self::isValidPercentage($value);
         }
 
         if ($key === self::TYPE) {
