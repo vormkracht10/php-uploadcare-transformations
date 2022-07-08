@@ -2,7 +2,6 @@
 
 namespace Vormkracht10\UploadcareTransformations\Methods;
 
-use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Resize;
@@ -19,11 +18,6 @@ use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments
 
 class Transformations
 {
-    use Methods;
-
-    protected array $offsetShortcuts = ['center', 'top', 'bottom', 'left', 'right'];
-    protected array $resizeModes = ['on', 'off', 'fill'];
-
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
      *
