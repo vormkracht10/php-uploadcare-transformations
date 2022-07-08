@@ -4,7 +4,6 @@ namespace Vormkracht10\UploadcareTransformations\Methods;
 
 use Vormkracht10\UploadcareTransformations\Traits\Methods;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
-use Vormkracht10\UploadcareTransformations\Transformations\Enums\Color;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
