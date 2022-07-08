@@ -70,7 +70,7 @@ trait Methods
                 $url .= '/crop/' . $transformation['ratio'] . '/' . $transformation['align'];
             } else {
                 // -/crop/:ratio/
-                $url .= '/crop/' . $transformation['ratio'] . 'x' . $transformation['height'];
+                $url .= '/crop/' . $transformation['ratio'];
             }
         }
 

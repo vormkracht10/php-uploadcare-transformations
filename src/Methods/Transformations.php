@@ -12,6 +12,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
 use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
 
 class Transformations
 {
@@ -112,32 +113,7 @@ class Transformations
      */
     public function cropByRatio(string $ratio, int|string $offsetX, int|string $offsetY = null): self
     {
-        // Check if offsetX is a string and if it is a valid offset shortcut or percentage
-        if (is_string($offsetX) && ! in_array($offsetX, $this->offsetShortcuts) && ! $this->isValidPercentage($offsetX)) {
-            throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
-        }
-
-        // Check if offsetY is a string and if it is a valid percentage
-        if (is_string($offsetY) && ! $this->isValidPercentage($offsetY)) {
-            throw new \InvalidArgumentException('Invalid offset percentage.');
-        }
-
-        // Check if ratio is valid (two numbers greater
-        if (! preg_match('/^[0-9]+:[0-9]+$/', $ratio)) {
-            throw new \InvalidArgumentException('Invalid ratio.');
-        }
-
-        if (is_string($offsetX) && in_array($offsetX, $this->offsetShortcuts)) {
-            $this->transformations['crop_by_ratio'] = ['ratio' => $ratio, 'align' => $offsetX];
-        }
-
-        if (! is_string($offsetX) && $offsetY) {
-            $this->transformations['crop_by_ratio'] = ['ratio' => $ratio, 'x' => $offsetX, 'y' => $offsetY];
-        }
-
-        if (! $offsetX && ! $offsetY) {
-            $this->transformations['crop_by_ratio'] = ['ratio' => $ratio];
-        }
+        $this->transformations['crop_by_ratio'] = CropByRatio::transform($ratio, $offsetX, $offsetY);
 
         return $this;
     }

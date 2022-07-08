@@ -1,0 +1,75 @@
+<?php
+
+namespace Vormkracht10\UploadcareTransformations\Transformations;
+
+use Vormkracht10\UploadcareTransformations\Traits\Methods;
+use Vormkracht10\UploadcareTransformations\Transformations\Enums\Offset;
+use Vormkracht10\UploadcareTransformations\Transformations\Enums\Tag;
+use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
+
+class CropByRatio implements TransformationInterface
+{
+    use Methods;
+
+    public const RATIO = 'ratio';
+    public const OFFSET_X = 'offset_x';
+    public const OFFSET_Y = 'offset_y';
+    public const ALIGN = 'align';
+
+    public static function transform(...$args): array
+    {
+        $ratio = $args[0];
+        $offsetX = $args[1];
+        $offsetY = $args[2] ?? null;
+
+        if (! self::validate('ratio', $ratio)) {
+            throw new \InvalidArgumentException('Invalid ratio');
+        }
+
+        if ($offsetX && ! self::validate('offset_x', $offsetX)) {
+            throw new \InvalidArgumentException('Invalid offset X');
+        }
+
+        if ($offsetY && ! self::validate('offset_y', $offsetY)) {
+            throw new \InvalidArgumentException('Invalid offset Y');
+        }
+
+        if (Offset::tryFrom($offsetX)) {
+            return [
+                self::RATIO => $ratio,
+                self::ALIGN => $offsetX,
+            ];
+        }
+
+        if (! $offsetX && ! $offsetY) {
+            return [
+                self::RATIO => $ratio,
+            ];
+        }
+
+        return [
+            self::RATIO => $ratio,
+            self::OFFSET_X => $offsetX,
+            self::OFFSET_Y => $offsetY,
+        ];
+    }
+
+    public static function validate(string $key, ...$args): bool
+    {
+        $value = $args[0];
+
+        if ($key === self::RATIO) {
+            return preg_match('/^[0-9]+:[0-9]+$/', $value);
+        }
+
+        if ($key === self::OFFSET_X) {
+            return Offset::tryFrom($value) || self::isValidPercentage($value);   
+        }
+
+        if ($key === self::OFFSET_Y || $key === self::WIDTH || $key === self::HEIGHT) {
+            return self::isValidPercentage($value);
+        }
+
+        return false;
+    }
+}
