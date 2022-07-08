@@ -15,6 +15,7 @@ class SmartCrop implements TransformationInterface
     public const TYPE = 'type';
     public const OFFSET_X = 'offset_x';
     public const OFFSET_Y = 'offset_y';
+    public const ALIGN = 'align';
 
     public static function transform(...$args): array
     {
@@ -28,21 +29,19 @@ class SmartCrop implements TransformationInterface
             throw new \InvalidArgumentException('Invalid crop type');
         }
 
-        if (! self::validate('width', $width)) {
-            throw new \InvalidArgumentException('Invalid width');
-        }
-
-        if (! self::validate('height', $height)) {
-            throw new \InvalidArgumentException('Invalid height');
-        }
-
-        if (! self::validate('offset_x', $offsetX)) {
+        if ($offsetX && ! self::validate('offset_x', $offsetX)) {
             throw new \InvalidArgumentException('Invalid offset_x');
         }
 
-        if (! self::validate('offset_y', $offsetY)) {
+        if ($offsetY && ! self::validate('offset_y', $offsetY)) {
             throw new \InvalidArgumentException('Invalid offset_y');
         }
+
+        // If $offsetY is not set
+        //  ['width' => $width, 'height' => $height, 'type' => $type, 'align' => $offsetX]
+
+        // If $offsetY is set
+        // ['width' => $width, 'height' => $height, 'type' => $type, 'x' => $offsetX, 'y' => $offsetY];
 
         return [
             self::WIDTH => $width,
@@ -57,16 +56,12 @@ class SmartCrop implements TransformationInterface
     {
         $value = $args[0];
 
-        if ($key === self::WIDTH) {
-        }
-
-        if ($key === self::HEIGHT) {
-        }
-
         if ($key === self::OFFSET_X) {
+            return CropType::tryFrom($value) || self::isValidPercentage($value);   
         }
 
         if ($key === self::OFFSET_Y) {
+            return self::isValidPercentage($value);   
         }
 
         if ($key === self::TYPE) {

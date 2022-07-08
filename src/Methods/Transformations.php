@@ -8,6 +8,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
+use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
 
 class Transformations
@@ -225,27 +226,7 @@ class Transformations
      */
     public function smartCrop(int $width, int $height, string $type, string $offsetX = null, string $offsetY = null): self
     {
-        // Check if type is valid
-        if (! in_array($type, $this->types)) {
-            throw new \InvalidArgumentException('Invalid type.');
-        }
-
-        // Check if offsetX is a string and if it is a valid offset shortcut or percentage
-        if (! in_array($offsetX, $this->offsetShortcuts) && isset($offsetX) && ! $this->isValidPercentage($offsetX)) {
-            throw new \InvalidArgumentException('Invalid offset shortcut or percentage.');
-        }
-
-        // Check if offsetY is a valid percentage
-        if (isset($offsetY) && ! $this->isValidPercentage($offsetY)) {
-            throw new \InvalidArgumentException('Invalid offset percentage.');
-        }
-
-        // Check if alignment is set by shortcut or percentages
-        if (! $offsetY) {
-            $this->transformations['smart_crop'] = ['width' => $width, 'height' => $height, 'type' => $type, 'align' => $offsetX];
-        } else {
-            $this->transformations['smart_crop'] = ['width' => $width, 'height' => $height, 'type' => $type, 'x' => $offsetX, 'y' => $offsetY];
-        }
+        $this->transformations['smart_crop'] = SmartCrop::transform($width, $height, $type, $offsetX, $offsetY);
 
         return $this;
     }
