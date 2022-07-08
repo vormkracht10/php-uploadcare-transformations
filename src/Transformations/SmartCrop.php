@@ -57,11 +57,11 @@ class SmartCrop implements TransformationInterface
         $value = $args[0];
 
         if ($key === self::OFFSET_X) {
-            return CropType::tryFrom($value) || self::isValidPercentage($value);   
+            return CropType::tryFrom($value) || self::isValidPercentage($value);
         }
 
         if ($key === self::OFFSET_Y) {
-            return self::isValidPercentage($value);   
+            return self::isValidPercentage($value);
         }
 
         if ($key === self::TYPE) {
