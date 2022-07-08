@@ -2,24 +2,25 @@
 
 namespace Vormkracht10\UploadcareTransformations\Methods;
 
-use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
-use Vormkracht10\UploadcareTransformations\Transformations\ConvertToSRGB;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
-use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
+use Vormkracht10\UploadcareTransformations\Transformations\Filter;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
-use Vormkracht10\UploadcareTransformations\Transformations\Grayscale;
-use Vormkracht10\UploadcareTransformations\Transformations\ICCProfileSizeThreshold;
-use Vormkracht10\UploadcareTransformations\Transformations\Inverting;
-use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
-use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\Resize;
-use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
+use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
+use Vormkracht10\UploadcareTransformations\Transformations\Grayscale;
+use Vormkracht10\UploadcareTransformations\Transformations\Inverting;
+use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\ConvertToSRGB;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
+use Vormkracht10\UploadcareTransformations\Transformations\ICCProfileSizeThreshold;
 
 class Transformations
 {
@@ -293,4 +294,13 @@ class Transformations
 
         return $this;
     }
+
+    public function filter(string $name, int $value = 100): self
+    {
+        $this->transformations['filter'] = Filter::transform($name, $value);
+
+        return $this;
+    }
+
+
 }

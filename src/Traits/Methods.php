@@ -209,6 +209,14 @@ trait Methods
             $url .= '/srgb/' . $srgbTransformation['profile'];
         }
 
+        if (isset($this->transformations['filter'])) {
+            $transformation = $this->transformations['filter'];
+
+            // -/filter/:name/:amount/
+            $url .= '/filter/' . $transformation['name'] . '/' . $transformation['amount'];
+            
+        }
+
         return $url;
     }
 
