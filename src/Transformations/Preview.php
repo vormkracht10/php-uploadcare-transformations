@@ -2,7 +2,6 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
-use Vormkracht10\UploadcareTransformations\Transformations\Enums\ResizeMode;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class Preview implements TransformationInterface
