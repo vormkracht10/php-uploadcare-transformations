@@ -26,7 +26,6 @@ class Enhance implements TransformationInterface
         $value = $args[0];
 
         if ($key !== self::STRENGTH) {
-            // Check if value is between 0 and 100
             return $value >= 0 && $value <= 100;
         }
 
