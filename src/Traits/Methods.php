@@ -245,6 +245,36 @@ trait Methods
             $url .= '/sharp/' . $transformation['strength'];
         }
 
+
+        if (isset($this->transformations['auto_rotate'])) {
+            $transformation = $this->transformations['auto_rotate'];
+
+            $value = ($transformation['auto_rotate']) ? 'yes' : 'no';
+            
+            // -/autorotate/:no/
+            $url .= '/autorotate/' . $value;
+        }
+
+        if (isset($this->transformations['rotate'])) {
+            $transformation = $this->transformations['rotate'];
+
+            // -/rotate/:angle/
+            $url .= '/rotate/' . $transformation['angle'];
+        }
+
+        if (isset($this->transformations['flip'])) {
+
+            // /flip/
+            $url .= '/flip/' . $value;
+        }
+
+
+        if (isset($this->transformations['mirror'])) {
+
+            // /flip/
+            $url .= '/mirror/';
+        }
+
         return $url;
     }
 

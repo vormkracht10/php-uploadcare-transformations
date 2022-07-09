@@ -4,9 +4,12 @@ namespace Vormkracht10\UploadcareTransformations\Methods;
 
 use Vormkracht10\UploadcareTransformations\Transformations\Blur;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
+use Vormkracht10\UploadcareTransformations\Transformations\Flip;
 use Vormkracht10\UploadcareTransformations\Transformations\Filter;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
+use Vormkracht10\UploadcareTransformations\Transformations\Mirror;
 use Vormkracht10\UploadcareTransformations\Transformations\Resize;
+use Vormkracht10\UploadcareTransformations\Transformations\Rotate;
 use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
@@ -16,6 +19,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Grayscale;
 use Vormkracht10\UploadcareTransformations\Transformations\Inverting;
 use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\AutoRotate;
 use Vormkracht10\UploadcareTransformations\Transformations\BlurRegion;
 use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
@@ -369,4 +373,56 @@ class Transformations
 
         return $this;
     }
+
+    /**
+     * The default behavior goes with parsing EXIF tags of original images and rotating them according to the “Orientation” tag.
+     *  
+     * @param int $angle
+     * @return self
+     */
+    public function autoRotate(bool $rotate): self
+    {
+        $this->transformations['auto_rotate'] = AutoRotate::transform();
+
+        return $this;
+    }
+
+    /**
+     * Right-angle image rotation, counterclockwise. 
+     *
+     * @param integer $angle must be a multiple of 90.
+     * @return self
+     */
+    public function rotate(int $angle): self
+    {
+        $this->transformations['rotate'] = Rotate::transform($angle);
+
+        return $this;
+    }
+
+    /**
+     * Flips images.
+     *
+     * @return self
+     */
+    public function flip(): self
+    {
+        $this->transformations['flip'] = Flip::transform();
+
+        return $this;
+    }
+
+    /**
+     * Mirror images.
+     *
+     * @return self
+     */
+    public function mirror(): self
+    {
+        $this->transformations['mirror'] = Mirror::transform();
+
+        return $this;
+    }
+
+
 }
