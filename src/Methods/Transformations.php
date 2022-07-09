@@ -337,7 +337,7 @@ class Transformations
      * @param int $strength
      * @return self
      */
-    public function blurRegion(int $dimensionX, int $dimensionY, int $coordinateX, int $coordinateY, int $strength = null): self
+    public function blurRegion(int $dimensionX, int|string $dimensionY, int|string $coordinateX, int|string $coordinateY, int $strength = null): self
     {
         $this->transformations['blur_region'] = BlurRegion::transform($dimensionX, $dimensionY, $coordinateX, $coordinateY, $strength);
 
@@ -419,6 +419,4 @@ class Transformations
 
         return $this;
     }
-
-
 }
