@@ -250,7 +250,7 @@ trait Methods
             $transformation = $this->transformations['auto_rotate'];
 
             $value = ($transformation['auto_rotate']) ? 'yes' : 'no';
-            
+
             // -/autorotate/:no/
             $url .= '/autorotate/' . $value;
         }
