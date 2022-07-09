@@ -13,7 +13,7 @@ class Blur implements TransformationInterface
     {
         $strength = $args[0];
         $amount = $args[1] ?? null;
-        
+
         if (! self::validate('amount', $amount)) {
             throw new \InvalidArgumentException('Invalid amount');
         }
@@ -30,7 +30,7 @@ class Blur implements TransformationInterface
         if ($key === self::AMOUNT) {
             return $value >= -200 && $value <= 100;
         }
-        
+
         return null;
     }
 }

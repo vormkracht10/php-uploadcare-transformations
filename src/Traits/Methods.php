@@ -227,7 +227,7 @@ trait Methods
 
         if (isset($this->transformations['blur_region'])) {
             $transformation = $this->transformations['blur_region'];
-        // -/blur_region/:two_dimensions/:two_coords/:strength/
+            // -/blur_region/:two_dimensions/:two_coords/:strength/
 
             $url .= '/blur_region/' . $transformation['dimension_x'] . 'x' . $transformation['dimension_y'] . '/' . $transformation['coordinate_x'] . ',' . $transformation['coordinate_y'] . '/' . $transformation['strength'];
         }

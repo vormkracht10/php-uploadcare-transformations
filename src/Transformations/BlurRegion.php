@@ -56,7 +56,7 @@ class BlurRegion implements TransformationInterface
             $key === self::DIMENSION_Y ||
             $key === self::COORDINATE_X ||
             $key === self::COORDINATE_Y) {
-                return self::isValidPercentage($value);
+            return self::isValidPercentage($value);
         }
 
         return false;
