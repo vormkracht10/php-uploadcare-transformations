@@ -275,6 +275,13 @@ trait Methods
             $url .= '/mirror/';
         }
 
+        if (isset($this->transformations['overlay'])) {
+            $transformation = $this->transformations['overlay'];
+            
+            // -/overlay/:uuid/:relative_dimensions/:relative_coordinates/:opacity/
+
+        }
+
         return $url;
     }
 
