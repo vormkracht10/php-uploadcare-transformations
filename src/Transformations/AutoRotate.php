@@ -13,7 +13,7 @@ class AutoRotate implements TransformationInterface
         $autoRotate = $args[0];
 
         return [
-            self::AUTO_ROTATE => $autoRotate
+            self::AUTO_ROTATE => $autoRotate,
         ];
     }
 

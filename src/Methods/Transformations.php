@@ -4,10 +4,14 @@ namespace Vormkracht10\UploadcareTransformations\Methods;
 
 use Vormkracht10\UploadcareTransformations\Transformations\Blur;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
-use Vormkracht10\UploadcareTransformations\Transformations\Flip;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
 use Vormkracht10\UploadcareTransformations\Transformations\Filter;
+use Vormkracht10\UploadcareTransformations\Transformations\Flip;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Mirror;
+use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
+use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\Resize;
 use Vormkracht10\UploadcareTransformations\Transformations\Rotate;
 use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
@@ -373,7 +377,7 @@ class Transformations
 
     /**
      * The default behavior goes with parsing EXIF tags of original images and rotating them according to the “Orientation” tag.
-     *  
+     *
      * @param int $angle
      * @return self
      */
@@ -385,9 +389,9 @@ class Transformations
     }
 
     /**
-     * Right-angle image rotation, counterclockwise. 
+     * Right-angle image rotation, counterclockwise.
      *
-     * @param integer $angle must be a multiple of 90.
+     * @param int $angle must be a multiple of 90.
      * @return self
      */
     public function rotate(int $angle): self

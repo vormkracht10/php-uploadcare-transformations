@@ -17,7 +17,7 @@ class Rotate implements TransformationInterface
         }
 
         return [
-            self::ANGLE => $angle
+            self::ANGLE => $angle,
         ];
     }
 
