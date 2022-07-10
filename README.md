@@ -54,35 +54,35 @@ The current list of possible transformations and where to find the documentation
 
 | Transformation        | Documentation link           |
 | ------------- |:-------------:|
-| Auto rotate      | <a href="https://uploadcare.com/docs/transformations/image/rotate-flip/#operation-autorotate">Link</a> |
-| Basic color adjustments      | <a href="https://uploadcare.com/docs/transformations/image/colors/#image-colors-operations">Link</a>      |
-| Blur | <a href="https://uploadcare.com/docs/transformations/image/blur-sharpen/#operation-blur">Link</a>      |
-| Blur faces | <a href="https://uploadcare.com/docs/transformations/image/blur-sharpen/#operation-blur-region-faces">Link</a>      |
-| Blur region | <a href="https://uploadcare.com/docs/transformations/image/blur-sharpen/#operation-blur-region">Link</a>      |
-| Convert to sRGB | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-srgb">Link</a>      |
-| Crop | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-crop">Link</a>      |
-| Crop by objects | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-crop-tags">Link</a>      |
-| Crop by ratio | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-crop-aspect-ratio">Link</a>      |
-| Enhance | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-enhance">Link</a>      |
-| Filter | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-filter">Link</a>      |
-| Flip | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-flip">Link</a>      |
-| Format | <a href="https://uploadcare.com/docs/transformations/image/compression/#operation-format">Link</a>      |
-| Grayscale | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-grayscale">Link</a>      |
-| ICC profile size threshold | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-max-icc-size">Link</a>      |
-| Inverting | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-inverting">Link</a>      |
-| Mirror | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-mirror">Link</a>      |
-| Overlay | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-overlay">Link</a>      |
-| Preview | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-preview">Link</a>      |
-| Progressive | <a href="https://uploadcare.com/docs/transformations/image/compression/#operation-progressive">Link</a>      |
-| Quality | <a href="https://uploadcare.com/docs/transformations/image/compression/#operation-quality">Link</a>      |
-| Resize | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-resize">Link</a>      |
-| Rotate | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-rotate">Link</a>      |
-| Scale crop | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-scale-crop">Link</a>      |
-| Set fill | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-setfill">Link</a>      |
-| Sharpen | <a href="https://uploadcare.com/docs/transformations/image/colors/#operation-sharpen">Link</a>      |
-| Smart crop | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-smart-crop">Link</a>      |
-| Smart resize | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-smart-resize">Link</a>      |
-| Zoom objects | <a href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-zoom-objects">Link</a>      |
+| Auto rotate      | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/rotate-flip/#operation-autorotate">Link</a> |
+| Basic color adjustments      | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#image-colors-operations">Link</a>      |
+| Blur | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/blur-sharpen/#operation-blur">Link</a>      |
+| Blur faces | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/blur-sharpen/#operation-blur-region-faces">Link</a>      |
+| Blur region | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/blur-sharpen/#operation-blur-region">Link</a>      |
+| Convert to sRGB | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-srgb">Link</a>      |
+| Crop | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-crop">Link</a>      |
+| Crop by objects | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-crop-tags">Link</a>      |
+| Crop by ratio | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-crop-aspect-ratio">Link</a>      |
+| Enhance | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-enhance">Link</a>      |
+| Filter | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-filter">Link</a>      |
+| Flip | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-flip">Link</a>      |
+| Format | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/compression/#operation-format">Link</a>      |
+| Grayscale | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-grayscale">Link</a>      |
+| ICC profile size threshold | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-max-icc-size">Link</a>      |
+| Inverting | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-inverting">Link</a>      |
+| Mirror | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-mirror">Link</a>      |
+| Overlay | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-overlay">Link</a>      |
+| Preview | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-preview">Link</a>      |
+| Progressive | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/compression/#operation-progressive">Link</a>      |
+| Quality | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/compression/#operation-quality">Link</a>      |
+| Resize | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-resize">Link</a>      |
+| Rotate | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-rotate">Link</a>      |
+| Scale crop | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-scale-crop">Link</a>      |
+| Set fill | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-setfill">Link</a>      |
+| Sharpen | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-sharpen">Link</a>      |
+| Smart crop | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-smart-crop">Link</a>      |
+| Smart resize | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-smart-resize">Link</a>      |
+| Zoom objects | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-zoom-objects">Link</a>      |
 
 ## Testing
 
