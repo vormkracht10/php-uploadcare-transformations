@@ -2,34 +2,34 @@
 
 namespace Vormkracht10\UploadcareTransformations\Methods;
 
+use Vormkracht10\UploadcareTransformations\Transformations\AutoRotate;
+use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 use Vormkracht10\UploadcareTransformations\Transformations\Blur;
+use Vormkracht10\UploadcareTransformations\Transformations\BlurFaces;
+use Vormkracht10\UploadcareTransformations\Transformations\BlurRegion;
+use Vormkracht10\UploadcareTransformations\Transformations\ConvertToSRGB;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
 use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
 use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
 use Vormkracht10\UploadcareTransformations\Transformations\Filter;
 use Vormkracht10\UploadcareTransformations\Transformations\Flip;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Mirror;
+use Vormkracht10\UploadcareTransformations\Transformations\Overlay;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
+use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
+use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\Resize;
 use Vormkracht10\UploadcareTransformations\Transformations\Rotate;
-use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
-use Vormkracht10\UploadcareTransformations\Transformations\Overlay;
-use Vormkracht10\UploadcareTransformations\Transformations\Quality;
+use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
 use Vormkracht10\UploadcareTransformations\Transformations\Sharpen;
-use Vormkracht10\UploadcareTransformations\Transformations\BlurFaces;
-use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
-use Vormkracht10\UploadcareTransformations\Transformations\AutoRotate;
-use Vormkracht10\UploadcareTransformations\Transformations\BlurRegion;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
-use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
-use Vormkracht10\UploadcareTransformations\Transformations\ConvertToSRGB;
-use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 
 class Transformations
 {
@@ -435,11 +435,10 @@ class Transformations
      * @param int $opacity
      * @return self
      */
-    public function overlay(string $uuid, int|string $dimensionX, int|string $dimensionY, string $relativeCoordinates, int $opacity ): self
+    public function overlay(string $uuid, int|string $dimensionX, int|string $dimensionY, string $relativeCoordinates, int $opacity): self
     {
         $this->transformations['overlay'] = Overlay::transform($uuid, $dimensionX, $dimensionY, $relativeCoordinates, $opacity);
 
         return $this;
     }
-
 }
