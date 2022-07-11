@@ -62,7 +62,7 @@ $url = $transformation->scaleCrop(320, 320, 50, 60)->getUrl();
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/scale_crop/320x320/50x60/
 ```
 
->In URLs, % is an escape character and should be encoded with %25 escape sequence, e.g. /scale_crop/440x440/80%25,80%25/. For convenience, we use the p shortcut for percent which doesn't require encoding.
+>As stated in the Uploadcare Documentation, in URLs, % is an escape character and should be encoded with %25 escape sequence, e.g. /scale_crop/440x440/80%25,80%25/. For convenience, we can use the p shortcut for percent which doesn't require encoding.
 
 ### List of available parameters
 N/A 
