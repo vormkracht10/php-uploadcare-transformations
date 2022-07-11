@@ -49,7 +49,7 @@ echo $url;
 ## Documentation
 
 ### Various ways of passing certain parameters
-In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easer to recognize when a pixel or percentage is passed you can pass the parameters as following.
+In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easer to recognize when a pixel or percentage is used you can pass the parameters as following.
 
 ```php
 // Using percentages
@@ -62,7 +62,7 @@ $url = $transformation->scaleCrop(320, 320, 50, 60)->getUrl();
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/scale_crop/320x320/50x60/
 ```
 
->In URLs, % is an escape character and should be encoded with %25 escape sequence, e.g. /scale_crop/440x440/80%25,80%25/. For convenience, we use the p shortcut for percent which doesn't require encoding.
+>As stated in the Uploadcare Documentation, in URLs, % is an escape character and should be encoded with %25 escape sequence, e.g. /scale_crop/440x440/80%25,80%25/. For convenience, we can use the p shortcut for percent which doesn't require encoding.
 
 ### Pre-defined parameters
 In some methods you can pass parameters that are "pre-defined". For example in the [filter()](/src/Transformations/Filter.php) method you can pass the [`name`](/src/Transformations/Enums/Filter.php) parameter. As found in the documentation of the [photo filter](https://uploadcare.com/docs/transformations/image/photo-filters/#image-photo-filters) the name parameter should be one of the 40 filters. To be sure that the name is correct we made a special Enum class for each pre-defined parameter. These can be found inside the [Enums](/src/Transformations/Enums/) folder.
