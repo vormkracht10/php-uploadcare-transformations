@@ -49,7 +49,7 @@ echo $url;
 ## Documentation
 
 ### Various ways of passing certain parameters
-In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easer to recognize when a pixel or percentage is passed you can pass the parameters as following.
+In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easer to recognize when a pixel or percentage is used you can pass the parameters as following.
 
 ```php
 // Using percentages
