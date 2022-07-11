@@ -48,6 +48,25 @@ echo $url;
 
 ## Documentation
 
+### Various ways of passing certain parameters
+In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easer to recognize when a pixel or percentage is passed you can pass the parameters as following.
+
+```php
+// Using percentages
+$url = $transformation->scaleCrop(320, 320, '50p', '60p')->getUrl();
+// https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/scale_crop/320x320/50px60p/
+
+
+// Using pixels
+$url = $transformation->scaleCrop(320, 320, 50, 60)->getUrl();
+// https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/scale_crop/320x320/50x60/
+```
+
+>In URLs, % is an escape character and should be encoded with %25 escape sequence, e.g. /scale_crop/440x440/80%25,80%25/. For convenience, we use the p shortcut for percent which doesn't require encoding.
+
+### List of available parameters
+N/A 
+
 ### List of possible transformations
 Each transformation follows the documentation on Uploadcare which you may find <a href="https://uploadcare.com/docs/">here</a>. 
 The current list of possible transformations and where to find the documentation:
