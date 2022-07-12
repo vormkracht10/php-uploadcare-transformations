@@ -11,6 +11,8 @@ Generate Uploadcare image processing URLs to transform and process your images. 
 - [Documentation](#documentation)
   * [Transformations](#transformations)
     + [Preview](#preview)
+    + [Resize](#resize)
+    + [Crop](#crop)
   * [Using percentages or pixels as parameter](#using-percentages-or-pixels-as-parameter)
   * [List of possible transformations](#list-of-possible-transformations)
 - [Testing](#testing)
@@ -82,6 +84,35 @@ $url = $transformation->resize(100, null, true, 'fill');
 // Using only height, no stretch and no mode. 
 $url = $transformations->resize(null, 250, false);
 // https://example.com/cdn/.../resize/250x/
+```
+
+#### Smart resize
+Content-aware resize helps retaining original proportions of faces and other visually sensible objects while resizing the rest of the image using intelligent algorithms.
+
+```php
+$url = $transformation->smartResize(500, 500);
+// https://example.com/cdn/.../smart_resize/500x500/
+```
+
+#### Crop
+Crops an image by using specified dimensions and alignment. 
+
+Dimensions parameters can be in pixels or percentages. To see how pixels or percentages can be used, see the [Using percentages or pixels as parameter](#using-percentages-or-pixels-as-parameter) paragraph.
+
+Alignment can also be in pixels and percentages but also a shortcut can be used.  The possible values are: `top`, `center`, `bottom`, `left`, `right`.
+
+```php
+// Using percentages and a shortcut.
+$url = $transformation->crop(100, '50p', 'center');
+// https://example.com/cdn/.../crop/100x50p/center/
+
+// Using pixels only.
+$url = $transformation->crop(100, 100, 50, 50);
+// https://example.com/cdn/.../crop/100x100/50,50/
+
+// Using both pixels and percentages.
+$url = $transformation->crop(100, '50p', '25p', '25p');
+// https://example.com/cdn/.../crop/100x50p/25p,25p/
 ```
 
 ### Using percentages or pixels as parameter
