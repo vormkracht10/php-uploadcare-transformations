@@ -76,7 +76,7 @@ $url = $transformation->preview(100, 100);
 ```
 
 #### Resize
-Resizes an image to one or two dimensions. When you set both width and height explicitly, it may result in a distorted image. If you specify either side, this operation will preserve the original aspect ratio and resize the image accordingly. Mode should be one of the following values: 'on', 'off', 'fill'.
+Resizes an image to one or two dimensions. When you set both width and height explicitly, it may result in a distorted image. If you specify either side, this operation will preserve the original aspect ratio and resize the image accordingly. Mode should be one of the following values: `on`, `off`, `fill`.
 
 ```php
 // Using width, height, stretch and 'fill' mode. 
