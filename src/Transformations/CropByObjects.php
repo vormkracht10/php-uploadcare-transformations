@@ -22,7 +22,7 @@ class CropByObjects implements TransformationInterface
     public static function transform(...$args): array
     {
         $tag = $args[0];
-        $ratio = $args[1];
+        $ratio = $args[1] ?? null;
         $width = $args[2] ?? null;
         $height = $args[3] ?? null;
         $offsetX = $args[4] ?? null;
@@ -33,7 +33,7 @@ class CropByObjects implements TransformationInterface
             throw new \InvalidArgumentException('Invalid tag');
         }
 
-        if (! self::validate('ratio', $ratio)) {
+        if ($ratio && ! self::validate('ratio', $ratio)) {
             throw new \InvalidArgumentException('Invalid ratio');
         }
 

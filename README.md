@@ -134,6 +134,24 @@ $url = $transformation->cropByRatio('4:3', '50p', 240);
 // https://example.com/cdn/.../crop/4:3/50p,240/
 ```
 
+#### Crop by objects 
+Crops the image to the object specified by the tag parameter.
+
+Tag can be one of `face` or `image`. 
+
+Ratio are two numbers greater than zero separated by :. Ratio is the quotient from the division of these numbers.
+
+Dimensions and alignment must be set in percentages. In case of the alignment you can also use the shortcut. The possible values are: `top`, `center`, `bottom`, `left`, `right`. If alignment is not specified, `center` value is used.
+
+```php
+// Using no ratio, percentages and pixels combined.
+$url = $transformation->cropByObject('face', null, 200, '50p');
+// "https://example.com/cdn/../crop/face/200x50p"
+
+// Using ratio, percentages and a shortcut.
+$url = $transformation->cropByObject('face', '4:3', '50p', '50p', 'bottom');
+// "https://example.com/cdn/../crop/face/4:3/50px50p/bottom"
+```
 
 ### Using percentages or pixels as parameter
 In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easier to recognize when a pixel or percentage is used you can pass the parameters as following.
