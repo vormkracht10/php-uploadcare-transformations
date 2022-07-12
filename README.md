@@ -6,6 +6,19 @@
 
 Generate Uploadcare image processing URLs to transform and process your images. No need to write or generate the URL yourself. Just pass the UUID of the file, optionally pass the custom CDN and chain the methods you want to apply and the package generates the URL for you.
 
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Documentation](#documentation)
+    + [Various ways of passing certain parameters](#various-ways-of-passing-certain-parameters)
+    + [Pre-defined parameters](#pre-defined-parameters)
+    + [List of possible transformations](#list-of-possible-transformations)
+  * [Testing](#testing)
+  * [Changelog](#changelog)
+  * [Contributing](#contributing)
+  * [Security Vulnerabilities](#security-vulnerabilities)
+  * [Credits](#credits)
+  * [License](#license)
+
 ## Installation
 
 You can install the package via composer:
