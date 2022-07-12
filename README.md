@@ -14,7 +14,7 @@ Generate Uploadcare image processing URLs to transform and process your images. 
     + [Resize](#resize)
     + [Smart resize](#smart-resize)
     + [Crop](#crop)
-
+    + [Crop by ratio](#crop-by-ratio)
   * [Using percentages or pixels as parameter](#using-percentages-or-pixels-as-parameter)
   * [List of possible transformations](#list-of-possible-transformations)
 - [Testing](#testing)
@@ -117,8 +117,26 @@ $url = $transformation->crop(100, '50p', '25p', '25p');
 // https://example.com/cdn/.../crop/100x50p/25p,25p/
 ```
 
+### Crop by ratio 
+Crops the image to the specified aspect ratio, cutting off the rest of the image.
+
+Ratio are two numbers greater than zero separated by :. Ratio is the quotient from the division of these numbers.
+
+Alignment can be set in pixels and percentages but also a shortcut can be used. The possible values are: `top`, `center`, `bottom`, `left`, `right`. If alignment is not specified, `center` value is used.
+
+```php
+// Using percentages and a shortcut.
+$url = $transformation->cropByRatio('4:3', 'bottom');
+// https://example.com/cdn/.../crop/4:3/bottom/
+
+// Using percentage in combination with pixels.
+$url = $transformation->cropByRatio('4:3', '50p', 240);
+// https://example.com/cdn/.../crop/4:3/50p,240/
+```
+
+
 ### Using percentages or pixels as parameter
-In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easer to recognize when a pixel or percentage is used you can pass the parameters as following.
+In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easier to recognize when a pixel or percentage is used you can pass the parameters as following.
 
 ```php
 // Using percentages
