@@ -72,7 +72,7 @@ echo $url;
 #### Preview
 Downscales an image proportionally to fit the given width and height in pixels.
 ```php
-$url = $transformation->preview(100, 100);
+$url = $transformation->preview(100, 100)->getUrl();
 // https://example.com/cdn/.../preview/100x100/
 ```
 
@@ -81,11 +81,11 @@ Resizes an image to one or two dimensions. When you set both width and height ex
 
 ```php
 // Using width, height, stretch and 'fill' mode. 
-$url = $transformation->resize(100, null, true, 'fill');
+$url = $transformation->resize(100, null, true, 'fill')->getUrl();
 // https://example.com/cdn/.../resize/100x/stretch/fill/
 
 // Using only height, no stretch and no mode. 
-$url = $transformations->resize(null, 250, false);
+$url = $transformations->resize(null, 250, false)->getUrl();
 // https://example.com/cdn/.../resize/250x/
 ```
 
@@ -93,7 +93,7 @@ $url = $transformations->resize(null, 250, false);
 Content-aware resize helps retaining original proportions of faces and other visually sensible objects while resizing the rest of the image using intelligent algorithms.
 
 ```php
-$url = $transformation->smartResize(500, 500);
+$url = $transformation->smartResize(500, 500)->getUrl();
 // https://example.com/cdn/.../smart_resize/500x500/
 ```
 
@@ -106,15 +106,15 @@ Alignment can also be in pixels and percentages but also a shortcut can be used.
 
 ```php
 // Using percentages and a shortcut.
-$url = $transformation->crop(100, '50p', 'center');
+$url = $transformation->crop(100, '50p', 'center')->getUrl();
 // https://example.com/cdn/.../crop/100x50p/center/
 
 // Using pixels only.
-$url = $transformation->crop(100, 100, 50, 50);
+$url = $transformation->crop(100, 100, 50, 50)->getUrl();
 // https://example.com/cdn/.../crop/100x100/50,50/
 
 // Using both pixels and percentages.
-$url = $transformation->crop(100, '50p', '25p', '25p');
+$url = $transformation->crop(100, '50p', '25p', '25p')->getUrl();
 // https://example.com/cdn/.../crop/100x50p/25p,25p/
 ```
 
@@ -127,11 +127,11 @@ Alignment can be set in pixels and percentages but also a shortcut can be used. 
 
 ```php
 // Using percentages and a shortcut.
-$url = $transformation->cropByRatio('4:3', 'bottom');
+$url = $transformation->cropByRatio('4:3', 'bottom')->getUrl();
 // https://example.com/cdn/.../crop/4:3/bottom/
 
 // Using percentage in combination with pixels.
-$url = $transformation->cropByRatio('4:3', '50p', 240);
+$url = $transformation->cropByRatio('4:3', '50p', 240)->getUrl();
 // https://example.com/cdn/.../crop/4:3/50p,240/
 ```
 
@@ -146,11 +146,11 @@ Dimensions and alignment must be set in percentages. In case of the alignment yo
 
 ```php
 // Using no ratio, percentages and pixels combined.
-$url = $transformation->cropByObject('face', null, 200, '50p');
+$url = $transformation->cropByObject('face', null, 200, '50p')->getUrl();
 // "https://example.com/cdn/../crop/face/200x50p"
 
 // Using ratio, percentages and a shortcut.
-$url = $transformation->cropByObject('face', '4:3', '50p', '50p', 'bottom');
+$url = $transformation->cropByObject('face', '4:3', '50p', '50p', 'bottom')->getUrl();
 // "https://example.com/cdn/../crop/face/4:3/50px50p/bottom"
 ```
 
