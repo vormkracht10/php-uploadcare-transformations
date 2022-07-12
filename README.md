@@ -18,6 +18,10 @@ Generate Uploadcare image processing URLs to transform and process your images. 
     + [Crop by objects](#crop-by-objects)
     + [Scale crop](#scale-crop)
     + [Smart crop](#smart-crop)
+    + [Set fill](#set-fill)
+    + [Zoom objects](#zoom-objects)
+    + [Format](#format)
+    + [Quality](#quality)
   * [Using percentages or pixels as parameter](#using-percentages-or-pixels-as-parameter)
   * [List of possible transformations](#list-of-possible-transformations)
 - [Testing](#testing)
@@ -191,6 +195,46 @@ $url = $transformation->smartCrop(100, 100, 'smart_faces_objects', '30p', '50p')
 $url = $transformation->smartCrop(100, 100, 'smart_faces_objects', 'right')->getUrl();
 // https://example.com/cdn/.../smart_crop/100x100/smart_faces_objects/right/
 ```
+
+#### Set fill 
+Sets the fill color used with crop, stretch or when converting an alpha channel enabled image to JPEG.
+
+Color must be a hex color code.
+
+```php
+$url = $transformation->setFill('#ff0000')->getUrl();
+// https://example.com/cdn/.../set_fill/ff0000/
+```
+
+#### Zoom objects
+Zoom objects operation is best suited for images with solid or uniform backgrounds.
+
+Zoom must be a number between 1 and 100.
+
+```php 
+$url = $transformation->zoomObjects(50)->getUrl();
+// https://example.com/cdn/.../zoom_objects/50/
+```
+
+#### Format
+Converts an image to one of the following formats: `jpg`, `png`, `webp`, `auto`.
+
+```php
+$url = $transformation->format('jpg')->getUrl();
+// https://example.com/cdn/.../format/jpg/
+```
+
+#### Quality
+Sets output JPEG and WebP quality. Since actual settings vary from codec to codec, and more importantly, from format to format, we provide five simple tiers and two automatic values which suits most cases of image distribution and are consistent.
+
+Quality must be one of the following values: `smart`, `smart_retina`, `normal`, `better`, `best`, `lighter`, `lightest`.
+
+```php
+$url = $transformation->quality('smart')->getUrl();
+// https://example.com/cdn/.../quality/smart/
+```
+
+
 
 
 ### Using percentages or pixels as parameter
