@@ -15,6 +15,7 @@ Generate Uploadcare image processing URLs to transform and process your images. 
     + [Smart resize](#smart-resize)
     + [Crop](#crop)
     + [Crop by ratio](#crop-by-ratio)
+    + [Crop by objects](#crop-by-objects)
   * [Using percentages or pixels as parameter](#using-percentages-or-pixels-as-parameter)
   * [List of possible transformations](#list-of-possible-transformations)
 - [Testing](#testing)
