@@ -22,6 +22,8 @@ Generate Uploadcare image processing URLs to transform and process your images. 
     + [Zoom objects](#zoom-objects)
     + [Format](#format)
     + [Quality](#quality)
+    + [Progressive](#progressive)
+    + [Basic color adjustments](#basic-color-adjustments)
   * [Using percentages or pixels as parameter](#using-percentages-or-pixels-as-parameter)
   * [List of possible transformations](#list-of-possible-transformations)
 - [Testing](#testing)
@@ -234,8 +236,28 @@ $url = $transformation->quality('smart')->getUrl();
 // https://example.com/cdn/.../quality/smart/
 ```
 
+#### Progressive
+Returns a progressive image. In progressive images, data are compressed in multiple passes of progressively higher detail. The operation does not affect non-JPEG images; does not force image formats to JPEG.
 
+```php
+$url = $transformation->progressive(true)->getUrl();
+// https://example.com/cdn/.../progressive/yes/
 
+$url = $transformation->progressive(false)->getUrl();
+// https://example.com/cdn/.../progressive/no/
+```
+
+#### Basic color adjustments
+The :value parameter controls the strength of any applied adjustment. Ranges of the :value parameter differ between operations. There also is a zero point for each operation — the value producing outputs equal to original images.
+
+For a complete overview of allowed values based upon the chosen adjustment, take a look at the [Uploadcare Documentation](https://uploadcare.com/docs/transformations/image/colors/#image-colors-operations).
+
+Adjustment (color) must be one of the following values: `brightness`, `exposure`, `contrast`, `saturation`, `gamma`, `vibrance`, `warmth`.
+  
+```php
+$url = $transformation->adjust('brightness', 50)->getUrl();
+// https://example.com/cdn/.../adjust/brightness/50/
+```
 
 ### Using percentages or pixels as parameter
 In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easier to recognize when a pixel or percentage is used you can pass the parameters as following.
