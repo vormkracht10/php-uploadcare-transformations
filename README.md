@@ -71,6 +71,19 @@ $url = $transformation->preview(100, 100);
 // https://example.com/cdn/.../preview/100x100/
 ```
 
+#### Resize
+Resizes an image to one or two dimensions. When you set both width and height explicitly, it may result in a distorted image. If you specify either side, this operation will preserve the original aspect ratio and resize the image accordingly. Mode should be one of the following values: 'on', 'off', 'fill'.
+
+```php
+// Using width, height, stretch and 'fill' mode. 
+$url = $transformation->resize(100, null, true, 'fill');
+// https://example.com/cdn/.../resize/100x/stretch/fill/
+
+// Using only height, no stretch and no mode. 
+$url = $transformations->resize(null, 250, false);
+// https://example.com/cdn/.../resize/250x/
+```
+
 ### Using percentages or pixels as parameter
 In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easer to recognize when a pixel or percentage is used you can pass the parameters as following.
 
