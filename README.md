@@ -117,7 +117,7 @@ $url = $transformation->crop(100, '50p', '25p', '25p');
 // https://example.com/cdn/.../crop/100x50p/25p,25p/
 ```
 
-### Crop by ratio 
+#### Crop by ratio 
 Crops the image to the specified aspect ratio, cutting off the rest of the image.
 
 Ratio are two numbers greater than zero separated by :. Ratio is the quotient from the division of these numbers.
