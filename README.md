@@ -16,6 +16,8 @@ Generate Uploadcare image processing URLs to transform and process your images. 
     + [Crop](#crop)
     + [Crop by ratio](#crop-by-ratio)
     + [Crop by objects](#crop-by-objects)
+    + [Scale crop](#scale-crop)
+    + [Smart crop](#smart-crop)
   * [Using percentages or pixels as parameter](#using-percentages-or-pixels-as-parameter)
   * [List of possible transformations](#list-of-possible-transformations)
 - [Testing](#testing)
@@ -153,6 +155,43 @@ $url = $transformation->cropByObject('face', null, 200, '50p')->getUrl();
 $url = $transformation->cropByObject('face', '4:3', '50p', '50p', 'bottom')->getUrl();
 // "https://example.com/cdn/../crop/face/4:3/50px50p/bottom"
 ```
+
+#### Scale crop
+Scales an image until it fully covers the specified dimensions; the rest gets cropped. Mostly used to place images with various dimensions into placeholders (e.g., square shaped).
+
+Dimensions must be set in pixels.
+
+Alignment must be set in percentages or shortcut. The possible values are: `top`, `center`, `bottom`, `left`, `right`. If alignment is not specified, `0,0` value is used.
+
+```php
+// Using percentages.
+$url = $transformation->scaleCrop(100, 100, '30p', '50p')->getUrl();
+// https://example.com/cdn/.../scale_crop/100x100/30p,50p/
+
+// Using shortcut.
+$url = $transformation->scaleCrop(100, 100, 'bottom')->getUrl();
+// "https://example.com/cdn/../scale_crop/100x100/bottom"
+```
+
+#### Smart crop
+Switching the crop type to one of the smart modes enables the content-aware mechanics. Uploadcare applies AI-based algorithms to detect faces and other visually sensible objects to crop the background and not the main object.
+
+Dimensions must be set in pixels.
+
+Type must be one of the following values: `smart`, `smart_faces_objects`, `smart_faces`, `smart_objects`, `smart_faces_points`, `smart_points`, `smart_objects_faces_points`, `smart_objects_points` or `smart_objects_faces`.
+
+Aligment must be set in percentages or shortcut. The possible values are: `top`, `center`, `bottom`, `left`, `right`. If alignment is not specified, `0,0` value is used.
+
+```php
+// Using percentages.
+$url = $transformation->smartCrop(100, 100, 'smart_faces_objects', '30p', '50p')->getUrl();
+// https://example.com/cdn/.../smart_crop/100x100/smart_faces_objects/30p,50p/
+
+// Using shortcut.
+$url = $transformation->smartCrop(100, 100, 'smart_faces_objects', 'right')->getUrl();
+// https://example.com/cdn/.../smart_crop/100x100/smart_faces_objects/right/
+```
+
 
 ### Using percentages or pixels as parameter
 In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easier to recognize when a pixel or percentage is used you can pass the parameters as following.
