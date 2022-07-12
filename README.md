@@ -6,18 +6,19 @@
 
 Generate Uploadcare image processing URLs to transform and process your images. No need to write or generate the URL yourself. Just pass the UUID of the file, optionally pass the custom CDN and chain the methods you want to apply and the package generates the URL for you.
 
-  * [Installation](#installation)
-  * [Usage](#usage)
-  * [Documentation](#documentation)
-    + [Various ways of passing certain parameters](#various-ways-of-passing-certain-parameters)
-    + [Pre-defined parameters](#pre-defined-parameters)
-    + [List of possible transformations](#list-of-possible-transformations)
-  * [Testing](#testing)
-  * [Changelog](#changelog)
-  * [Contributing](#contributing)
-  * [Security Vulnerabilities](#security-vulnerabilities)
-  * [Credits](#credits)
-  * [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Documentation](#documentation)
+  * [Transformations](#transformations)
+    + [Preview](#preview)
+  * [Using percentages or pixels as parameter](#using-percentages-or-pixels-as-parameter)
+  * [List of possible transformations](#list-of-possible-transformations)
+- [Testing](#testing)
+- [Changelog](#changelog)
+- [Contributing](#contributing)
+- [Security Vulnerabilities](#security-vulnerabilities)
+- [Credits](#credits)
+- [License](#license)
 
 ## Installation
 
@@ -61,6 +62,15 @@ echo $url;
 
 ## Documentation
 
+### Transformations
+
+#### Preview
+Downscales an image proportionally to fit the given width and height in pixels.
+```php
+$url = $transformation->preview(100, 100);
+// https://example.com/cdn/.../preview/100x100/
+```
+
 ### Using percentages or pixels as parameter
 In some of the methods you can pass parameters in various ways. For example in the [scaleCrop()](/src/Transformations/ScaleCrop.php) method you can pass the offset in the form of a percentage or pixels. To make it easer to recognize when a pixel or percentage is used you can pass the parameters as following.
 
@@ -76,10 +86,6 @@ $url = $transformation->scaleCrop(320, 320, 50, 60)->getUrl();
 ```
 
 >As stated in the Uploadcare Documentation, in URLs, % is an escape character and should be encoded with %25 escape sequence, e.g. /scale_crop/440x440/80%25,80%25/. For convenience, we can use the p shortcut for percent which doesn't require encoding.
-
-### Pre-defined parameters
-In some methods you can pass parameters that are "pre-defined". For example in the [filter()](/src/Transformations/Filter.php) method you can pass the [`name`](/src/Transformations/Enums/Filter.php) parameter. As found in the documentation of the [photo filter](https://uploadcare.com/docs/transformations/image/photo-filters/#image-photo-filters) the name parameter should be one of the 40 filters. To be sure that the name is correct we made a special Enum class for each pre-defined parameter. These can be found inside the [Enums](/src/Transformations/Enums/) folder.
-
 
 ### List of possible transformations
 Each transformation follows the documentation on Uploadcare which you may find <a href="https://uploadcare.com/docs/">here</a>. 
