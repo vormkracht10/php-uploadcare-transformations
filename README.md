@@ -24,6 +24,19 @@ Generate Uploadcare image processing URLs to transform and process your images. 
     + [Quality](#quality)
     + [Progressive](#progressive)
     + [Basic color adjustments](#basic-color-adjustments)
+    + [Enhance](#enhance)
+    + [Grayscale](#grayscale)
+    + [Inverting](#inverting)
+    + [Filter](#filter)
+    + [Blur](#blur)
+    + [Blur region](#blur-region))
+    + [Blur faces](#blur-faces)
+    + [Sharpen](#sharpen)
+    + [Auto rotate](#auto-rotate)
+    + [Rotate](#rotate)
+    + [Flip](#flip)
+    + [Mirror](#mirror)] 
+    + [Overlay](#overlay)
   * [Using percentages or pixels as parameter](#using-percentages-or-pixels-as-parameter)
   * [List of possible transformations](#list-of-possible-transformations)
 - [Testing](#testing)
@@ -258,6 +271,139 @@ For a complete overview of allowed values based upon the chosen adjustment, take
 ```php
 $url = $transformation->adjust('brightness', 50)->getUrl();
 // https://example.com/cdn/.../adjust/brightness/50/
+```
+
+#### Enhance
+Auto-enhances an image by performing the following operations: auto levels, auto contrast, and saturation sharpening.
+
+Strength must be a number between 0 and 100. Default value is 50.
+
+```php
+$url = $transformation->enhance(50)->getUrl();
+// https://example.com/cdn/.../enhance/50/
+```
+
+#### Grayscale 
+Desaturates images. The operation has no additional parameters and simply produces a grayscale image output when applied.
+
+```php
+$url = $transformation->grayscale()->getUrl();
+// https://example.com/cdn/.../grayscale/
+```
+
+#### Inverting 
+Inverts images rendering a 'negative' of the input.
+  
+```php
+$url = $transformation->invert()->getUrl();
+// https://example.com/cdn/.../invert/
+```
+
+#### Convert to sRGB
+The operation sets how Uploadcare behaves depending on different color profiles of uploaded images. See the [Uploadcare Documentation](https://uploadcare.com/docs/transformations/image/colors/#image-colors-operations) to learn more about the possible outcomes. 
+
+The profile parameter must be one of the following values: `fast`, `icc`, `keep_profile`.
+
+```php
+$url = $transformation->convertToSRGB('icc')->getUrl();
+// https://example.com/cdn/.../srgb/icc/
+```
+
+#### ICC profile size threshold
+The operation defines which RGB color profile sizes will be considered “small” and “large” when using srgb in `fast` or `icc` modes. The `number` stands for the ICC profile size in kilobytes.
+
+The default value is 10 (10240 bytes). Most of the common RGB profile sizes (sRGB, Display P3, ProPhoto, Adobe RGB, Apple RGB) are below the threshold.
+
+```php
+$url = $transformation->iccProfileSizeThreshold(10)->getUrl();
+// https://example.com/cdn/.../max_icc_size/10/
+```
+
+#### Filter 
+Applies one of predefined photo filters by its name. The way your images look affects their engagement rates. You apply filters thus providing beautiful images consistent across content pieces you publish.
+
+The name parameter should be one of the following: `adaris`, `briaril`, `calarel`, `carris`, `cynarel`, `cyren`, `elmet`, `elonni`, `enzana`, `erydark`, `fenralan`, `ferand`, `galen`, `gavin`, `gethriel`, `iorill`, `iothari`, `iselva`, `jadis`, `lavra`, `misiara`, `namala`, `nerion`, `nethari`, `pamaya`, `sarnar`, `sedis`, `sewen`, `sorahel`, `sorlen`, `tarian`, `thellassan`, `varriel`, `varven`, `vevera`, `virkas`, `yedis`, `yllara`, `zatvel`, `zevcen`.
+
+The amount parameter must be a number between -100 and 200.
+
+```php
+$url = $transformation->filter('adaris', 50)->getUrl();
+// https://example.com/cdn/.../filter/adaris/50/
+```
+
+#### Blur
+Blurs images by the strength factor. The filtering mode is Gaussian Blur, where strength parameter sets the blur radius — effect intensity.
+
+```php
+$url = $transformation->blur(50)->getUrl();
+// https://example.com/cdn/.../blur/50/
+```
+
+#### Blur region 
+Blurs the specified region of the image by the strength factor. The filtering mode is Gaussian Blur, where strength parameter sets the blur radius — effect intensity.
+
+Dimensions and coordinates must be pixels or percentages.
+  
+```php
+// Using pixels.
+$url = $transformation->blurRegion(250, 250, 50, 50, 200)->getUrl();
+// https://example.com/cdn/.../blur_region/250/250/50/50/200/
+
+// Using percentages.
+$url = $transformation->blurRegion('50p', '50p', '80p', '20p', 200)->getUrl();
+// https://example.com/cdn/.../blur_region/50p/50p/80p,20p/200/
+```
+
+#### Blur faces
+When faces is specified the regions are selected automatically by utilizing face detection.
+ 
+```php
+$url = $transformation->blurFaces(50)->getUrl();
+// https://example.com/cdn/.../blur_faces/50/
+```
+
+#### Sharpen
+Sharpens an image, might be especially useful with images that were subjected to downscaling. strength can be in the range from 0 to 20 and defaults to the value of 5.
+
+```php
+$url = $transformation->sharpen(50)->getUrl();
+// https://example.com/cdn/.../sharp/50/
+  ```
+
+##### Auto rotate
+The default behavior goes with parsing EXIF tags of original images and rotating them according to the “Orientation” tag. Using `false` as parameter allows turning off the default behavior. 
+
+    
+```php
+$url = $transformation->autoRotate(false)->getUrl();
+// https://example.com/cdn/.../autorotate/no/
+
+$url = $transformation->autoRotate(true)->getUrl();
+// https://example.com/cdn/.../autorotate/yes/
+```
+
+#### Rotate
+Right-angle image rotation, counterclockwise. The value of angle must be a multiple of 90.
+
+```php
+$url = $transformation->rotate(180)->getUrl();
+// https://example.com/cdn/.../rotate/180/
+```
+
+#### Flip 
+Flips images.
+
+```php 
+$url = $transformation->flip()->getUrl();
+// https://example.com/cdn/.../flip/
+```
+
+#### Miror
+Mirrors images.
+
+```php
+$url = $transformation->mirror()->getUrl();
+// https://example.com/cdn/.../mirror/
 ```
 
 ### Using percentages or pixels as parameter
