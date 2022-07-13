@@ -300,7 +300,7 @@ $url = $transformation->invert()->getUrl();
 ```
 
 #### Convert to sRGB
-The operation sets how Uploadcare behaves depending on different color profiles of uploaded images. See the [Uploadcare Documentation](https://uploadcare.com/docs/transformations/image/colors/#image-colors-operations) to learn more about the possible outcomes. 
+The operation sets how Uploadcare behaves depending on different color profiles of uploaded images. See the [Uploadcare Documentation](https://uploadcare.com/docs/transformations/image/colors/#operation-srgb) to learn more about the possible outcomes. 
 
 The profile parameter must be one of the following values: `fast`, `icc`, `keep_profile`.
 
