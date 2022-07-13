@@ -248,11 +248,12 @@ $url = $transformation->progressive(false)->getUrl();
 ```
 
 #### Basic color adjustments
-The :value parameter controls the strength of any applied adjustment. Ranges of the :value parameter differ between operations. There also is a zero point for each operation — the value producing outputs equal to original images.
+The value parameter controls the strength of any applied adjustment. Ranges of the value parameter differ between operations. There also is a zero point for each operation — the value producing outputs equal to original images.
+
+Adjustment (color) must be one of the following values: `brightness`, `exposure`, `contrast`, `saturation`, `gamma`, `vibrance`, `warmth`.
 
 For a complete overview of allowed values based upon the chosen adjustment, take a look at the [Uploadcare Documentation](https://uploadcare.com/docs/transformations/image/colors/#image-colors-operations).
 
-Adjustment (color) must be one of the following values: `brightness`, `exposure`, `contrast`, `saturation`, `gamma`, `vibrance`, `warmth`.
   
 ```php
 $url = $transformation->adjust('brightness', 50)->getUrl();
