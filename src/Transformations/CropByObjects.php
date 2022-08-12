@@ -86,28 +86,29 @@ class CropByObjects implements TransformationInterface
 
     public static function generateUrl(string $url, array $values): string
     {
-         if (isset($values['width']) && isset($values['height']) && isset($values['align'])) {
-                // -/crop/:tag/:dimensions/:alignment/
-                $url .= '/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'];
-            } elseif (isset($values['width']) && isset($values['height']) && isset($values['x']) && isset($values['y'])) {
-                // -/crop/:tag/:dimensions/:alignment/
-                $url .= '/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/' . $values['x'] . ',' . $values['y'];
-            } elseif (isset($values['ratio']) && isset($values['x']) && isset($values['y'])) {
-                // -/crop/:tag/:ratio/:alignment/
-                $url .= '/crop/' . $values['tag'] . '/' . $values['ratio'] . '/' . $values['x'] . ',' . $values['y'];
-            } elseif (isset($values['width']) && isset($values['height'])) {
-                // -/crop/:tag/:dimensions/
-                $url .= '/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'];
-            } elseif (isset($values['ratio']) && isset($values['align'])) {
-                // -/crop/:tag/:ratio/:alignment/
-                $url .= '/crop/' . $values['tag'] . '/' . $values['ratio'] . '/' . $values['align'];
-            } elseif (isset($values['ratio'])) {
-                // -/crop/:tag/:ratio/
-                $url .= '/crop/' . $values['tag'] . '/' . $values['ratio'];
-            } else {
-                // -/crop/:tag/
-                $url .= '/crop/' . $values['tag'];
-            }
+        if (isset($values['width']) && isset($values['height']) && isset($values['align'])) {
+            // -/crop/:tag/:dimensions/:alignment/
+            $url .= '/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'];
+        } elseif (isset($values['width']) && isset($values['height']) && isset($values['x']) && isset($values['y'])) {
+            // -/crop/:tag/:dimensions/:alignment/
+            $url .= '/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/' . $values['x'] . ',' . $values['y'];
+        } elseif (isset($values['ratio']) && isset($values['x']) && isset($values['y'])) {
+            // -/crop/:tag/:ratio/:alignment/
+            $url .= '/crop/' . $values['tag'] . '/' . $values['ratio'] . '/' . $values['x'] . ',' . $values['y'];
+        } elseif (isset($values['width']) && isset($values['height'])) {
+            // -/crop/:tag/:dimensions/
+            $url .= '/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'];
+        } elseif (isset($values['ratio']) && isset($values['align'])) {
+            // -/crop/:tag/:ratio/:alignment/
+            $url .= '/crop/' . $values['tag'] . '/' . $values['ratio'] . '/' . $values['align'];
+        } elseif (isset($values['ratio'])) {
+            // -/crop/:tag/:ratio/
+            $url .= '/crop/' . $values['tag'] . '/' . $values['ratio'];
+        } else {
+            // -/crop/:tag/
+            $url .= '/crop/' . $values['tag'];
+        }
+
         return $url;
     }
 }
