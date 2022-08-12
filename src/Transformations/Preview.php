@@ -24,4 +24,11 @@ class Preview implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/preview/:dimensions/
+        $url .= '/preview/' . $values['width'] . 'x' . $values['height'];
+        return $url;
+    }
 }

@@ -2,6 +2,10 @@
 
 namespace Vormkracht10\UploadcareTransformations\Traits;
 
+use Vormkracht10\UploadcareTransformations\Transformations\ClassFinder;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder;
+
 trait Methods
 {
     /**
@@ -12,12 +16,14 @@ trait Methods
      */
     public function applyTransformations(string $url): string
     {
-        if (isset($this->transformations['preview'])) {
-            $transformation = $this->transformations['preview'];
+        $transformations = TransformationsFinder::for($this->transformations);
 
-            // -/preview/:dimensions/
-            $url .= '/preview/' . $transformation['preview']['width'] . 'x' . $transformation['height'];
+        foreach ($transformations as $transformation) {
+            $url = $transformation['class']::generateUrl($url, $transformation['values']);
         }
+
+        dd($url);
+
 
         if (isset($this->transformations['resize'])) {
             $transformation = $this->transformations['resize'];
@@ -71,33 +77,6 @@ trait Methods
             } else {
                 // -/crop/:ratio/
                 $url .= '/crop/' . $transformation['ratio'];
-            }
-        }
-
-        if (isset($this->transformations['crop_by_objects'])) {
-            $transformation = $this->transformations['crop_by_objects'];
-
-            if (isset($transformation['width']) && isset($transformation['height']) && isset($transformation['align'])) {
-                // -/crop/:tag/:dimensions/:alignment/
-                $url .= '/crop/' . $transformation['tag'] . '/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['align'];
-            } elseif (isset($transformation['width']) && isset($transformation['height']) && isset($transformation['x']) && isset($transformation['y'])) {
-                // -/crop/:tag/:dimensions/:alignment/
-                $url .= '/crop/' . $transformation['tag'] . '/' . $transformation['width'] . 'x' . $transformation['height'] . '/' . $transformation['x'] . ',' . $transformation['y'];
-            } elseif (isset($transformation['ratio']) && isset($transformation['x']) && isset($transformation['y'])) {
-                // -/crop/:tag/:ratio/:alignment/
-                $url .= '/crop/' . $transformation['tag'] . '/' . $transformation['ratio'] . '/' . $transformation['x'] . ',' . $transformation['y'];
-            } elseif (isset($transformation['width']) && isset($transformation['height'])) {
-                // -/crop/:tag/:dimensions/
-                $url .= '/crop/' . $transformation['tag'] . '/' . $transformation['width'] . 'x' . $transformation['height'];
-            } elseif (isset($transformation['ratio']) && isset($transformation['align'])) {
-                // -/crop/:tag/:ratio/:alignment/
-                $url .= '/crop/' . $transformation['tag'] . '/' . $transformation['ratio'] . '/' . $transformation['align'];
-            } elseif (isset($transformation['ratio'])) {
-                // -/crop/:tag/:ratio/
-                $url .= '/crop/' . $transformation['tag'] . '/' . $transformation['ratio'];
-            } else {
-                // -/crop/:tag/
-                $url .= '/crop/' . $transformation['tag'];
             }
         }
 
