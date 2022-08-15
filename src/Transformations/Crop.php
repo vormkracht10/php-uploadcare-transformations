@@ -69,4 +69,21 @@ class Crop implements TransformationInterface
 
         return false;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        if (isset($values['align'])) {
+            // -/crop/:dimensions/:alignment/
+            $url .= '/crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'];
+        } elseif (isset($values['x']) && isset($values['y'])) {
+            // -/crop/:dimensions/:alignment/
+            $url .= '/crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['x'] . ',' . $values['y'];
+        } else {
+            // -/crop/:dimensions/
+            $url .= '/crop/' . $values['width'] . 'x' . $values['height'];
+        }
+
+        return $url;
+    }
+
 }

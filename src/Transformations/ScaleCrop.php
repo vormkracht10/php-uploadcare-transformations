@@ -61,4 +61,20 @@ class ScaleCrop implements TransformationInterface
 
         return false;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        if (! isset($values['x']) && ! isset($values['y']) && ! isset($values['align'])) {
+            // -/scale_crop/:dimensions/
+            $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'];
+        } elseif (isset($values['width']) && isset($values['height']) && isset($values['align'])) {
+            // -/scale_crop/:dimensions/:alignment/
+            $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'];
+        } elseif (isset($values['width']) && isset($values['height']) && isset($values['x']) && isset($values['y'])) {
+            // -/scale_crop/:dimensions/:alignment/
+            $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['x'] . ',' . $values['y'];
+        }
+
+        return $url;
+    }
 }

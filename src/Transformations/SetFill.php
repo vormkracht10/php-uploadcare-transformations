@@ -33,4 +33,12 @@ class SetFill implements TransformationInterface
 
         return false;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/set_fill/:color
+        $url .= '/set_fill/' . $values['color'];
+
+        return $url;
+    }
 }

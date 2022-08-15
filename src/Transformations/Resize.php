@@ -35,4 +35,23 @@ class Resize implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/stretch/:mode/ (optional)
+        $resizePrefix = $values['stretch'] ? '/stretch/' . $values['mode'] . '/-/resize/' : '/resize/';
+
+        if ($values['height'] == null && $values['width'] !== null) {
+            // -/resize/:one_or_two_dimensions/
+            $url .= $resizePrefix . $values['width'] . 'x';
+        } elseif ($values['height'] !== null && $values['width'] == null) {
+            // -/resize/:one_or_two_dimensions/
+            $url .= $resizePrefix . $values['height'] . 'x';
+        } elseif ($values['height'] !== null && $values['width'] !== null) {
+            // -/resize/:one_or_two_dimensions/
+            $url .= $resizePrefix . $values['width'] . 'x' . $values['height'];
+        }
+        
+        return $url;
+    }
 }

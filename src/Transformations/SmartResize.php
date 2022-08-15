@@ -25,4 +25,12 @@ class SmartResize implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/smart_resize/:dimensions/
+        $url .= '/smart/' . $values['width'] . 'x' . $values['height'];
+        
+        return $url;
+    }
 }
