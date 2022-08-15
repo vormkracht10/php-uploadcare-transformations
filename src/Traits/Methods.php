@@ -22,9 +22,6 @@ trait Methods
             $url = $transformation['class']::generateUrl($url, $transformation['values']);
         }
 
-        dd($url);
-
-
         if (isset($this->transformations['resize'])) {
             $transformation = $this->transformations['resize'];
 
