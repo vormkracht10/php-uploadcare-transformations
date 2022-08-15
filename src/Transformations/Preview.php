@@ -29,7 +29,7 @@ class Preview implements TransformationInterface
     {
         // -/preview/:dimensions/
         $url .= '/preview/' . $values['width'] . 'x' . $values['height'];
-        
+
         return $url;
     }
 }

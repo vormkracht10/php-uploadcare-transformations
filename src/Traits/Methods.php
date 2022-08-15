@@ -2,8 +2,6 @@
 
 namespace Vormkracht10\UploadcareTransformations\Traits;
 
-use Vormkracht10\UploadcareTransformations\Transformations\ClassFinder;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
 use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder;
 
 trait Methods

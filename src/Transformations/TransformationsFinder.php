@@ -26,7 +26,7 @@ class TransformationsFinder
         foreach ($keys as $transformation) {
             $classes[$transformation] = [
                 'class' => self::getTransformation($transformation),
-                'values' => $transformations[$transformation]
+                'values' => $transformations[$transformation],
             ];
         }
 
