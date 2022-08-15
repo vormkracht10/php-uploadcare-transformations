@@ -20,7 +20,7 @@ class Inverting implements TransformationInterface
     {
         // -/inverting
         $url .= '/inverting';
-        
+
         return $url;
     }
 }

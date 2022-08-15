@@ -44,7 +44,7 @@ class Filter implements TransformationInterface
     {
         // -/filter/:name/:amount/
         $url .= '/filter/' . $values['name'] . '/' . $values['amount'];
-        
+
         return $url;
     }
 }

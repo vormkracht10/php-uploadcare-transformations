@@ -20,7 +20,7 @@ class Grayscale implements TransformationInterface
     {
         // -/grayscale
         $url .= '/grayscale';
-        
+
         return $url;
     }
 }
