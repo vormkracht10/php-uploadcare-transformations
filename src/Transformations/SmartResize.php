@@ -30,7 +30,7 @@ class SmartResize implements TransformationInterface
     {
         // -/smart_resize/:dimensions/
         $url .= '/smart/' . $values['width'] . 'x' . $values['height'];
-        
+
         return $url;
     }
 }

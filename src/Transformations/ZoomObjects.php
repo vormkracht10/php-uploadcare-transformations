@@ -36,7 +36,7 @@ class ZoomObjects implements TransformationInterface
     {
         // -/zoom_objects/:zoom
         $url .= '/zoom_objects/' . $values['zoom'];
-        
+
         return $url;
     }
 }

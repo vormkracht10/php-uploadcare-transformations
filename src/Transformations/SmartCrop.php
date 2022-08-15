@@ -77,7 +77,7 @@ class SmartCrop implements TransformationInterface
 
     public static function generateUrl(string $url, array $values): string
     {
-         if (! isset($values['align']) && ! isset($values['x']) && ! isset($values['y'])) {
+        if (! isset($values['align']) && ! isset($values['x']) && ! isset($values['y'])) {
             // -/smart_crop/:dimensions/:type
             $url .= '/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'];
         } elseif (isset($values['align'])) {
@@ -90,5 +90,4 @@ class SmartCrop implements TransformationInterface
 
         return $url;
     }
-
 }

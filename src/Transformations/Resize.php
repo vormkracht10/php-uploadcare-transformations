@@ -51,7 +51,7 @@ class Resize implements TransformationInterface
             // -/resize/:one_or_two_dimensions/
             $url .= $resizePrefix . $values['width'] . 'x' . $values['height'];
         }
-        
+
         return $url;
     }
 }
