@@ -85,5 +85,4 @@ class Crop implements TransformationInterface
 
         return $url;
     }
-
 }
