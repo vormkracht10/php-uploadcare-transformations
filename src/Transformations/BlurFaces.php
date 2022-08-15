@@ -21,4 +21,12 @@ class BlurFaces implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/blur_region/faces/:strength/
+        $url .= '/blur_region/faces/' . $values['strength'];
+
+        return $url;
+    }
 }

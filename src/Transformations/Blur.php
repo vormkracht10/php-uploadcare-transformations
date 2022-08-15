@@ -33,4 +33,13 @@ class Blur implements TransformationInterface
 
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // Strength and amount might be null
+        // -/blur/:strength/:amount
+        $url .= '/blur/' . $values['strength'] . '/' . $values['amount'];
+
+        return $url;
+    }
 }

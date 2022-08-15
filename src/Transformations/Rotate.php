@@ -29,4 +29,12 @@ class Rotate implements TransformationInterface
 
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/rotate/:angle/
+        $url .= '/rotate/' . $values['angle'];
+        
+        return $url;
+    }
 }

@@ -21,4 +21,14 @@ class AutoRotate implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        $value = ($values['auto_rotate']) ? 'yes' : 'no';
+
+        // -/autorotate/:no/
+        $url .= '/autorotate/' . $value;
+
+        return $url;
+    }
 }

@@ -26,4 +26,12 @@ class Quality implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/quality/:quality
+        $url .= '/quality/' . $values['quality'];
+
+        return $url;
+    }
 }

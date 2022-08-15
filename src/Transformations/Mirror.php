@@ -15,4 +15,12 @@ class Mirror implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // /mirror/
+        $url .= '/mirror/';
+        
+        return $url;
+    }
 }

@@ -68,4 +68,12 @@ class Overlay implements TransformationInterface
 
         return false;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // TODO: Overlay
+        // -/overlay/:uuid/:relative_dimensions/:relative_coordinates/:opacity/
+
+        return $url;
+    }
 }

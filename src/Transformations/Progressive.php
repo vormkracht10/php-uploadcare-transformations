@@ -21,4 +21,14 @@ class Progressive implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        $value = ($values['progressive']) ? 'yes' : 'no';
+
+        // -/progressive/:value
+        $url .= '/progressive/' . $value;
+
+        return $url;
+    }
 }
