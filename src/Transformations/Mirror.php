@@ -20,7 +20,7 @@ class Mirror implements TransformationInterface
     {
         // /mirror/
         $url .= '/mirror/';
-        
+
         return $url;
     }
 }

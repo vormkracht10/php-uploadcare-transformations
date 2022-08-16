@@ -34,7 +34,7 @@ class Rotate implements TransformationInterface
     {
         // -/rotate/:angle/
         $url .= '/rotate/' . $values['angle'];
-        
+
         return $url;
     }
 }
