@@ -65,10 +65,26 @@ class CropByRatio implements TransformationInterface
             return Offset::tryFrom($value) || self::isValidPercentage($value);
         }
 
-        if ($key === self::OFFSET_Y || $key === self::WIDTH || $key === self::HEIGHT) {
+        if ($key === self::OFFSET_Y) {
             return self::isValidPercentage($value);
         }
 
         return false;
+    }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        if (isset($values['align'])) {
+            // -/crop/:ratio/:alignment/
+            $url .= '/crop/' . $values['ratio'] . '/' . $values['align'];
+        } elseif (isset($values['align']) && isset($values['x'])) {
+            // -/crop/:ratio/:alignment/
+            $url .= '/crop/' . $values['ratio'] . '/' . $values['align'];
+        } else {
+            // -/crop/:ratio/
+            $url .= '/crop/' . $values['ratio'];
+        }
+
+        return $url;
     }
 }

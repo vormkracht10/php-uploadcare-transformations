@@ -31,4 +31,12 @@ class Enhance implements TransformationInterface
 
         return false;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/enhance/:strength
+        $url .= '/enhance/' . $values['strength'];
+
+        return $url;
+    }
 }

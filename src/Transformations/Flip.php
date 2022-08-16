@@ -15,4 +15,12 @@ class Flip implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // /flip/
+        $url .= '/flip/' . $values;
+
+        return $url;
+    }
 }

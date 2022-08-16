@@ -39,4 +39,12 @@ class Filter implements TransformationInterface
 
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/filter/:name/:amount/
+        $url .= '/filter/' . $values['name'] . '/' . $values['amount'];
+
+        return $url;
+    }
 }

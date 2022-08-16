@@ -15,4 +15,12 @@ class Inverting implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/inverting
+        $url .= '/inverting';
+
+        return $url;
+    }
 }

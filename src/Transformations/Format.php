@@ -26,4 +26,12 @@ class Format implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/format/:format
+        $url .= '/format/' . $values['format'];
+
+        return $url;
+    }
 }

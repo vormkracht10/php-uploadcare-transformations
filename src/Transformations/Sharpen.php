@@ -31,4 +31,12 @@ class Sharpen implements TransformationInterface
 
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/sharp/:strength/
+        $url .= '/sharp/' . $values['strength'];
+
+        return $url;
+    }
 }

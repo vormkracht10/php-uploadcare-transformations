@@ -74,4 +74,20 @@ class SmartCrop implements TransformationInterface
 
         return false;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        if (! isset($values['align']) && ! isset($values['x']) && ! isset($values['y'])) {
+            // -/smart_crop/:dimensions/:type
+            $url .= '/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'];
+        } elseif (isset($values['align'])) {
+            // -/smart_crop/:dimensions/:type/:alignment
+            $url .= '/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['align'];
+        } elseif (isset($values['x']) && isset($values['y'])) {
+            // -/smart_crop/:dimensions/:type/:alignment
+            $url .= '/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['x'] . ',' . $values['y'];
+        }
+
+        return $url;
+    }
 }

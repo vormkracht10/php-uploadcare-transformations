@@ -61,4 +61,12 @@ class BlurRegion implements TransformationInterface
 
         return false;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // -/blur_region/:two_dimensions/:two_coords/:strength/
+        $url .= '/blur_region/' . $values['dimension_x'] . 'x' . $values['dimension_y'] . '/' . $values['coordinate_x'] . ',' . $values['coordinate_y'] . '/' . $values['strength'];
+
+        return $url;
+    }
 }
