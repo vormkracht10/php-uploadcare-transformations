@@ -318,7 +318,7 @@ The default value is 10 (10240 bytes). Most of the common RGB profile sizes (sRG
 
 ```php
 $url = $transformation->convertToSRGB('fast')->iccProfileSizeThreshold(10)->getUrl();
-// https://example.com/cdn/.../max_icc_size/50/srgb/fast
+// https://example.com/cdn/.../max_icc_size/10/srgb/fast
 ```
 
 
@@ -465,7 +465,7 @@ $url = $transformation->zoomObjects(50)->getUrl();
 ## Testing
 
 ```bash
-composer test
+./vendor/bin/pest
 ```
 
 ## Changelog
