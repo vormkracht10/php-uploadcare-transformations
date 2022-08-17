@@ -3,7 +3,6 @@
 use Vormkracht10\UploadcareTransformations\UploadcareTransformation;
 
 it('can generate a url without cdn', function () {
-
     $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
     $transformation = (new UploadcareTransformation($uuid));
 
@@ -13,7 +12,6 @@ it('can generate a url without cdn', function () {
 });
 
 it('can generate a url with cdn', function () {
-
     $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
     $cdnUrl = 'https://example.com/cdn/';
 
@@ -25,13 +23,11 @@ it('can generate a url with cdn', function () {
 });
 
 it('can generate a url using Conver to SRGB and ICC profile size threshold', function () {
-    
-        $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
 
-        $transformation = (new UploadcareTransformation($uuid));
+    $transformation = (new UploadcareTransformation($uuid));
 
-        $url = $transformation->convertToSRGB('fast')->iccProfileSizeThreshold(10)->getUrl();
+    $url = $transformation->convertToSRGB('fast')->iccProfileSizeThreshold(10)->getUrl();
 
-        expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/max_icc_size/10/srgb/fast');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/max_icc_size/10/srgb/fast');
 });
-
