@@ -465,7 +465,7 @@ $url = $transformation->zoomObjects(50)->getUrl();
 ## Testing
 
 ```bash
-composer test
+./vendor/bin/pest
 ```
 
 ## Changelog
