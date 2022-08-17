@@ -21,4 +21,10 @@ class ICCProfileSizeThreshold implements TransformationInterface
     {
         return null;
     }
+
+    public static function generateUrl(string $url, array $values): string
+    {
+        // We don't have to do anything here as it is already part of of the ConvertToSRGB transformation.
+        return $url;
+    }
 }

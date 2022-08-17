@@ -78,6 +78,21 @@ class TransformationsFinder
         $keys = array_keys($transformations);
 
         foreach ($keys as $transformation) {
+
+            // We need to check if ICCProfileSizeThreshold is used because it is a special case.
+            // This is because the URL transformation is a part of the ConvertToSRGB transformation.
+            if ($transformation === self::ICC_PROFILE_SIZE_THRESHOLD) {
+                $classes[self::CONVERT_TO_SRGB] = [
+                    'class' => self::getTransformation(self::CONVERT_TO_SRGB),
+                    'values' => [
+                        'profile' => $transformations[self::CONVERT_TO_SRGB]['profile'],
+                        'size' => $transformations[$transformation]['number'],
+                    ],
+                ];
+
+                continue;
+            }
+
             $classes[$transformation] = [
                 'class' => self::getTransformation($transformation),
                 'values' => $transformations[$transformation],

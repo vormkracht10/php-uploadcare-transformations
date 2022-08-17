@@ -29,13 +29,10 @@ class ConvertToSRGB implements TransformationInterface
 
     public static function generateUrl(string $url, array $values): string
     {
-
-        // if (isset($this->transformations['icc_profile_size_threshold'])) {
-        //     $transformation = $this->transformations['icc_profile_size_threshold'];
-
-        //     // -/max_icc_size/:number
-        //     $url .= '/max_icc_size/' . $transformation['number'];
-        // }
+        if (isset($values['size'])) {
+            // -/max_icc_size/:number
+            $url .= '/max_icc_size/' . $values['size'];
+        }
 
         // -/srgb/:profile
         $url .= '/srgb/' . $values['profile'];
