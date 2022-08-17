@@ -11,7 +11,6 @@ use Vormkracht10\UploadcareTransformations\Transformations\Mirror;
 use Vormkracht10\UploadcareTransformations\Transformations\Resize;
 use Vormkracht10\UploadcareTransformations\Transformations\Rotate;
 use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
-use Vormkracht10\UploadcareTransformations\Transformations\Overlay;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
 use Vormkracht10\UploadcareTransformations\Transformations\Sharpen;
@@ -419,23 +418,6 @@ class Transformations
     public function mirror(): self
     {
         $this->transformations['mirror'] = Mirror::transform();
-
-        return $this;
-    }
-
-    /**
-     * The overlay operation allows to layer images one over another.
-     *
-     * @param string $uuid
-     * @param int|string $dimensionX
-     * @param int|string $dimensionY
-     * @param string $relativeCoordinates either one of the offset types or a percentage
-     * @param int $opacity
-     * @return self
-     */
-    public function overlay(string $uuid, int|string $dimensionX, int|string $dimensionY, string $relativeCoordinates, int $opacity): self
-    {
-        $this->transformations['overlay'] = Overlay::transform($uuid, $dimensionX, $dimensionY, $relativeCoordinates, $opacity);
 
         return $this;
     }

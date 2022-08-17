@@ -128,7 +128,6 @@ The current list of possible transformations and where to find the documentation
 | ICC profile size threshold | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-max-icc-size">Link</a>      |
 | Inverting | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-inverting">Link</a>      |
 | Mirror | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-mirror">Link</a>      |
-| Overlay | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-overlay">Link</a>      |
 | Preview | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-preview">Link</a>      |
 | Progressive | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/compression/#operation-progressive">Link</a>      |
 | Quality | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/compression/#operation-quality">Link</a>      |
