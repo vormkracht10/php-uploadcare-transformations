@@ -10,6 +10,7 @@ class UploadcareTransformation extends Transformations
     protected array $transformations;
     protected string $url;
     protected string $baseUrl;
+    protected ?string $filename = null;
 
     public function __construct(string $uuid, string $cdnUrl = 'https://ucarecdn.com/')
     {
@@ -18,11 +19,26 @@ class UploadcareTransformation extends Transformations
         $this->baseUrl = $cdnUrl;
     }
 
-    public function getUrl()
+    public function filename(string $filename)
     {
-        $url = $this->baseUrl . $this->uuid;
+        $this->filename = $filename;
 
-        return $this->applyTransformations($url);
+        return $this;
+    }
+
+    public function getUrl(): string
+    {
+        $url = $this->applyTransformations($this->baseUrl . $this->uuid);
+        
+        if (! str_ends_with($url, '/')) {
+            $url .= '/';
+        }
+
+        if($this->filename) {
+            $url = rtrim($url, '/') . '/' . $this->filename;
+        }
+
+        return $url;
     }
 
     public function __toString()
