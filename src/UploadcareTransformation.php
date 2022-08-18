@@ -2,7 +2,6 @@
 
 namespace Vormkracht10\UploadcareTransformations;
 
-use Vormkracht10\UploadcareTransformations\Methods\Transformations;
 use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder;
 
 class UploadcareTransformation extends Transformations

@@ -2,7 +2,7 @@
 
 namespace Vormkracht10\UploadcareTransformations\Traits;
 
-trait Methods
+trait Validations
 {
     /**
      * Check if value is a valid percentage format.

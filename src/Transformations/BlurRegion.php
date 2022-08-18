@@ -2,12 +2,12 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
-use Vormkracht10\UploadcareTransformations\Traits\Methods;
+use Vormkracht10\UploadcareTransformations\Traits\Validations;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class BlurRegion implements TransformationInterface
 {
-    use Methods;
+    use Validations;
 
     public const DIMENSION_X = 'dimension_x';
     public const DIMENSION_Y = 'dimension_y';
