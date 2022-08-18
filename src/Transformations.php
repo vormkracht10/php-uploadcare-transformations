@@ -1,6 +1,6 @@
 <?php
 
-namespace Vormkracht10\UploadcareTransformations\Methods;
+namespace Vormkracht10\UploadcareTransformations;
 
 use Vormkracht10\UploadcareTransformations\Transformations\AutoRotate;
 use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;

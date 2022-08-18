@@ -2,13 +2,13 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
-use Vormkracht10\UploadcareTransformations\Traits\Methods;
+use Vormkracht10\UploadcareTransformations\Traits\Validations;
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\Offset;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class CropByRatio implements TransformationInterface
 {
-    use Methods;
+    use Validations;
 
     public const RATIO = 'ratio';
     public const OFFSET_X = 'offset_x';

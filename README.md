@@ -323,7 +323,7 @@ $url = $transformation->grayscale();
 The operation defines which RGB color profile sizes will be considered “small” and “large” when using srgb in `fast` or `icc` modes. The `number` stands for the ICC profile size in kilobytes.
 
 The default value is 10 (10240 bytes). Most of the common RGB profile sizes (sRGB, Display P3, ProPhoto, Adobe RGB, Apple RGB) are below the threshold.
-> Please note, that because this transformation should always be used in combinagtion with [`convertToSRGB()`](#convert-to-srgb) its method should be called <strong>after</strong> `convertToSRGB()`. Otherwise the ICC profile size threshold gets overwritten by the `convertToSRGB()` transformation.
+> Please note, that because this transformation should always be used in combination with [`convertToSRGB()`](#convert-to-srgb) its method should be called <strong>after</strong> `convertToSRGB()`. Otherwise the ICC profile size threshold gets overwritten by the `convertToSRGB()` transformation.
 
 ```php
 $url = $transformation->convertToSRGB('fast')->iccProfileSizeThreshold(10);

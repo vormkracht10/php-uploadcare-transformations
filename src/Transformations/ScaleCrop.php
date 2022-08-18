@@ -2,13 +2,13 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
-use Vormkracht10\UploadcareTransformations\Traits\Methods;
+use Vormkracht10\UploadcareTransformations\Traits\Validations;
 use Vormkracht10\UploadcareTransformations\Transformations\Enums\Offset;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class ScaleCrop implements TransformationInterface
 {
-    use Methods;
+    use Validations;
 
     public const WIDTH = 'width';
     public const HEIGHT = 'height';
