@@ -1,6 +1,5 @@
 <?php
 
-use Vormkracht10\UploadcareTransformations\UploadcareTransformation;
 
 it('can generate a url without cdn', function () {
     $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';

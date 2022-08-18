@@ -29,12 +29,12 @@ class UploadcareTransformation extends Transformations
     public function getUrl(): string
     {
         $url = $this->applyTransformations($this->baseUrl . $this->uuid);
-        
+
         if (! str_ends_with($url, '/')) {
             $url .= '/';
         }
 
-        if($this->filename) {
+        if ($this->filename) {
             $url = rtrim($url, '/') . '/' . $this->filename;
         }
 
