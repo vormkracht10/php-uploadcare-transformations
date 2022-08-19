@@ -5,7 +5,6 @@ it('can validate percentages', function () {
     $transformation = uploadcare($uuid);
 
     $transformation->crop(width: 320, height: '50%', offsetX: 'center');
-
 })->throws('Invalid height percentage');
 
 it('can validate ratio', function () {
@@ -13,7 +12,6 @@ it('can validate ratio', function () {
     $transformation = uploadcare($uuid);
 
     $transformation->cropByObjects(tag: 'face', ratio: 1, width: 320, height: '50p', offsetX: 'center');
-
 })->throws('Invalid ratio');
 
 it('can validate basic color adjustment value', function () {
@@ -21,7 +19,6 @@ it('can validate basic color adjustment value', function () {
     $transformation = uploadcare($uuid);
 
     $transformation->basicColorAdjustments(color: 'brightness', value: -150);
-
 })->throws('Invalid value');
 
 it('can validate offset enum', function () {
@@ -29,7 +26,6 @@ it('can validate offset enum', function () {
     $transformation = uploadcare($uuid);
 
     $transformation->crop(width: 320, height: '50p', offsetX: 'invalid_offset');
-
 })->throws('Invalid offset X');
 
 it('can validate tag enum', function () {
@@ -37,7 +33,6 @@ it('can validate tag enum', function () {
     $transformation = uploadcare($uuid);
 
     $transformation->cropByObjects(tag: 'invalid_tag', ratio: '1:1', width: 320, height: '50p', offsetX: 'center');
-
 })->throws('Invalid tag');
 
 it('can validate color enum', function () {
@@ -88,5 +83,3 @@ it('can validate resize mode enum', function () {
 
     $transformation->resize(width: 500, height: 500, stretch: false, mode: 'invalid_resize_mode');
 })->throws('Invalid resize mode');
-
-
