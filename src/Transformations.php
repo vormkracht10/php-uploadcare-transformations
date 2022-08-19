@@ -117,9 +117,9 @@ class Transformations
      * @param string $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $heigt = null, int|string $offsetX = null, int $offsetY = null): self
+    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $height = null, int|string $offsetX = null, int $offsetY = null): self
     {
-        $this->transformations['crop_by_objects'] = CropByObjects::transform($tag, $ratio, $width, $heigt, $offsetX, $offsetY);
+        $this->transformations['crop_by_objects'] = CropByObjects::transform($tag, $ratio, $width, $height, $offsetX, $offsetY);
 
         return $this;
     }

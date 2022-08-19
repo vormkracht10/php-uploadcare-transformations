@@ -16,7 +16,7 @@ class Filter implements TransformationInterface
         $amount = $args[1];
 
         if (! FilterEnum::tryFrom($name)) {
-            throw new \InvalidArgumentException('Invalid name');
+            throw new \InvalidArgumentException('Invalid filter');
         }
 
         if (! self::validate('amount', $amount)) {
