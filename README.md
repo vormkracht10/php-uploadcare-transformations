@@ -6,6 +6,7 @@
 
 Generate Uploadcare image processing URLs to transform and process your images. No need to write or generate the URL yourself. Just pass the UUID of the file, optionally pass the custom CDN and chain the methods you want to apply and the package generates the URL for you.
 
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Documentation](#documentation)
@@ -46,6 +47,11 @@ Generate Uploadcare image processing URLs to transform and process your images. 
 - [Security Vulnerabilities](#security-vulnerabilities)
 - [Credits](#credits)
 - [License](#license)
+
+## Requirements
+<ul>
+  <li>PHP 8.1+</li>
+</ul>
 
 ## Installation
 
