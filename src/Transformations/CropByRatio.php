@@ -77,7 +77,7 @@ class CropByRatio implements TransformationInterface
         if (isset($values['align'])) {
             // -/crop/:ratio/:alignment/
             $url .= '/crop/' . $values['ratio'] . '/' . $values['align'];
-        } elseif (isset($values['align']) && isset($values['x'])) {
+        } elseif (isset($values['align']) && isset($values['offset_x'])) {
             // -/crop/:ratio/:alignment/
             $url .= '/crop/' . $values['ratio'] . '/' . $values['align'];
         } else {

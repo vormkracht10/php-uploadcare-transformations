@@ -75,9 +75,9 @@ class Crop implements TransformationInterface
         if (isset($values['align'])) {
             // -/crop/:dimensions/:alignment/
             $url .= '/crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'];
-        } elseif (isset($values['x']) && isset($values['y'])) {
+        } elseif (isset($values['offset_x']) && isset($values['offset_y'])) {
             // -/crop/:dimensions/:alignment/
-            $url .= '/crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['x'] . ',' . $values['y'];
+            $url .= '/crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['offset_x'] . ',' . $values['offset_y'];
         } else {
             // -/crop/:dimensions/
             $url .= '/crop/' . $values['width'] . 'x' . $values['height'];

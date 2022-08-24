@@ -64,15 +64,15 @@ class ScaleCrop implements TransformationInterface
 
     public static function generateUrl(string $url, array $values): string
     {
-        if (! isset($values['x']) && ! isset($values['y']) && ! isset($values['align'])) {
+        if (! isset($values['offset_x']) && ! isset($values['offset_y']) && ! isset($values['align'])) {
             // -/scale_crop/:dimensions/
             $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'];
         } elseif (isset($values['width']) && isset($values['height']) && isset($values['align'])) {
             // -/scale_crop/:dimensions/:alignment/
             $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'];
-        } elseif (isset($values['width']) && isset($values['height']) && isset($values['x']) && isset($values['y'])) {
+        } elseif (isset($values['width']) && isset($values['height']) && isset($values['offset_x']) && isset($values['offset_y'])) {
             // -/scale_crop/:dimensions/:alignment/
-            $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['x'] . ',' . $values['y'];
+            $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['offset_x'] . ',' . $values['offset_y'];
         }
 
         return $url;
