@@ -101,7 +101,7 @@ class Transformations
      * @param int $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function cropByRatio(string $ratio, int|string $offsetX, int|string $offsetY = null): self
+    public function cropByRatio(string $ratio, int|string $offsetX = null, int|string $offsetY = null): self
     {
         $this->transformations['crop_by_ratio'] = CropByRatio::transform($ratio, $offsetX, $offsetY);
 

@@ -51,4 +51,24 @@ it('can crop', function () {
 });
 
 
+it('can crop by ratio', function () {
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+    $transformation = uploadcare($uuid);
+
+    // -/crop/:ratio/:alignment/
+    $url = (string) $transformation->cropByRatio(ratio: '1:1', offsetX: 'center');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/crop/1:1/center/');
+
+    // -/crop/:ratio/:alignment/
+    $url = (string) $transformation->cropByRatio(ratio: '1:1', offsetX: '50p', offsetY: '50p');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/crop/1:1/50p,50p/');
+
+    // -/crop/:ratio/
+    $url = (string) $transformation->cropByRatio(ratio: '1:1');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/crop/1:1/');
+
+});
+
+
+
 

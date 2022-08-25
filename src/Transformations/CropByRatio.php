@@ -33,7 +33,7 @@ class CropByRatio implements TransformationInterface
             throw new \InvalidArgumentException('Invalid offset Y');
         }
 
-        if (Offset::tryFrom($offsetX)) {
+        if (isset($offsetX) && Offset::tryFrom($offsetX)) {
             return [
                 self::RATIO => $ratio,
                 self::ALIGN => $offsetX,
@@ -77,9 +77,9 @@ class CropByRatio implements TransformationInterface
         if (isset($values['align'])) {
             // -/crop/:ratio/:alignment/
             $url .= '/crop/' . $values['ratio'] . '/' . $values['align'];
-        } elseif (isset($values['align']) && isset($values['offset_x'])) {
+        } elseif (isset($values['offset_y']) && isset($values['offset_x'])) {
             // -/crop/:ratio/:alignment/
-            $url .= '/crop/' . $values['ratio'] . '/' . $values['align'];
+            $url .= '/crop/' . $values['ratio'] . '/' . $values['offset_x'] . ',' . $values['offset_y'];
         } else {
             // -/crop/:ratio/
             $url .= '/crop/' . $values['ratio'];
