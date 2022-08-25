@@ -32,3 +32,23 @@ it('can crop by objects', function () {
     $url = (string) $transformation->cropByObjects(tag: 'face');
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/crop/face/');
 });
+
+it('can crop', function () {
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+    $transformation = uploadcare($uuid);
+
+    // -/crop/:dimensions/:alignment/
+    $url = (string) $transformation->crop(width: 200, height: 200, offsetX: 'center');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/crop/200x200/center/');
+
+    // -/crop/:dimensions/:alignment/
+    $url = (string) $transformation->crop(width: 200, height: 200, offsetX: '50p', offsetY: '50p');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/crop/200x200/50p,50p/');
+
+    // -/crop/:dimensions/:alignment/
+    $url = (string) $transformation->crop(width: 200, height: 200);
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/crop/200x200/');
+});
+
+
+

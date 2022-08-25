@@ -86,7 +86,7 @@ class Transformations
      * @param int|string $offsetY
      * @return self
      */
-    public function crop(int|string $width, int|string $height, int|string $offsetX, int|string $offsetY = null): self
+    public function crop(int|string $width, int|string $height, int|string $offsetX = null, int|string $offsetY = null): self
     {
         $this->transformations['crop'] = Crop::transform($width, $height, $offsetX, $offsetY);
 

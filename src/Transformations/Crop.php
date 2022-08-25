@@ -20,7 +20,7 @@ class Crop implements TransformationInterface
     {
         $width = $args[0];
         $height = $args[1];
-        $offsetX = $args[2];
+        $offsetX = $args[2] ?? null;
         $offsetY = $args[3] ?? null;
 
         if (is_string($width) && ! self::validate('width', $width)) {
@@ -39,7 +39,7 @@ class Crop implements TransformationInterface
             throw new \InvalidArgumentException('Invalid offset Y');
         }
 
-        if (Offset::tryFrom($offsetX)) {
+        if (isset($offsetX) && Offset::tryFrom($offsetX)) {
             return [
                 self::WIDTH => $width,
                 self::HEIGHT => $height,
@@ -79,7 +79,7 @@ class Crop implements TransformationInterface
             // -/crop/:dimensions/:alignment/
             $url .= '/crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['offset_x'] . ',' . $values['offset_y'];
         } else {
-            // -/crop/:dimensions/
+            // -/crop/:dimensions/:alignment/
             $url .= '/crop/' . $values['width'] . 'x' . $values['height'];
         }
 
