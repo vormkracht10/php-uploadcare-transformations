@@ -49,6 +49,3 @@ it('can crop', function () {
     $url = (string) $transformation->crop(width: 200, height: 200);
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/crop/200x200/');
 });
-
-
-
