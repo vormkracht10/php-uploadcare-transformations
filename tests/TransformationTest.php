@@ -71,15 +71,19 @@ it('can resize', function () {
     $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
     $transformation = uploadcare($uuid);
 
+    // -/resize/:one_or_two_dimensions/
     $url = (string) $transformation->resize(width: 200, height: 200);
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/resize/200x200/');
 
+    // -/resize/:one_or_two_dimensions/
     $url = (string) $transformation->resize(width: null, height: 200);
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/resize/200x/');
-
+    
+    // -/resize/:one_or_two_dimensions/
     $url = (string) $transformation->resize(width: 200, height: null);
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/resize/200x/');
 
+    //resize/:one_or_two_dimensions/-/stretch/:mode/ (optional)
     $url = (string) $transformation->resize(width: 200, height: 200, stretch: true, mode: 'on');
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/stretch/on/-/resize/200x200/');
 });
