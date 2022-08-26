@@ -83,3 +83,20 @@ it('can resize', function () {
     $url = (string) $transformation->resize(width: 200, height: 200, stretch: true, mode: 'on');
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/stretch/on/-/resize/200x200/');
 });
+
+it('can scale crop', function () {
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+    $transformation = uploadcare($uuid);
+
+    // -/scale_crop/:dimensions/
+    $url = (string) $transformation->scaleCrop(width: 200, height: 200);
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/scale_crop/200x200/');
+
+    // -/scale_crop/:dimensions/:alignment/
+    $url = (string) $transformation->scaleCrop(width: 200, height: 200, offsetX: 'center');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/scale_crop/200x200/center/');
+
+    // -/scale_crop/:dimensions/:alignment/
+    $url = (string) $transformation->scaleCrop(width: 200, height: 200, offsetX: '50p', offsetY: '50p');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/scale_crop/200x200/50p,50p/');
+});
