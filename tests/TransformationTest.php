@@ -78,7 +78,7 @@ it('can resize', function () {
     // -/resize/:one_or_two_dimensions/
     $url = (string) $transformation->resize(width: null, height: 200);
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/resize/200x/');
-    
+
     // -/resize/:one_or_two_dimensions/
     $url = (string) $transformation->resize(width: 200, height: null);
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/resize/200x/');
