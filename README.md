@@ -87,7 +87,7 @@ $cdnUrl = 'https://example.com/cdn/';
 
 $transformation = (new UploadcareTransformation($uuid, $cdn));
 
-$url = $transformation->crop(320, '50p', 'center')->setFill('#ffffff');
+$url = $transformation->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: '#ffffff');
 
 echo $url;
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/crop/320x50p/center/set_fill/#ffffff
@@ -100,12 +100,12 @@ In some of the methods you can pass parameters in various ways. For example in t
 
 ```php
 // Using percentages
-$url = $transformation->scaleCrop(320, 320, '50p', '60p');
+$url = $transformation->scaleCrop(width: 320, height: 320, offsetX: '50p', offsetY: '60p');
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/scale_crop/320x320/50px60p/
 
 
 // Using pixels
-$url = $transformation->scaleCrop(320, 320, 50, 60);
+$url = $transformation->scaleCrop(width: 320, height: 320, offsetX: 50, offsetY: 60);
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/scale_crop/320x320/50x60/
 ```
 
@@ -177,7 +177,7 @@ Adjustment (color) must be one of the following values: `brightness`, `exposure`
 For a complete overview of allowed values based upon the chosen adjustment, take a look at the [Uploadcare Documentation](https://uploadcare.com/docs/transformations/image/colors/#image-colors-operations).
 
 ```php
-$url = $transformation->adjust('brightness', 50);
+$url = $transformation->basicColorAdjustments(color: 'brightness', value: 50);
 // https://example.com/cdn/.../adjust/brightness/50/
 ```
 
@@ -185,7 +185,7 @@ $url = $transformation->adjust('brightness', 50);
 Blurs images by the strength factor. The filtering mode is Gaussian Blur, where strength parameter sets the blur radius — effect intensity.
 
 ```php
-$url = $transformation->blur(50);
+$url = $transformation->blur(strength: 50, amount: null);
 // https://example.com/cdn/.../blur/50/
 ```
 
@@ -193,7 +193,7 @@ $url = $transformation->blur(50);
 When faces is specified the regions are selected automatically by utilizing face detection.
  
 ```php
-$url = $transformation->blurFaces(50);
+$url = $transformation->blurFaces(strength: 50);
 // https://example.com/cdn/.../blur_faces/50/
 ```
 
@@ -204,11 +204,11 @@ Dimensions and coordinates must be pixels or percentages.
   
 ```php
 // Using pixels.
-$url = $transformation->blurRegion(250, 250, 50, 50, 200);
+$url = $transformation->blurRegion(dimensionX: 250, dimensionY: 250, coordinateX: 50, coordinateY: 50, strength: 200);
 // https://example.com/cdn/.../blur_region/250/250/50/50/200/
 
 // Using percentages.
-$url = $transformation->blurRegion('50p', '50p', '80p', '20p', 200);
+$url = $transformation->blurRegion(dimensionX: '50p', dimensionY: '50p', coordinateX: '80p', coordinateY: '20p', strength: 200);
 // https://example.com/cdn/.../blur_region/50p/50p/80p,20p/200/
 ```
 
@@ -218,7 +218,7 @@ The operation sets how Uploadcare behaves depending on different color profiles 
 The profile parameter must be one of the following values: `fast`, `icc`, `keep_profile`.
 
 ```php
-$url = $transformation->convertToSRGB('icc');
+$url = $transformation->convertToSRGB(profile: 'icc');
 // https://example.com/cdn/.../srgb/icc/
 ```
 
@@ -231,15 +231,15 @@ Alignment can also be in pixels and percentages but also a shortcut can be used.
 
 ```php
 // Using percentages and a shortcut.
-$url = $transformation->crop(100, '50p', 'center');
+$url = $transformation->crop(width: 100, height: '50p', offsetX: 'center');
 // https://example.com/cdn/.../crop/100x50p/center/
 
 // Using pixels only.
-$url = $transformation->crop(100, 100, 50, 50);
+$url = $transformation->crop(width: 100, height: 100, offsetX: 50, offsetY: 50);
 // https://example.com/cdn/.../crop/100x100/50,50/
 
 // Using both pixels and percentages.
-$url = $transformation->crop(100, '50p', '25p', '25p');
+$url = $transformation->crop(width: 100, height: '50p', offsetX: '25p', offsetY: '25p');
 // https://example.com/cdn/.../crop/100x50p/25p,25p/
 ```
 
@@ -254,11 +254,11 @@ Dimensions and alignment must be set in percentages. In case of the alignment yo
 
 ```php
 // Using no ratio, percentages and pixels combined.
-$url = $transformation->cropByObject('face', null, 200, '50p');
+$url = $transformation->cropByObject(tag: 'face', ratio: null, width: 200, height: '50p');
 // https://example.com/cdn/../crop/face/200x50p/
 
 // Using ratio, percentages and a shortcut.
-$url = $transformation->cropByObject('face', '4:3', '50p', '50p', 'bottom');
+$url = $transformation->cropByObject(tag: 'face', ratio: '4:3', width: '50p', height: '50p', offsetX: 'bottom');
 // https://example.com/cdn/../crop/face/4:3/50px50p/bottom/
 ```
 
@@ -271,11 +271,11 @@ Alignment can be set in pixels and percentages but also a shortcut can be used. 
 
 ```php
 // Using percentages and a shortcut.
-$url = $transformation->cropByRatio('4:3', 'bottom');
+$url = $transformation->cropByRatio(ratio: '4:3', offsetX: 'bottom');
 // https://example.com/cdn/.../crop/4:3/bottom/
 
 // Using percentage in combination with pixels.
-$url = $transformation->cropByRatio('4:3', '50p', 240);
+$url = $transformation->cropByRatio(ratio: '4:3', offsetX: '50p', offsetY: 240);
 // https://example.com/cdn/.../crop/4:3/50p,240/
 ```
 
@@ -285,7 +285,7 @@ Auto-enhances an image by performing the following operations: auto levels, auto
 Strength must be a number between 0 and 100. Default value is 50.
 
 ```php
-$url = $transformation->enhance(50);
+$url = $transformation->enhance(strength: 50);
 // https://example.com/cdn/.../enhance/50/
 ```
 
@@ -297,7 +297,7 @@ The name parameter should be one of the following: `adaris`, `briaril`, `calarel
 The amount parameter must be a number between -100 and 200.
 
 ```php
-$url = $transformation->filter('adaris', 50);
+$url = $transformation->filter(name: 'adaris', value: 50);
 // https://example.com/cdn/.../filter/adaris/50/
 ```
 
@@ -313,7 +313,7 @@ $url = $transformation->flip();
 Converts an image to one of the following formats: `jpg`, `png`, `webp`, `auto`.
 
 ```php
-$url = $transformation->format('jpg');
+$url = $transformation->format(format: 'jpg');
 // https://example.com/cdn/.../format/jpg/
 ```
 
@@ -332,7 +332,7 @@ The default value is 10 (10240 bytes). Most of the common RGB profile sizes (sRG
 > Please note, that because this transformation should always be used in combination with [`convertToSRGB()`](#convert-to-srgb) its method should be called <strong>after</strong> `convertToSRGB()`. Otherwise the ICC profile size threshold gets overwritten by the `convertToSRGB()` transformation.
 
 ```php
-$url = $transformation->convertToSRGB('fast')->iccProfileSizeThreshold(10);
+$url = $transformation->convertToSRGB(profile: 'fast')->iccProfileSizeThreshold(number: 10);
 // https://example.com/cdn/.../max_icc_size/10/srgb/fast/
 ```
 
@@ -357,7 +357,7 @@ $url = $transformation->mirror();
 ### Preview
 Downscales an image proportionally to fit the given width and height in pixels.
 ```php
-$url = $transformation->preview(100, 100);
+$url = $transformation->preview(width: 100, height: 100);
 // https://example.com/cdn/.../preview/100x100/
 ```
 
@@ -378,7 +378,7 @@ Sets output JPEG and WebP quality. Since actual settings vary from codec to code
 Quality must be one of the following values: `smart`, `smart_retina`, `normal`, `better`, `best`, `lighter`, `lightest`.
 
 ```php
-$url = $transformation->quality('smart');
+$url = $transformation->quality(quality: 'smart');
 // https://example.com/cdn/.../quality/smart/
 ```
 
@@ -387,11 +387,11 @@ Resizes an image to one or two dimensions. When you set both width and height ex
 
 ```php
 // Using width, height, stretch and 'fill' mode. 
-$url = $transformation->resize(100, null, true, 'fill');
+$url = $transformation->resize(width: 100, height: null, stretch: true, mode: 'fill');
 // https://example.com/cdn/.../resize/100x/stretch/fill/
 
 // Using only height, no stretch and no mode. 
-$url = $transformations->resize(null, 250, false);
+$url = $transformations->resize(width: null, height: 250, stretch: false);
 // https://example.com/cdn/.../resize/250x/
 ```
 
@@ -399,7 +399,7 @@ $url = $transformations->resize(null, 250, false);
 Right-angle image rotation, counterclockwise. The value of angle must be a multiple of 90.
 
 ```php
-$url = $transformation->rotate(180);
+$url = $transformation->rotate(angle: 180);
 // https://example.com/cdn/.../rotate/180/
 ```
 
@@ -412,11 +412,11 @@ Alignment must be set in percentages or shortcut. The possible values are: `top`
 
 ```php
 // Using percentages.
-$url = $transformation->scaleCrop(100, 100, '30p', '50p');
+$url = $transformation->scaleCrop(width: 100, height: 100, offsetX: '30p', offsetY: '50p');
 // https://example.com/cdn/.../scale_crop/100x100/30p,50p/
 
 // Using shortcut.
-$url = $transformation->scaleCrop(100, 100, 'bottom');
+$url = $transformation->scaleCrop(width: 100, height: 100, offsetX: 'bottom');
 // https://example.com/cdn/../scale_crop/100x100/bottom/
 ```
 
@@ -426,7 +426,7 @@ Sets the fill color used with crop, stretch or when converting an alpha channel 
 Color must be a hex color code.
 
 ```php
-$url = $transformation->setFill('#ff0000');
+$url = $transformation->setFill(color: '#ff0000');
 // https://example.com/cdn/.../set_fill/ff0000/
 ```
 
@@ -434,7 +434,7 @@ $url = $transformation->setFill('#ff0000');
 Sharpens an image, might be especially useful with images that were subjected to downscaling. strength can be in the range from 0 to 20 and defaults to the value of 5.
 
 ```php
-$url = $transformation->sharpen(50);
+$url = $transformation->sharpen(strength: 50);
 // https://example.com/cdn/.../sharp/50/
 ```
 
@@ -449,11 +449,11 @@ Aligment must be set in percentages or shortcut. The possible values are: `top`,
 
 ```php
 // Using percentages.
-$url = $transformation->smartCrop(100, 100, 'smart_faces_objects', '30p', '50p');
+$url = $transformation->smartCrop(width: 100, height: 100, type: 'smart_faces_objects', offsetX: '30p', offsetY: '50p');
 // https://example.com/cdn/.../smart_crop/100x100/smart_faces_objects/30p,50p/
 
 // Using shortcut.
-$url = $transformation->smartCrop(100, 100, 'smart_faces_objects', 'right');
+$url = $transformation->smartCrop(width: 100, height: 100, type: 'smart_faces_objects', offsetX: 'right');
 // https://example.com/cdn/.../smart_crop/100x100/smart_faces_objects/right/
 ```
 
@@ -461,7 +461,7 @@ $url = $transformation->smartCrop(100, 100, 'smart_faces_objects', 'right');
 Content-aware resize helps retaining original proportions of faces and other visually sensible objects while resizing the rest of the image using intelligent algorithms.
 
 ```php
-$url = $transformation->smartResize(500, 500);
+$url = $transformation->smartResize(width: 500, height: 500);
 // https://example.com/cdn/.../smart_resize/500x500/
 ```
 
@@ -471,7 +471,7 @@ Zoom objects operation is best suited for images with solid or uniform backgroun
 Zoom must be a number between 1 and 100.
 
 ```php 
-$url = $transformation->zoomObjects(50);
+$url = $transformation->zoomObjects(zoom: 50);
 // https://example.com/cdn/.../zoom_objects/50/
 ```
 
