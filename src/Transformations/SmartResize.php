@@ -29,7 +29,7 @@ class SmartResize implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // -/smart_resize/:dimensions/
-        $url .= '-/smart/' . $values['width'] . 'x' . $values['height'] . '/';
+        $url .= '-/smart_resize/' . $values['width'] . 'x' . $values['height'] . '/';
 
         return $url;
     }
