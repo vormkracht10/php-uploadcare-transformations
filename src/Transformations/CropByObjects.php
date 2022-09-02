@@ -80,7 +80,7 @@ class CropByObjects implements TransformationInterface
         if ($key === self::OFFSET_X && is_int($value) || $key === self::OFFSET_Y && is_int($value)) {
             return $value >= 0;
         }
-        
+
         if ($key === self::OFFSET_Y && is_string($value) || $key === self::WIDTH || $key === self::HEIGHT) {
             return self::isValidPercentage($value);
         }

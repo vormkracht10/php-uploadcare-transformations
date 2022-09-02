@@ -70,7 +70,7 @@ class Crop implements TransformationInterface
         if ($key === self::OFFSET_Y && is_string($value) || $key === self::WIDTH || $key === self::HEIGHT) {
             return self::isValidPercentage($value);
         }
-        
+
         return false;
     }
 
