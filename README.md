@@ -30,7 +30,7 @@ Generate Uploadcare image processing URLs to transform and process your images. 
   * [Format](#format)
   * [Grayscale](#grayscale)
   * [ICC profile size threshold](#icc-profile-size-threshold)
-  * [Inverting](#inverting)
+  * [Invert](#invert)
   * [Miror](#miror)
   * [Preview](#preview)
   * [Progressive](#progressive)
@@ -134,7 +134,7 @@ The current list of possible transformations and where to find the documentation
 | [Format](#format) | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/compression/#operation-format">Link</a>      |
 | [Grayscale](#grayscale) | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-grayscale">Link</a>      |
 | [ICC profile size threshold](#icc-profile-size-threshold)| <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-max-icc-size">Link</a>      |
-| [Inverting](#inverting) | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-inverting">Link</a>      |
+| [Invert](#invert) | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-inverting">Link</a>      |
 | [Miror](#miror) | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-mirror">Link</a>      |
 | [Preview](#preview) | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-preview">Link</a>      |
 | [Progressive](#progressive) | <a target="_blank" href="https://uploadcare.com/docs/transformations/image/compression/#operation-progressive">Link</a>      |
@@ -343,7 +343,7 @@ $url = $transformation->convertToSRGB(profile: 'fast')->iccProfileSizeThreshold(
 
 
 
-### Inverting 
+### Invert 
 Inverts images rendering a 'negative' of the input.
   
 ```php
