@@ -37,8 +37,11 @@ class UploadcareTransformation extends Transformations
             str_contains($url, 'filter') || 
             str_contains($url, 'zoom_objects')
         ) {
-            // Check if url contains 'preview' if not add it to the url
-            if (! str_contains($url, 'preview')) {
+            // Check if url contains 'resize', 'scale_crop' or 'preview'. If not add, add 'preview' to the url.
+            // By using 'preview' the image will not be changed and produce the biggest possible image. 
+            if (! str_contains($url, 'preview') || 
+                ! str_contains($url, 'scale_crop') || 
+                ! str_contains($url, 'resize')) {
                 $url .= '-/preview/';
             }
         }
