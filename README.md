@@ -427,7 +427,7 @@ Color must be a hex color code <b>without using the hashtag</b>.
 
 ```php
 $url = $transformation->setFill(color: 'ff0000');
-// https://example.com/cdn/.../-/set_fill/ff0000/
+// https://example.com/cdn/.../-/setfill/ff0000/
 ```
 
 ### Sharpen
