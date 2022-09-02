@@ -1,7 +1,9 @@
 # Composer package for generating URLs using Uploadcare for image transformations and processing.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/php-uploadcare-transformations.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/php-uploadcare-transformations)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/vormkracht10/php-uploadcare-transformations)
 [![Tests](https://github.com/vormkracht10/php-uploadcare-transformations/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/vormkracht10/php-uploadcare-transformations/actions/workflows/run-tests.yml)
+![Packagist PHP Version Support](https://img.shields.io/packagist/php-v/vormkracht10/php-uploadcare-transformations)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/vormkracht10/php-uploadcare-transformations.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/php-uploadcare-transformations)
 [![Total Downloads](https://img.shields.io/packagist/dt/vormkracht10/php-uploadcare-transformations.svg?style=flat-square)](https://packagist.org/packages/vormkracht10/php-uploadcare-transformations)
 
 Generate Uploadcare image processing URLs to transform and process your images. No need to write or generate the URL yourself. Just pass the UUID of the file, optionally pass the custom CDN and chain the methods you want to apply and the package generates the URL for you.
