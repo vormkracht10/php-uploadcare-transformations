@@ -90,7 +90,7 @@ $transformation = (new UploadcareTransformation($uuid, $cdn));
 $url = $transformation->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
 
 echo $url;
-// https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/crop/320x50p/center/set_fill/#ffffff
+// https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/-/crop/320x50p/center/-/set_fill/ffffff
 ```
 
 ## Documentation
