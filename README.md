@@ -434,8 +434,8 @@ $url = $transformation->setFill(color: 'ff0000');
 Sharpens an image, might be especially useful with images that were subjected to downscaling. strength can be in the range from 0 to 20 and defaults to the value of 5.
 
 ```php
-$url = $transformation->sharpen(strength: 50);
-// https://example.com/cdn/.../-/sharp/50/
+$url = $transformation->sharpen(strength: 20);
+// https://example.com/cdn/.../-/sharp/20/
 ```
 
 ### Smart crop
