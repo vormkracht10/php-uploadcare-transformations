@@ -313,7 +313,7 @@ $url = $transformation->flip();
 Converts an image to one of the following formats: `jpg`, `png`, `webp`, `auto`.
 
 ```php
-$url = $transformation->format(format: 'jpg');
+$url = $transformation->format(format: 'jpeg');
 // https://example.com/cdn/.../-/format/jpg/
 ```
 
