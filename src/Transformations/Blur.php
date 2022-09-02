@@ -11,14 +11,15 @@ class Blur implements TransformationInterface
 
     public static function transform(...$args): array
     {
-        $strength = $args[0];
-        $amount = $args[1] ?? null;
+        $strength = $args[0] ?? 0;
+        $amount = $args[1] ?? 0;
 
         if (! self::validate('amount', $amount)) {
             throw new \InvalidArgumentException('Invalid amount');
         }
 
         return [
+            self::STRENGTH => $strength,
             self::AMOUNT => $strength,
         ];
     }
