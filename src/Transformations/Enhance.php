@@ -10,9 +10,9 @@ class Enhance implements TransformationInterface
 
     public static function transform(...$args): array
     {
-        $strength = $args[0];
+        $strength = $args[0] ?? 0;
 
-        if (! self::validate($strength)) {
+        if (! self::validate('strength', $strength)) {
             throw new \InvalidArgumentException('Invalid strength');
         }
 
@@ -25,7 +25,7 @@ class Enhance implements TransformationInterface
     {
         $value = $args[0];
 
-        if ($key !== self::STRENGTH) {
+        if ($key == self::STRENGTH) {
             return $value >= 0 && $value <= 100;
         }
 
