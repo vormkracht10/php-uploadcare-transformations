@@ -254,11 +254,11 @@ Dimensions and alignment must be set in percentages. In case of the alignment yo
 
 ```php
 // Using no ratio, percentages and pixels combined.
-$url = $transformation->cropByObject(tag: 'face', ratio: null, width: 200, height: '50p');
+$url = $transformation->cropByObjects(tag: 'face', ratio: null, width: 200, height: '50p');
 // https://example.com/cdn/../-/crop/face/200x50p/
 
 // Using ratio, percentages and a shortcut.
-$url = $transformation->cropByObject(tag: 'face', ratio: '4:3', width: '50p', height: '50p', offsetX: 'bottom');
+$url = $transformation->cropByObjects(tag: 'face', ratio: '4:3', width: '50p', height: '50p', offsetX: 'bottom');
 // https://example.com/cdn/../-/crop/face/4:3/50px50p/bottom/
 ```
 
