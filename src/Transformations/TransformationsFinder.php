@@ -19,7 +19,7 @@ class TransformationsFinder
     public const FORMAT = 'format';
     public const GRAYSCALE = 'grayscale';
     public const ICC_PROFILE_SIZE_THRESHOLD = 'icc_profile_size_threshold';
-    public const INVERTING = 'inverting';
+    public const INVERT = 'invert';
     public const MIRROR = 'mirror';
     public const PREVIEW = 'preview';
     public const PROGRESSIVE = 'progressive';
@@ -51,7 +51,7 @@ class TransformationsFinder
             self::FORMAT => Format::class,
             self::GRAYSCALE => Grayscale::class,
             self::ICC_PROFILE_SIZE_THRESHOLD => ICCProfileSizeThreshold::class,
-            self::INVERTING => Inverting::class,
+            self::INVERT => Invert::class,
             self::MIRROR => Mirror::class,
             self::PREVIEW => Preview::class,
             self::PROGRESSIVE => Progressive::class,

@@ -17,7 +17,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Flip;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
 use Vormkracht10\UploadcareTransformations\Transformations\Grayscale;
 use Vormkracht10\UploadcareTransformations\Transformations\ICCProfileSizeThreshold;
-use Vormkracht10\UploadcareTransformations\Transformations\Inverting;
+use Vormkracht10\UploadcareTransformations\Transformations\Invert;
 use Vormkracht10\UploadcareTransformations\Transformations\Mirror;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
@@ -268,9 +268,9 @@ class Transformations
      *
      * @return self
      */
-    public function inverting(): self
+    public function invert(): self
     {
-        $this->transformations['inverting'] = Inverting::transform();
+        $this->transformations['invert'] = Invert::transform();
 
         return $this;
     }
