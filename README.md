@@ -235,7 +235,7 @@ $url = $transformation->crop(width: 100, height: '50p', offsetX: 'center');
 // https://example.com/cdn/.../-/crop/100x50p/center/
 
 // Using pixels only.
-$url = $transformation->crop(width: 100, height: 100, offsetX: '50p', offsetY: '50p');
+$url = $transformation->crop(width: 100, height: 100, offsetX: 50, offsetY: 50);
 // https://example.com/cdn/.../-/crop/100x100/50,50/
 
 // Using both pixels and percentages.
