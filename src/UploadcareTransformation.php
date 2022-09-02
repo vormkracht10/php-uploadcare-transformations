@@ -31,16 +31,16 @@ class UploadcareTransformation extends Transformations
         $url = $this->applyTransformations($this->baseUrl . $this->uuid . '/');
 
         // Check if url contains one of the following strings: 'blur_region', 'enhance', 'filter', 'zoom_objects'
-        // because these transformations won't work if they do not contain the preview transformation as well. 
-        if (str_contains($url, 'blur_region') || 
-            str_contains($url, 'enhance') || 
-            str_contains($url, 'filter') || 
+        // because these transformations won't work if they do not contain the preview transformation as well.
+        if (str_contains($url, 'blur_region') ||
+            str_contains($url, 'enhance') ||
+            str_contains($url, 'filter') ||
             str_contains($url, 'zoom_objects')
         ) {
             // Check if url contains 'resize', 'scale_crop' or 'preview'. If not add, add 'preview' to the url.
-            // By using 'preview' the image will not be changed and produce the biggest possible image. 
-            if (! str_contains($url, 'preview') || 
-                ! str_contains($url, 'scale_crop') || 
+            // By using 'preview' the image will not be changed and produce the biggest possible image.
+            if (! str_contains($url, 'preview') ||
+                ! str_contains($url, 'scale_crop') ||
                 ! str_contains($url, 'resize')) {
                 $url .= '-/preview/';
             }
