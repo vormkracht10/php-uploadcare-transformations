@@ -86,25 +86,25 @@ class CropByObjects implements TransformationInterface
 
     public static function generateUrl(string $url, array $values): string
     {
-        if (isset($values['width']) && isset($values['height']) && isset($values['align'])) {
-            // -/crop/:tag/:dimensions/:alignment/
-            $url .= '-/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'] . '/';
-        } elseif (isset($values['width']) && isset($values['height']) && isset($values['offset_x']) && isset($values['offset_y'])) {
+        if (isset($values['width']) && isset($values['height']) && isset($values['offset_x']) && isset($values['offset_y'])) {
             // -/crop/:tag/:dimensions/:alignment/
             $url .= '-/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/' . $values['offset_x'] . ',' . $values['offset_y'] . '/';
         } elseif (isset($values['ratio']) && isset($values['offset_x']) && isset($values['offset_y'])) {
             // -/crop/:tag/:ratio/:alignment/
             $url .= '-/crop/' . $values['tag'] . '/' . $values['ratio'] . '/' . $values['offset_x'] . ',' . $values['offset_y'] . '/';
-        } elseif (isset($values['width']) && isset($values['height'])) {
-            // -/crop/:tag/:dimensions/
-            $url .= '-/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/';
         } elseif (isset($values['ratio']) && isset($values['align'])) {
             // -/crop/:tag/:ratio/:alignment/
             $url .= '-/crop/' . $values['tag'] . '/' . $values['ratio'] . '/' . $values['align'] . '/';
         } elseif (isset($values['ratio'])) {
             // -/crop/:tag/:ratio/
             $url .= '-/crop/' . $values['tag'] . '/' . $values['ratio'] . '/';
-        } else {
+        } else if (isset($values['width']) && isset($values['height']) && isset($values['align'])) {
+            // -/crop/:tag/:dimensions/:alignment/
+            $url .= '-/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'] . '/';
+        } elseif (isset($values['width']) && isset($values['height'])) {
+            // -/crop/:tag/:dimensions/
+            $url .= '-/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/';
+        }   else {
             // -/crop/:tag/
             $url .= '-/crop/' . $values['tag'] . '/';
         }
