@@ -1,4 +1,4 @@
-# Composer package for generating URLs using Uploadcare for image transformations and processing.
+# Easy Uploadcare Image Transformation URLs generation
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/vormkracht10/php-uploadcare-transformations)
 [![Tests](https://github.com/vormkracht10/php-uploadcare-transformations/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/vormkracht10/php-uploadcare-transformations/actions/workflows/run-tests.yml)
