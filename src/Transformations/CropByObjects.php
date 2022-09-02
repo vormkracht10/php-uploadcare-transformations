@@ -98,13 +98,13 @@ class CropByObjects implements TransformationInterface
         } elseif (isset($values['ratio'])) {
             // -/crop/:tag/:ratio/
             $url .= '-/crop/' . $values['tag'] . '/' . $values['ratio'] . '/';
-        } else if (isset($values['width']) && isset($values['height']) && isset($values['align'])) {
+        } elseif (isset($values['width']) && isset($values['height']) && isset($values['align'])) {
             // -/crop/:tag/:dimensions/:alignment/
             $url .= '-/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'] . '/';
         } elseif (isset($values['width']) && isset($values['height'])) {
             // -/crop/:tag/:dimensions/
             $url .= '-/crop/' . $values['tag'] . '/' . $values['width'] . 'x' . $values['height'] . '/';
-        }   else {
+        } else {
             // -/crop/:tag/
             $url .= '-/crop/' . $values['tag'] . '/';
         }
