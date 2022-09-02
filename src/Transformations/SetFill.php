@@ -13,7 +13,7 @@ class SetFill implements TransformationInterface
         $color = $args[0];
 
         if (! self::validate('color', $color)) {
-            throw new \InvalidArgumentException('Color must be a valid hex color');
+            throw new \InvalidArgumentException('Color must be a valid hex color (without #)');
         }
 
         return [
@@ -26,18 +26,18 @@ class SetFill implements TransformationInterface
         $value = $args[0];
 
         if ($key === self::COLOR) {
-            if (preg_match('/^#[a-f0-9]{6}$/i', $value)) {
+            if (preg_match('/^[a-f0-9]{6}$/i', $value)) {
                 return true;
             }
         }
 
-        return false;
+        return true;
     }
 
     public static function generateUrl(string $url, array $values): string
     {
         // -/set_fill/:color
-        $url .= '/set_fill/' . $values['color'];
+        $url .= '-/setfill/' . $values['color'] . '/';
 
         return $url;
     }

@@ -87,7 +87,7 @@ $cdnUrl = 'https://example.com/cdn/';
 
 $transformation = (new UploadcareTransformation($uuid, $cdn));
 
-$url = $transformation->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: '#ffffff');
+$url = $transformation->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
 
 echo $url;
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/crop/320x50p/center/set_fill/#ffffff
@@ -423,10 +423,10 @@ $url = $transformation->scaleCrop(width: 100, height: 100, offsetX: 'bottom');
 ### Set fill 
 Sets the fill color used with crop, stretch or when converting an alpha channel enabled image to JPEG.
 
-Color must be a hex color code.
+Color must be a hex color code <b>without using the hashtag</b>.
 
 ```php
-$url = $transformation->setFill(color: '#ff0000');
+$url = $transformation->setFill(color: 'ff0000');
 // https://example.com/cdn/.../set_fill/ff0000/
 ```
 

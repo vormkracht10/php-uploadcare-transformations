@@ -28,7 +28,7 @@ class UploadcareTransformation extends Transformations
 
     public function getUrl(): string
     {
-        $url = $this->applyTransformations($this->baseUrl . $this->uuid);
+        $url = $this->applyTransformations($this->baseUrl . $this->uuid . '/');
 
         if (! str_ends_with($url, '/')) {
             $url .= '/';
@@ -56,6 +56,7 @@ class UploadcareTransformation extends Transformations
     {
         $transformations = TransformationsFinder::for($this->transformations);
 
+        // TODO: After each transformation '-' should be added to the URL.
         foreach ($transformations as $transformation) {
             $url = $transformation['class']::generateUrl($url, $transformation['values']);
         }
