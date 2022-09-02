@@ -65,8 +65,12 @@ class CropByRatio implements TransformationInterface
             return Offset::tryFrom($value) || self::isValidPercentage($value);
         }
 
-        if ($key === self::OFFSET_Y) {
+        if ($key === self::OFFSET_Y && is_string($value)) {
             return self::isValidPercentage($value);
+        }
+
+        if ($key === self::OFFSET_Y && is_int($value)) {
+            return $value >= 0;
         }
 
         return false;
