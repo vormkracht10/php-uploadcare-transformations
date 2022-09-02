@@ -342,8 +342,8 @@ $url = $transformation->convertToSRGB(profile: 'fast')->iccProfileSizeThreshold(
 Inverts images rendering a 'negative' of the input.
   
 ```php
-$url = $transformation->invert();
-// https://example.com/cdn/.../-/invert/
+$url = $transformation->inverting();
+// https://example.com/cdn/.../-/inverting/
 ```
 
 ### Miror
