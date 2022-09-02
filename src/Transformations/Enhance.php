@@ -35,7 +35,7 @@ class Enhance implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // -/enhance/:strength
-        $url .= '/enhance/' . $values['strength'];
+        $url .= '-/enhance/' . $values['strength'] . '/';
 
         return $url;
     }

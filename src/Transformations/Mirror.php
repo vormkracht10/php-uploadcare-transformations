@@ -19,7 +19,7 @@ class Mirror implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // /mirror/
-        $url .= '/mirror/';
+        $url .= '-/mirror/';
 
         return $url;
     }

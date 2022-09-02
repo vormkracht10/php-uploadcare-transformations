@@ -27,7 +27,7 @@ class AutoRotate implements TransformationInterface
         $value = ($values['auto_rotate']) ? 'yes' : 'no';
 
         // -/autorotate/:no/
-        $url .= '/autorotate/' . $value;
+        $url .= '-/autorotate/' . $value . '/';
 
         return $url;
     }

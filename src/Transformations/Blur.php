@@ -38,7 +38,7 @@ class Blur implements TransformationInterface
     {
         // Strength and amount might be null
         // -/blur/:strength/:amount
-        $url .= '/blur/' . $values['strength'] . '/' . $values['amount'];
+        $url .= '-/blur/' . $values['strength'] . '/' . $values['amount'] . '/';
 
         return $url;
     }

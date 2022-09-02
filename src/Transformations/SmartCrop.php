@@ -79,13 +79,13 @@ class SmartCrop implements TransformationInterface
     {
         if (! isset($values['align']) && ! isset($values['offset_x']) && ! isset($values['offset_y'])) {
             // -/smart_crop/:dimensions/:type
-            $url .= '/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'];
+            $url .= '-/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/';
         } elseif (isset($values['align'])) {
             // -/smart_crop/:dimensions/:type/:alignment
-            $url .= '/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['align'];
+            $url .= '-/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['align'] . '/';
         } elseif (isset($values['offset_x']) && isset($values['offset_y'])) {
             // -/smart_crop/:dimensions/:type/:alignment
-            $url .= '/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['offset_x'] . ',' . $values['offset_y'];
+            $url .= '-/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['offset_x'] . ',' . $values['offset_y'] . '/';
         }
 
         return $url;

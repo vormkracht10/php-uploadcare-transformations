@@ -30,7 +30,7 @@ class Quality implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // -/quality/:quality
-        $url .= '/quality/' . $values['quality'];
+        $url .= '-/quality/' . $values['quality'] . '/';
 
         return $url;
     }

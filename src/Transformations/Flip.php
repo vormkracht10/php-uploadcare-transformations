@@ -19,7 +19,7 @@ class Flip implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // /flip/
-        $url .= '/flip/';
+        $url .= '-/flip/';
 
         return $url;
     }

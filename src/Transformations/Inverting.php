@@ -19,7 +19,7 @@ class Inverting implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // -/inverting
-        $url .= '/inverting';
+        $url .= '-/inverting/';
 
         return $url;
     }

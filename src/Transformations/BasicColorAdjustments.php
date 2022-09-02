@@ -61,7 +61,7 @@ class BasicColorAdjustments implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // -/:value/:color
-        $url .= '/basic_color_adjustments/' . $values['value'] . '/' . $values['color'];
+        $url .= '-/basic_color_adjustments/' . $values['value'] . '/' . $values['color'] . '/';
 
         return $url;
     }

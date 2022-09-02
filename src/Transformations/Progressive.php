@@ -27,7 +27,7 @@ class Progressive implements TransformationInterface
         $value = ($values['progressive']) ? 'yes' : 'no';
 
         // -/progressive/:value
-        $url .= '/progressive/' . $value;
+        $url .= '-/progressive/' . $value . '/';
 
         return $url;
     }

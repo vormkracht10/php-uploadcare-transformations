@@ -19,7 +19,7 @@ class Grayscale implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // -/grayscale
-        $url .= '/grayscale';
+        $url .= '-/grayscale/';
 
         return $url;
     }

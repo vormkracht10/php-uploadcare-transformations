@@ -31,11 +31,11 @@ class ConvertToSRGB implements TransformationInterface
     {
         if (isset($values['size'])) {
             // -/max_icc_size/:number
-            $url .= '/max_icc_size/' . $values['size'];
+            $url .= '-/max_icc_size/' . $values['size'] . '/';
         }
 
         // -/srgb/:profile
-        $url .= '/srgb/' . $values['profile'];
+        $url .= '-/srgb/' . $values['profile'] . '/';
 
         return $url;
     }

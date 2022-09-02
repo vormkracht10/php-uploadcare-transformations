@@ -33,7 +33,7 @@ class Rotate implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // -/rotate/:angle/
-        $url .= '/rotate/' . $values['angle'];
+        $url .= '-/rotate/' . $values['angle'] . '/';
 
         return $url;
     }

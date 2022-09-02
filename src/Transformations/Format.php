@@ -30,7 +30,7 @@ class Format implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // -/format/:format
-        $url .= '/format/' . $values['format'];
+        $url .= '-/format/' . $values['format'] . '/';
 
         return $url;
     }

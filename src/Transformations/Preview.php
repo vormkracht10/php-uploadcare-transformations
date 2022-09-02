@@ -28,7 +28,7 @@ class Preview implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // -/preview/:dimensions/
-        $url .= '/preview/' . $values['width'] . 'x' . $values['height'];
+        $url .= '-/preview/' . $values['width'] . 'x' . $values['height'] . '/';
 
         return $url;
     }

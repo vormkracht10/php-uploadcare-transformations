@@ -76,13 +76,13 @@ class CropByRatio implements TransformationInterface
     {
         if (isset($values['align'])) {
             // -/crop/:ratio/:alignment/
-            $url .= '/crop/' . $values['ratio'] . '/' . $values['align'];
+            $url .= '-/crop/' . $values['ratio'] . '/' . $values['align'] . '/';
         } elseif (isset($values['offset_y']) && isset($values['offset_x'])) {
             // -/crop/:ratio/:alignment/
-            $url .= '/crop/' . $values['ratio'] . '/' . $values['offset_x'] . ',' . $values['offset_y'];
+            $url .= '-/crop/' . $values['ratio'] . '/' . $values['offset_x'] . ',' . $values['offset_y'] . '/';
         } else {
             // -/crop/:ratio/
-            $url .= '/crop/' . $values['ratio'];
+            $url .= '-/crop/' . $values['ratio'] . '/';
         }
 
         return $url;

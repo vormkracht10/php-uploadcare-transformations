@@ -66,13 +66,13 @@ class ScaleCrop implements TransformationInterface
     {
         if (! isset($values['offset_x']) && ! isset($values['offset_y']) && ! isset($values['align'])) {
             // -/scale_crop/:dimensions/
-            $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'];
+            $url .= '-/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/';
         } elseif (isset($values['width']) && isset($values['height']) && isset($values['align'])) {
             // -/scale_crop/:dimensions/:alignment/
-            $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'];
+            $url .= '-/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['align'] . '/';
         } elseif (isset($values['width']) && isset($values['height']) && isset($values['offset_x']) && isset($values['offset_y'])) {
             // -/scale_crop/:dimensions/:alignment/
-            $url .= '/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['offset_x'] . ',' . $values['offset_y'];
+            $url .= '-/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['offset_x'] . ',' . $values['offset_y'] . '/';
         }
 
         return $url;
