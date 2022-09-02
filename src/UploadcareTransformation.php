@@ -30,6 +30,19 @@ class UploadcareTransformation extends Transformations
     {
         $url = $this->applyTransformations($this->baseUrl . $this->uuid . '/');
 
+        // Check if url contains one of the following strings: 'blur_region', 'enhance', 'filter', 'zoom_objects'
+        // because these transformations won't work if they do not contain the preview transformation as well. 
+        if (str_contains($url, 'blur_region') || 
+            str_contains($url, 'enhance') || 
+            str_contains($url, 'filter') || 
+            str_contains($url, 'zoom_objects')
+        ) {
+            // Check if url contains 'preview' if not add it to the url
+            if (! str_contains($url, 'preview')) {
+                $url .= '-/preview/';
+            }
+        }
+
         if (! str_ends_with($url, '/')) {
             $url .= '/';
         }
@@ -56,7 +69,6 @@ class UploadcareTransformation extends Transformations
     {
         $transformations = TransformationsFinder::for($this->transformations);
 
-        // TODO: After each transformation '-' should be added to the URL.
         foreach ($transformations as $transformation) {
             $url = $transformation['class']::generateUrl($url, $transformation['values']);
         }
