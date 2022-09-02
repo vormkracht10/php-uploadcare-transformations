@@ -252,10 +252,13 @@ Ratio are two numbers greater than zero separated by :. Ratio is the quotient fr
 
 Dimensions and alignment must be set in percentages. In case of the alignment you can also use the shortcut. The possible values are: `top`, `center`, `bottom`, `left`, `right`. If alignment is not specified, `center` value is used.
 
+> Dimensions should be relative when used with a tag. So you are required to set both width and height with pixels.
+
+
 ```php
 // Using no ratio, percentages and pixels combined.
-$url = $transformation->cropByObjects(tag: 'face', ratio: null, width: 200, height: '50p');
-// https://example.com/cdn/../-/crop/face/200x50p/
+$url = $transformation->cropByObjects(tag: 'face', ratio: null, width: '50p', height: '50p');
+// https://example.com/cdn/../-/crop/face/50px50p/
 
 // Using ratio, percentages and a shortcut.
 $url = $transformation->cropByObjects(tag: 'face', ratio: '4:3', width: '50p', height: '50p', offsetX: 'bottom');
