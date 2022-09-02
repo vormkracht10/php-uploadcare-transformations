@@ -109,15 +109,15 @@ it('can smart crop', function () {
     $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
     $transformation = uploadcare($uuid);
 
-    // -/smart_crop/:dimensions/:type
+    // -/scale_crop/:dimensions/:type
     $url = (string) $transformation->smartCrop(width: 200, height: 200, type: 'smart');
-    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/smart_crop/200x200/smart/');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/scale_crop/200x200/smart/');
 
-    // -/smart_crop/:dimensions/:type/:alignment
+    // -/scale_crop/:dimensions/:type/:alignment
     $url = (string) $transformation->smartCrop(width: 200, height: 200, type: 'smart', offsetX: 'center');
-    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/smart_crop/200x200/smart/center/');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/scale_crop/200x200/smart/center/');
 
-    // -/smart_crop/:dimensions/:type/:alignment
+    // -/scale_crop/:dimensions/:type/:alignment
     $url = (string) $transformation->smartCrop(width: 200, height: 200, type: 'smart', offsetX: '50p', offsetY: '50p');
-    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/smart_crop/200x200/smart/50p,50p/');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/scale_crop/200x200/smart/50p,50p/');
 });

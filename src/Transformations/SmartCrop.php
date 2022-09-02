@@ -78,14 +78,14 @@ class SmartCrop implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         if (! isset($values['align']) && ! isset($values['offset_x']) && ! isset($values['offset_y'])) {
-            // -/smart_crop/:dimensions/:type
-            $url .= '-/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/';
+            // -/scale_crop/:dimensions/:type
+            $url .= '-/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/';
         } elseif (isset($values['align'])) {
-            // -/smart_crop/:dimensions/:type/:alignment
-            $url .= '-/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['align'] . '/';
+            // -/scale_crop/:dimensions/:type/:alignment
+            $url .= '-/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['align'] . '/';
         } elseif (isset($values['offset_x']) && isset($values['offset_y'])) {
-            // -/smart_crop/:dimensions/:type/:alignment
-            $url .= '-/smart_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['offset_x'] . ',' . $values['offset_y'] . '/';
+            // -/scale_crop/:dimensions/:type/:alignment
+            $url .= '-/scale_crop/' . $values['width'] . 'x' . $values['height'] . '/' . $values['type'] . '/' . $values['offset_x'] . ',' . $values['offset_y'] . '/';
         }
 
         return $url;

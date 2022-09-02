@@ -453,11 +453,11 @@ Aligment must be set in percentages or shortcut. The possible values are: `top`,
 ```php
 // Using percentages.
 $url = $transformation->smartCrop(width: 100, height: 100, type: 'smart_faces_objects', offsetX: '30p', offsetY: '50p');
-// https://example.com/cdn/.../-/smart_crop/100x100/smart_faces_objects/30p,50p/
+// https://example.com/cdn/.../-/scale_crop/100x100/smart_faces_objects/30p,50p/
 
 // Using shortcut.
 $url = $transformation->smartCrop(width: 100, height: 100, type: 'smart_faces_objects', offsetX: 'right');
-// https://example.com/cdn/.../-/smart_crop/100x100/smart_faces_objects/right/
+// https://example.com/cdn/.../-/scale_crop/100x100/smart_faces_objects/right/
 ```
 
 ### Smart resize
