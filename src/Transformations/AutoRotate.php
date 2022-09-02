@@ -10,7 +10,7 @@ class AutoRotate implements TransformationInterface
 
     public static function transform(...$args): array
     {
-        $autoRotate = $args[0];
+        $autoRotate = $args['auto_rotate'] ?? false;
 
         return [
             self::AUTO_ROTATE => $autoRotate,
