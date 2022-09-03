@@ -8,5 +8,5 @@ interface TransformationInterface
 
     public static function transform(...$args): array;
 
-    public static function generateUrl(string $url, array $transformations): string;
+    public static function generateUrl(string $url, array $values): string;
 }
