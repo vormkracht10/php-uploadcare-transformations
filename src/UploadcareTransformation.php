@@ -7,7 +7,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder
 class UploadcareTransformation extends Transformations
 {
     protected string $uuid;
-    protected array $transformations;
+    protected array $transformations = [];
     protected string $url;
     protected string $baseUrl;
     protected ?string $filename = null;
@@ -15,7 +15,6 @@ class UploadcareTransformation extends Transformations
     public function __construct(string $uuid, string $cdnUrl = 'https://ucarecdn.com/')
     {
         $this->uuid = $uuid;
-        $this->transformations = [];
         $this->baseUrl = $cdnUrl;
     }
 
