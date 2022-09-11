@@ -8,6 +8,8 @@
 
 Generate Uploadcare image processing URLs to transform and process your images. No need to write or generate the URL yourself. Just pass the UUID of the file, optionally pass the custom CDN and chain the methods you want to apply and the package generates the URL for you.
 
+>If you are using the Laravel framework and prefer to use a facade, check out the [Laravel Uploadcare Transformations](https://github.com/vormkracht10/laravel-uploadcare-transformations) package. It is a wrapper around this package with the exact same functions.
+
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
