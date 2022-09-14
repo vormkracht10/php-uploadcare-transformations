@@ -8,7 +8,6 @@
 
 Generate Uploadcare image processing URLs to transform and process your images. No need to write or generate the URL yourself. Just pass the UUID of the file, optionally pass the custom CDN and chain the methods you want to apply and the package generates the URL for you.
 
->If you are using the Laravel framework and prefer to use a facade, check out the [Laravel Uploadcare Transformations](https://github.com/vormkracht10/laravel-uploadcare-transformations) package. It is a wrapper around this package with the exact same functions.
 
 - [Requirements](#requirements)
 - [Installation](#installation)
@@ -89,7 +88,7 @@ use Vormkracht10\UploadcareTransformations\UploadcareTransformation;
 $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
 $cdnUrl = 'https://example.com/cdn/';
 
-$transformation = (new UploadcareTransformation($uuid, $cdn));
+$transformation = (new UploadcareTransformation($uuid, $cdnUrl));
 
 $url = $transformation->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
 
@@ -107,6 +106,26 @@ $url = uc($uuid, $cdnUrl)->crop(width: 320, height: '50p', offsetX: 'center')->s
 
 echo $url;
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/-/crop/320x50p/center/-/set_fill/ffffff
+```
+
+### Using the Laravel framework
+When you are using the Laravel framework it might be better to define the CDN in your `.env` file and get the value from the `.env` file in a config file. You can create a dedicated `config/uploadcare` config or add it to the `config/services` file. 
+
+Your `.env` file:
+```dotenv
+UPLOADCARE_CDN=https://example.com/cdn/
+```
+
+Your `config/uploadcare.php` file:
+```php
+return [
+    'cdn' => env('UPLOADCARE_CDN', 'https://ucarecdn.com'),
+];
+```
+
+In your code:
+```php
+$url = uc($uuid, config('uploadcare.cdn'))->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
 ```
 
 ## Documentation
