@@ -68,7 +68,7 @@ composer require vormkracht10/php-uploadcare-transformations
 
 <ol>
     <li>
-        Include UploadcareTransformation.
+        Import UploadcareTransformation.
     </li>
      <li>
         Get the UUID of the file you want to show.
