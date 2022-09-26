@@ -12,5 +12,9 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
+      - name: Composer install
+        uses: ramsey/composer-install@v1
+        run: composer install --prefer-dist --no-interaction
+
       - name: Run PHPStan
         run: vendor/bin/phpstan analyse
