@@ -21,6 +21,7 @@ class TransformationsFinder
     public const ICC_PROFILE_SIZE_THRESHOLD = 'icc_profile_size_threshold';
     public const INVERT = 'invert';
     public const MIRROR = 'mirror';
+    public const OVERLAY = 'overlay';
     public const PREVIEW = 'preview';
     public const PROGRESSIVE = 'progressive';
     public const QUALITY = 'quality';
@@ -53,6 +54,7 @@ class TransformationsFinder
             self::ICC_PROFILE_SIZE_THRESHOLD => ICCProfileSizeThreshold::class,
             self::INVERT => Invert::class,
             self::MIRROR => Mirror::class,
+            self::OVERLAY => Overlay::class,
             self::PREVIEW => Preview::class,
             self::PROGRESSIVE => Progressive::class,
             self::QUALITY => Quality::class,
