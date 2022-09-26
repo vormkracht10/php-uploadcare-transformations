@@ -2,6 +2,14 @@
 
 All notable changes to `php-uploadcare-transformations` will be documented in this file.
 
+## v0.3.0 - 2022-09-26
+
+### What's Changed
+
+- Static analysis by @Baspa in https://github.com/vormkracht10/php-uploadcare-transformations/pull/16
+
+**Full Changelog**: https://github.com/vormkracht10/php-uploadcare-transformations/compare/v0.2.1...v0.3.0
+
 ## First official release - 2022-09-09
 
 **Full Changelog**: https://github.com/vormkracht10/php-uploadcare-transformations/compare/v0.2.0...v0.2.1
