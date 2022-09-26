@@ -17,7 +17,7 @@ class UploadcareTransformation extends Transformations
         $this->baseUrl = $cdnUrl;
     }
 
-    public function filename(string $filename)
+    public function filename(string $filename): string
     {
         $this->filename = $filename;
 
@@ -55,7 +55,7 @@ class UploadcareTransformation extends Transformations
         return $url;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getUrl();
     }
