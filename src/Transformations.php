@@ -32,6 +32,8 @@ use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
 
 class Transformations
 {
+    protected array $transformations = [];
+
     /**
      * Downscales an image proportionally to fit the given width and height in pixels.
      *
@@ -98,10 +100,10 @@ class Transformations
      *
      * @param string $ratio two numbers greater than zero separated by :
      * @param int|string $offsetX horizontal and vertical offsets in pixels or percents or shortcuts.
-     * @param int $offsetY horizontal and vertical offsets in percents.
+     * @param string|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function cropByRatio(string $ratio, int|string $offsetX = null, int|string $offsetY = null): self
+    public function cropByRatio(string $ratio, int|string $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['crop_by_ratio'] = CropByRatio::transform($ratio, $offsetX, $offsetY);
 
@@ -114,12 +116,12 @@ class Transformations
      * @param string $tag one of the tags.
      * @param string $ratio two numbers greater than zero separated by :
      * @param string $width in percentages e.g. 50p.
-     * @param string $heigt in percentages e.g. 50p.
-     * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
-     * @param string $offsetY horizontal and vertical offsets in percents.
+     * @param string $height in percentages e.g. 50p.
+     * @param int|string $offsetX horizontal and vertical offsets in percents or shortcuts.
+     * @param string|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $height = null, int|string $offsetX = null, string $offsetY = null): self
+    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $height = null, int|string $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['crop_by_objects'] = CropByObjects::transform($tag, $ratio, $width, $height, $offsetX, $offsetY);
 
@@ -131,11 +133,11 @@ class Transformations
      *
      * @param int $width in pixels.
      * @param int $height in pixels.
-     * @param int $offsetX horizontal and vertical offsets in percents or shortcuts.
-     * @param int|null $offsetY horizontal and vertical offsets in percents.
+     * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
+     * @param string|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function scaleCrop(int $width, int $height, string $offsetX = null, $offsetY = null): self
+    public function scaleCrop(int $width, int $height, string $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['scale_crop'] = ScaleCrop::transform($width, $height, $offsetX, $offsetY);
 
@@ -148,11 +150,11 @@ class Transformations
      * @param int $width in pixels.
      * @param int $height in pixels.
      * @param string $type one of the types.
-     * @param int $offsetX horizontal and vertical offsets in percents or shortcuts.
-     * @param int|null $offsetY horizontal and vertical offsets in percents.
+     * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
+     * @param string|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function smartCrop(int $width, int $height, string $type, string $offsetX = null, string $offsetY = null): self
+    public function smartCrop(int $width, int $height, string $type, string $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['smart_crop'] = SmartCrop::transform($width, $height, $type, $offsetX, $offsetY);
 
@@ -175,7 +177,7 @@ class Transformations
     /**
      * Sets the object's size in the image from 1 to 100.
      *
-     * @param string integer between 1 and 100.
+     * @param int $zoom integer between 1 and 100.
      * @return self
      */
     public function zoomObjects(int $zoom): self
@@ -377,7 +379,7 @@ class Transformations
     /**
      * The default behavior goes with parsing EXIF tags of original images and rotating them according to the “Orientation” tag.
      *
-     * @param int $angle
+     * @param bool $rotate
      * @return self
      */
     public function autoRotate(bool $rotate): self

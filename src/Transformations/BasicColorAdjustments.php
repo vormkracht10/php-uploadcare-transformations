@@ -52,10 +52,10 @@ class BasicColorAdjustments implements TransformationInterface
                     return $value >= -100 && $value <= 100;
                 default:
                     return false;
-
-                    break;
             }
         }
+
+        return false;
     }
 
     public static function generateUrl(string $url, array $values): string
