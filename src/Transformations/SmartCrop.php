@@ -69,7 +69,7 @@ class SmartCrop implements TransformationInterface
         }
 
         if ($key === self::TYPE) {
-            return CropType::tryFrom($value);
+            return CropType::tryFrom($value) !== null;
         }
 
         return false;
