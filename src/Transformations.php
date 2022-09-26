@@ -377,7 +377,7 @@ class Transformations
     /**
      * The default behavior goes with parsing EXIF tags of original images and rotating them according to the “Orientation” tag.
      *
-     * @param int $angle
+     * @param int $rotate
      * @return self
      */
     public function autoRotate(bool $rotate): self
