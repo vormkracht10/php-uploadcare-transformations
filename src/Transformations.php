@@ -100,10 +100,10 @@ class Transformations
      *
      * @param string $ratio two numbers greater than zero separated by :
      * @param int|string $offsetX horizontal and vertical offsets in pixels or percents or shortcuts.
-     * @param int $offsetY horizontal and vertical offsets in percents.
+     * @param string|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function cropByRatio(string $ratio, int|string $offsetX = null, int|string $offsetY = null): self
+    public function cropByRatio(string $ratio, int|string $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['crop_by_ratio'] = CropByRatio::transform($ratio, $offsetX, $offsetY);
 
@@ -117,11 +117,11 @@ class Transformations
      * @param string $ratio two numbers greater than zero separated by :
      * @param string $width in percentages e.g. 50p.
      * @param string $height in percentages e.g. 50p.
-     * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
-     * @param string $offsetY horizontal and vertical offsets in percents.
+     * @param int|string $offsetX horizontal and vertical offsets in percents or shortcuts.
+     * @param string|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $height = null, int|string $offsetX = null, string $offsetY = null): self
+    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $height = null, int|string $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['crop_by_objects'] = CropByObjects::transform($tag, $ratio, $width, $height, $offsetX, $offsetY);
 
@@ -134,10 +134,10 @@ class Transformations
      * @param int $width in pixels.
      * @param int $height in pixels.
      * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
-     * @param int|null $offsetY horizontal and vertical offsets in percents.
+     * @param string|null $offsetY horizontal and vertical offsets in percents.
      * @return self
      */
-    public function scaleCrop(int $width, int $height, string $offsetX = null, int|null $offsetY = null): self
+    public function scaleCrop(int $width, int $height, string $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['scale_crop'] = ScaleCrop::transform($width, $height, $offsetX, $offsetY);
 
