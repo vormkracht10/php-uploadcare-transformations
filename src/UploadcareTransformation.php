@@ -7,7 +7,6 @@ use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder
 class UploadcareTransformation extends Transformations
 {
     protected string $uuid;
-    protected array $transformations = [];
     protected string $url;
     protected string $baseUrl;
     protected ?string $filename = null;
