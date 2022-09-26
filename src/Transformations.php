@@ -114,7 +114,7 @@ class Transformations
      * @param string $tag one of the tags.
      * @param string $ratio two numbers greater than zero separated by :
      * @param string $width in percentages e.g. 50p.
-     * @param string $heigt in percentages e.g. 50p.
+     * @param string $height in percentages e.g. 50p.
      * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
      * @param string $offsetY horizontal and vertical offsets in percents.
      * @return self
