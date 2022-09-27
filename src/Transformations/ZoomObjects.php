@@ -8,11 +8,17 @@ class ZoomObjects implements TransformationInterface
 {
     public const ZOOM = 'zoom';
 
-    public static function transform(...$args): array
+    /**
+     * Validate and return the values.
+     *
+     * @param array<mixed>|string|int ...$args
+     * @return array<mixed>
+     */
+    public static function transform(array|string|int ...$args): array
     {
         $zoom = $args[0];
 
-        if (! self::validate('zoom', $zoom)) {
+        if (! self::validate('zoom', [$zoom])) {
             throw new \InvalidArgumentException('Invalid zoom');
         }
 
@@ -21,9 +27,15 @@ class ZoomObjects implements TransformationInterface
         ];
     }
 
-    public static function validate(string $key, ...$args): bool
+    /**
+     * Validate the values.
+     *
+     * @param array<mixed>|string|int ...$args
+     * @return bool
+     */
+    public static function validate(string $key, array|string|int ...$args): bool
     {
-        $zoom = $args[0];
+        $zoom = (float) $args[0];
 
         if ($key === self::ZOOM) {
             return $zoom >= 0 && $zoom <= 100;
@@ -32,6 +44,12 @@ class ZoomObjects implements TransformationInterface
         return false;
     }
 
+    /**
+     * Generate the url.
+     *
+     * @param array<mixed> $values
+     * @return string
+     */
     public static function generateUrl(string $url, array $values): string
     {
         // -/zoom_objects/:zoom
