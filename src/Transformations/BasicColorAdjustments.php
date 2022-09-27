@@ -31,7 +31,7 @@ class BasicColorAdjustments implements TransformationInterface
 
     public static function validate(string $key, ...$args): bool
     {
-        $value = $args[0];
+        $value = (float) $args[0];
         $comparisonValue = $args[1] ?? null;
 
         if ($key === self::VALUE) {

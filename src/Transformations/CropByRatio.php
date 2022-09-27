@@ -33,7 +33,7 @@ class CropByRatio implements TransformationInterface
             throw new \InvalidArgumentException('Invalid offset Y');
         }
 
-        if (isset($offsetX) && Offset::tryFrom($offsetX)) {
+        if (Offset::tryFrom($offsetX)) {
             return [
                 self::RATIO => $ratio,
                 self::ALIGN => $offsetX,
