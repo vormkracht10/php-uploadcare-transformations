@@ -79,6 +79,7 @@ class TransformationsFinder
      * Get all transformations
      *
      * @param array<array<array<string>>> $transformations
+     * @todo https://stackoverflow.com/a/12925024/7603806
      * @return array<array<string, array<array<string>>|string|null>>
      */
     public static function for(array $transformations): array
