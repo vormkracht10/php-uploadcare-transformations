@@ -7,10 +7,10 @@ interface TransformationInterface
     /**
      * Validate the values.
      *
-     * @param array<mixed>|string|int|bool ...$args
+     * @param array<mixed>|string|int|bool|null ...$args
      * @return array<mixed>
      */
-    public static function transform(array|string|int|bool  ...$args): array;
+    public static function transform(array|string|int|bool|null  ...$args): array;
 
     /**
      * Validate and return the values.
