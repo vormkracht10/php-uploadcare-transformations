@@ -33,7 +33,13 @@ class TransformationsFinder
     public const SMART_RESIZE = 'smart_resize';
     public const ZOOM_OBJECTS = 'zoom_objects';
 
-    public static function getTransformation($key)
+    /**
+     * Get transformation class
+     *
+     * @param string $key
+     * @return string|null
+     */
+    public static function getTransformation(string $key): string|null
     {
         $transformations = [
             self::AUTO_ROTATE => AutoRotate::class,
@@ -69,7 +75,13 @@ class TransformationsFinder
         return $transformations[$key] ?? null;
     }
 
-    public static function for(array $transformations)
+    /**
+     * Get all transformations
+     *
+     * @param array<array<array<string>>> $transformations
+     * @return array<array<string, array<array<string>>|string|null>>
+     */
+    public static function for(array $transformations): array
     {
         $classes = [];
 
