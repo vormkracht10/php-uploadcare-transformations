@@ -79,8 +79,7 @@ class TransformationsFinder
      * Get all transformations
      *
      * @param array<array<array<string>>> $transformations
-     * @todo https://stackoverflow.com/a/12925024/7603806
-     * @return array<array<string, array<array<string>>|string|null>>
+     * @return array<array{class: object, values: array<array<string>>}>
      */
     public static function for(array $transformations): array
     {
@@ -89,11 +88,16 @@ class TransformationsFinder
         $keys = array_keys($transformations);
 
         foreach ($keys as $transformation) {
+
+            // Create a new class instance from the transformation
+            $class = self::getTransformation($transformation);
+            $class = new $class();
+            
             // We need to check if ICCProfileSizeThreshold is used because it is a special case.
             // This is because the URL transformation is a part of the ConvertToSRGB transformation.
             if ($transformation === self::ICC_PROFILE_SIZE_THRESHOLD) {
                 $classes[self::CONVERT_TO_SRGB] = [
-                    'class' => self::getTransformation(self::CONVERT_TO_SRGB),
+                    'class' => $class,
                     'values' => [
                         'profile' => $transformations[self::CONVERT_TO_SRGB]['profile'],
                         'size' => $transformations[$transformation]['number'],
