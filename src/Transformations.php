@@ -431,15 +431,21 @@ class Transformations
      * Adds an image overlay to the original image.
      * 
      * @param string $uuid
-     * @param int|string $width,
-     * @param int|string $height,
-     * @param int|string $coordinateX,
-     * @param int|string $coordinateY,
-     * @param int $opacity
+     * @param int|string|null $width,
+     * @param int|string|null $height,
+     * @param int|string|null $coordinateX,
+     * @param int|string|null $coordinateY,
+     * @param int|null $opacity
      *
      * @return self
      */
-    public function overlay(string $uuid, int|string $width, int|string $height, int|string $coordinateX, int|string $coordinateY, int $opacity): self 
+    public function overlay(
+        string $uuid,
+        int|string|null $width = null, 
+        int|string|null $height = null, 
+        int|string|null $coordinateX = null, 
+        int|string|null $coordinateY = null, 
+        int|null $opacity = null): self 
     {
         $this->transformations['overlay'] = Overlay::transform($uuid, $width, $height, $coordinateX, $coordinateY, $opacity);
 

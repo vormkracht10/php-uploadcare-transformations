@@ -34,24 +34,51 @@ class Overlay implements TransformationInterface
 
     public static function validate(string $key, ...$args): ?bool
     {
+        /** @todo add validation */
         return null;
     }
 
     public static function generateUrl(string $url, array $values): string
     {
         // Every overlay parameter is optional and can be omitted. However, the order of parameter URL directives should be preserved.
-
         // -/overlay/:uuid/:relative_dimensions/:relative_coordinates/:opacity/
 
-        // Check if only UUID is passed
+        // Check if only uuid is set
+        /** @todo add UUID checks */
+        // if (isset($values[self::UUID]) )
+    
+        // Check if only width/height is passed.
+        if (isset($values[self::WIDTH]) && 
+            isset($values[self::HEIGHT]) && 
+            !isset($values[self::COORDINATE_X]) && 
+            !isset($values[self::COORDINATE_Y])) {
+                return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/';
+        }
 
-        // Check if only UUID and width/height is passed
+        // Check if only width/height and coordinateX is passed.
+        if (isset($values[self::WIDTH]) && 
+            isset($values[self::HEIGHT]) && 
+            isset($values[self::COORDINATE_X]) && 
+            !isset($values[self::COORDINATE_Y])) {
+                return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . '/';
+        }
 
-        // Check if only UUID and width/height and coordinateX is passed
+        // Check if only width/height and coordinates is passed.
+        if (isset($values[self::WIDTH]) && 
+            isset($values[self::HEIGHT]) && 
+            isset($values[self::COORDINATE_X]) && 
+            isset($values[self::COORDINATE_Y])) {
+                return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . 'x' . $values[self::COORDINATE_Y] . '/';
+        }
 
-        // Check if only UUID and width/height and coordinates is passed
-
-        // Check if only UUID and width/height and coordinates and opacity is passed
+        // Check if only width/height and coordinates and opacity is passed.
+        if (isset($values[self::WIDTH]) && 
+            isset($values[self::HEIGHT]) && 
+            isset($values[self::COORDINATE_X]) && 
+            isset($values[self::COORDINATE_Y]) && 
+            isset($values[self::OPACITY])) {
+                return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . 'x' . $values[self::COORDINATE_Y] . '/' . $values[self::OPACITY] . '/';
+        }
 
         return $url;
     }
