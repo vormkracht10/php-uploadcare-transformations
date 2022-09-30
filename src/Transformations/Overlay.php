@@ -46,38 +46,38 @@ class Overlay implements TransformationInterface
         // Check if only uuid is set
         /** @todo add UUID checks */
         // if (isset($values[self::UUID]) )
-    
+
         // Check if only width/height is passed.
-        if (isset($values[self::WIDTH]) && 
-            isset($values[self::HEIGHT]) && 
-            !isset($values[self::COORDINATE_X]) && 
-            !isset($values[self::COORDINATE_Y])) {
-                return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/';
+        if (isset($values[self::WIDTH]) &&
+            isset($values[self::HEIGHT]) &&
+            ! isset($values[self::COORDINATE_X]) &&
+            ! isset($values[self::COORDINATE_Y])) {
+            return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/';
         }
 
         // Check if only width/height and coordinateX is passed.
-        if (isset($values[self::WIDTH]) && 
-            isset($values[self::HEIGHT]) && 
-            isset($values[self::COORDINATE_X]) && 
-            !isset($values[self::COORDINATE_Y])) {
-                return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . '/';
+        if (isset($values[self::WIDTH]) &&
+            isset($values[self::HEIGHT]) &&
+            isset($values[self::COORDINATE_X]) &&
+            ! isset($values[self::COORDINATE_Y])) {
+            return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . '/';
         }
 
         // Check if only width/height and coordinates is passed.
-        if (isset($values[self::WIDTH]) && 
-            isset($values[self::HEIGHT]) && 
-            isset($values[self::COORDINATE_X]) && 
+        if (isset($values[self::WIDTH]) &&
+            isset($values[self::HEIGHT]) &&
+            isset($values[self::COORDINATE_X]) &&
             isset($values[self::COORDINATE_Y])) {
-                return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . 'x' . $values[self::COORDINATE_Y] . '/';
+            return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . 'x' . $values[self::COORDINATE_Y] . '/';
         }
 
         // Check if only width/height and coordinates and opacity is passed.
-        if (isset($values[self::WIDTH]) && 
-            isset($values[self::HEIGHT]) && 
-            isset($values[self::COORDINATE_X]) && 
-            isset($values[self::COORDINATE_Y]) && 
+        if (isset($values[self::WIDTH]) &&
+            isset($values[self::HEIGHT]) &&
+            isset($values[self::COORDINATE_X]) &&
+            isset($values[self::COORDINATE_Y]) &&
             isset($values[self::OPACITY])) {
-                return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . 'x' . $values[self::COORDINATE_Y] . '/' . $values[self::OPACITY] . '/';
+            return $url . '-/overlay/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . 'x' . $values[self::COORDINATE_Y] . '/' . $values[self::OPACITY] . '/';
         }
 
         return $url;
