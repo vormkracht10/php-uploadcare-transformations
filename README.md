@@ -102,7 +102,10 @@ If you prefer to use a shorter version you can also use the helper method:
 $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
 $cdnUrl = 'https://example.com/cdn/';
 
-$url = uc($uuid, $cdnUrl)->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
+$url = uc($uuid, $cdnUrl)
+        ->crop(width: 320, height: '50p', offsetX: 'center')
+        ->setFill(color: 'ffffff')
+        ->getUrl();
 
 echo $url;
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/-/crop/320x50p/center/-/set_fill/ffffff
