@@ -11,9 +11,9 @@ class Format implements TransformationInterface
 
     public static function transform(...$args): array
     {
-        $format = FormatEnum::tryFrom($args[0]);
+        $format = $args[0];
 
-        if (! $format) {
+        if (! FormatEnum::tryFrom($format)) {
             throw new \InvalidArgumentException('Invalid format');
         }
 
