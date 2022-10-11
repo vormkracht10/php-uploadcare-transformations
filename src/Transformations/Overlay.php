@@ -74,11 +74,11 @@ class Overlay implements TransformationInterface
     public static function generateUrl(string $url, array $values): string
     {
         // Check if only uuid is set
-        if (isset($values[self::UUID]) && 
-            ! isset($values[self::WIDTH]) && 
-            ! isset($values[self::HEIGHT]) && 
-            ! isset($values[self::COORDINATE_X]) && 
-            ! isset($values[self::COORDINATE_Y]) && 
+        if (isset($values[self::UUID]) &&
+            ! isset($values[self::WIDTH]) &&
+            ! isset($values[self::HEIGHT]) &&
+            ! isset($values[self::COORDINATE_X]) &&
+            ! isset($values[self::COORDINATE_Y]) &&
             ! isset($values[self::OPACITY])) {
             // -/overlay/:uuid/
             $url .= '-/overlay/' . $values[self::UUID] . '/';
