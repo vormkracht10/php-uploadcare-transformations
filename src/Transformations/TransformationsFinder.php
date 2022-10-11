@@ -96,7 +96,7 @@ class TransformationsFinder
             // This is because the URL transformation is a part of the ConvertToSRGB transformation.
             if ($transformation === self::ICC_PROFILE_SIZE_THRESHOLD) {
                 $classes[self::CONVERT_TO_SRGB] = [
-                    'class' => ConvertToSRGB::class,
+                    'class' => new ConvertToSRGB(),
                     'values' => [
                         'profile' => $transformations[self::CONVERT_TO_SRGB]['profile'],
                         'size' => $transformations[$transformation]['number'],
