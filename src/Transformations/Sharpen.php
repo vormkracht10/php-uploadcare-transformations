@@ -21,15 +21,15 @@ class Sharpen implements TransformationInterface
         ];
     }
 
-    public static function validate(string $key, ...$args): ?bool
+    public static function validate(string $key, ...$args): bool
     {
-        $value = $args[0];
+        $value = (float) $args[0];
 
         if ($key === self::STRENGTH) {
             return $value >= 0 && $value <= 20;
         }
 
-        return null;
+        return false;
     }
 
     public static function generateUrl(string $url, array $values): string

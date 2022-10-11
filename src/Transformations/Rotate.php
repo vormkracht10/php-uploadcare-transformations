@@ -21,13 +21,13 @@ class Rotate implements TransformationInterface
         ];
     }
 
-    public static function validate(string $key, ...$args): ?bool
+    public static function validate(string $key, ...$args): bool
     {
         if ($key === self::ANGLE) {
             return is_int($args[0]) && $args[0] % 90 === 0;
         }
 
-        return null;
+        return false;
     }
 
     public static function generateUrl(string $url, array $values): string
