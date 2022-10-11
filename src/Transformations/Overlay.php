@@ -2,10 +2,14 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
+use Vormkracht10\UploadcareTransformations\Traits\Validations;
+use Vormkracht10\UploadcareTransformations\Transformations\Enums\Offset;
 use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface;
 
 class Overlay implements TransformationInterface
 {
+    use Validations;
+
     public const UUID = 'uuid';
     public const WIDTH = 'width';
     public const HEIGHT = 'height';
@@ -22,6 +26,22 @@ class Overlay implements TransformationInterface
         $coordinateY = $args[4] ?? null;
         $opacity = $args[5] ?? null;
 
+        if (is_string($width) && ! self::validate('width', $width)) {
+            throw new \InvalidArgumentException('Invalid width percentage');
+        }
+
+        if (is_string($height) && ! self::validate('height', $height)) {
+            throw new \InvalidArgumentException('Invalid height percentage');
+        }
+
+        if ($coordinateX && ! self::validate('coordinateX', $coordinateX)) {
+            throw new \InvalidArgumentException('Invalid coordinate X');
+        }
+
+        if ($coordinateY && ! self::validate('coordinateY', $coordinateY)) {
+            throw new \InvalidArgumentException('Invalid coordinate Y');
+        }
+
         return [
             self::UUID => $uuid,
             self::WIDTH => $width,
@@ -32,10 +52,23 @@ class Overlay implements TransformationInterface
         ];
     }
 
-    public static function validate(string $key, ...$args): ?bool
+    /** 
+     * @todo add proper validation for both coordinates 
+     * @see https://uploadcare.com/docs/transformations/image/overlay/#overlay-image
+     */
+    public static function validate(string $key, ...$args): bool
     {
-        /** @todo add validation */
-        return null;
+        $value = $args[0];
+
+        if ($key === self::COORDINATE_X && is_string($value)) {
+            return Offset::tryFrom($value) !== null;
+        }
+
+        if ($key === self::WIDTH || $key === self::HEIGHT) {
+            return self::isValidPercentage($value);
+        }
+
+        return false;
     }
 
     public static function generateUrl(string $url, array $values): string
