@@ -52,8 +52,8 @@ class Overlay implements TransformationInterface
         ];
     }
 
-    /** 
-     * @todo add proper validation for both coordinates 
+    /**
+     * @todo add proper validation for both coordinates
      * @see https://uploadcare.com/docs/transformations/image/overlay/#overlay-image
      */
     public static function validate(string $key, ...$args): bool
