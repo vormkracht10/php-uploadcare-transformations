@@ -88,11 +88,10 @@ class TransformationsFinder
         $keys = array_keys($transformations);
 
         foreach ($keys as $transformation) {
-
             // Create a new class instance from the transformation
             $class = self::getTransformation($transformation);
             $class = new $class();
-            
+
             // We need to check if ICCProfileSizeThreshold is used because it is a special case.
             // This is because the URL transformation is a part of the ConvertToSRGB transformation.
             if ($transformation === self::ICC_PROFILE_SIZE_THRESHOLD) {
