@@ -15,19 +15,18 @@ class UploadcareTransformation extends Transformations
     protected ?string $token = null;
 
     public function __construct(
-        string $uuid, 
-        string $cdnUrl = 'https://ucarecdn.com/', 
+        string $uuid,
+        string $cdnUrl = 'https://ucarecdn.com/',
         string|null $timestamp = null,
         string|null $acl = null,
         string|null $token = null,
-    ){
+    ) {
         $this->uuid = $uuid;
         $this->baseUrl = $cdnUrl;
 
         $this->timestamp = $timestamp;
         $this->acl = $acl;
         $this->token = $token;
-
     }
 
     public function filename(string $filename): string
