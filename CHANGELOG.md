@@ -2,6 +2,15 @@
 
 All notable changes to `php-uploadcare-transformations` will be documented in this file.
 
+## v.0.3.3 - 2022-10-25
+
+### What's Changed
+
+- Overlay transformations by @Baspa in https://github.com/vormkracht10/php-uploadcare-transformations/pull/22
+- Static analysis level 6 by @Baspa in https://github.com/vormkracht10/php-uploadcare-transformations/pull/20
+
+**Full Changelog**: https://github.com/vormkracht10/php-uploadcare-transformations/compare/v0.3.2...v0.3.3
+
 ## v0.3.1 - 2022-10-03
 
 ### What's Changed
