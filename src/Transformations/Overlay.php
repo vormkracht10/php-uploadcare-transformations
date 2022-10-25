@@ -42,6 +42,10 @@ class Overlay implements TransformationInterface
             throw new \InvalidArgumentException('Invalid coordinate Y');
         }
 
+        if ($opacity && !self::isValidPercentage($opacity)) {
+            throw new \InvalidArgumentException('Invalid opacity');
+        }
+
         return [
             self::UUID => $uuid,
             self::WIDTH => $width,
@@ -52,16 +56,12 @@ class Overlay implements TransformationInterface
         ];
     }
 
-    /**
-     * @todo add proper validation for both coordinates
-     * @see https://uploadcare.com/docs/transformations/image/overlay/#overlay-image
-     */
     public static function validate(string $key, ...$args): bool
     {
         $value = $args[0];
 
-        if ($key === self::COORDINATE_X && is_string($value)) {
-            return Offset::tryFrom($value) !== null;
+        if ($key === self::COORDINATE_X && is_string($value) || $key === self::COORDINATE_Y && is_string($value)) {
+            return Offset::tryFrom($value) !== null || self::isValidPercentage($value);
         }
 
         if ($key === self::COORDINATE_X && is_int($value) || $key === self::COORDINATE_Y && is_int($value)) {
@@ -107,7 +107,7 @@ class Overlay implements TransformationInterface
             isset($values[self::COORDINATE_X]) &&
             isset($values[self::COORDINATE_Y])) {
             // -/overlay/:uuid/:relative_dimensions/:coordinateX/:coordinateY/
-            return $url . '-/overlay/' . $values[self::UUID] . '/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . 'x' . $values[self::COORDINATE_Y] . '/';
+            return $url . '-/overlay/' . $values[self::UUID] . '/' . $values[self::WIDTH] . 'x' . $values[self::HEIGHT] . '/' . $values[self::COORDINATE_X] . ',' . $values[self::COORDINATE_Y] . '/';
         }
 
         // Check if only width/height and coordinateX is passed.

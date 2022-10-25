@@ -425,7 +425,7 @@ $url = $transformation->mirror();
 
 The overlay operation allows to layer images one over another. One of the most common use cases here are watermarks: semi-transparent images layered over opaque ones to complicate their unauthorized usage, etc.
 
-> Every overlay parameter is optional and can be omitted. However, the order of parameter URL directives should be preserved. For example, if you want to use `coordinateX` parameter, you should also specify `width` and `height` parameters.
+> Every overlay parameter is optional and can be omitted. However, the order of parameter URL directives should be preserved. For example, if you want to use `coordinateX` parameter, you should also specify `width` and `height` parameters. Also note that the `opacity` parameter should be specified with percentages.
 
 ```php
 $uuidOverlay = 'e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a';
@@ -436,9 +436,9 @@ $url = $transformation->overlay(
   height: 150,
   coordinateX: 200,
   coordinateY: 300,
-  opacity: 25
+  opacity: '25p'
 )->getUrl();
-// https://example.com/cdn/.../-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/150x150/200,300/25/
+// https://example.com/cdn/.../-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/150x150/200,300/25p/
 ```
 
 ### Preview

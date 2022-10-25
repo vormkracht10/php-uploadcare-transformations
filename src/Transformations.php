@@ -446,7 +446,7 @@ class Transformations
         int|string|null $height = null,
         int|string|null $coordinateX = null,
         int|string|null $coordinateY = null,
-        int|null $opacity = null
+        string|null $opacity = null
     ): self {
         $this->transformations['overlay'] = Overlay::transform($uuid, $width, $height, $coordinateX, $coordinateY, $opacity);
 
