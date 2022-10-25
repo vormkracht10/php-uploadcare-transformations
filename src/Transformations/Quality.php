@@ -22,9 +22,9 @@ class Quality implements TransformationInterface
         ];
     }
 
-    public static function validate(string $key, ...$args): ?bool
+    public static function validate(string $key, ...$args): bool
     {
-        return null;
+        return false;
     }
 
     public static function generateUrl(string $url, array $values): string

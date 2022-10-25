@@ -2,6 +2,16 @@
 
 All notable changes to `php-uploadcare-transformations` will be documented in this file.
 
+## v0.3.1 - 2022-10-03
+
+### What's Changed
+
+- Fixed unreachable code error which led to `Enum could not be converted to string` error.
+- Bump dependabot/fetch-metadata from 1.3.3 to 1.3.4 by @dependabot in https://github.com/vormkracht10/php-uploadcare-transformations/pull/17
+- Bump actions/cache from 2 to 3 by @dependabot in https://github.com/vormkracht10/php-uploadcare-transformations/pull/18
+
+**Full Changelog**: https://github.com/vormkracht10/php-uploadcare-transformations/compare/v0.3.0...v0.3.1
+
 ## v0.3.0 - 2022-09-26
 
 ### What's Changed

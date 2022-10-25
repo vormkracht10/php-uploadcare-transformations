@@ -33,6 +33,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
 
 class Transformations
 {
+    /** @var array<mixed> */
     protected array $transformations = [];
 
     /**

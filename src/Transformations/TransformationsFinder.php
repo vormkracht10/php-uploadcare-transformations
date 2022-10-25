@@ -34,7 +34,13 @@ class TransformationsFinder
     public const SMART_RESIZE = 'smart_resize';
     public const ZOOM_OBJECTS = 'zoom_objects';
 
-    public static function getTransformation($key)
+    /**
+     * Get transformation class
+     *
+     * @param string $key
+     * @return string|null
+     */
+    public static function getTransformation(string $key): string|null
     {
         $transformations = [
             self::AUTO_ROTATE => AutoRotate::class,
@@ -71,18 +77,28 @@ class TransformationsFinder
         return $transformations[$key] ?? null;
     }
 
-    public static function for(array $transformations)
+    /**
+     * Get all transformations
+     *
+     * @param array<array<array<string>>> $transformations
+     * @return array<array{class: object, values: array<array<string>>}>
+     */
+    public static function for(array $transformations): array
     {
         $classes = [];
 
         $keys = array_keys($transformations);
 
         foreach ($keys as $transformation) {
+            // Create a new class instance from the transformation
+            $class = self::getTransformation($transformation);
+            $class = new $class();
+
             // We need to check if ICCProfileSizeThreshold is used because it is a special case.
             // This is because the URL transformation is a part of the ConvertToSRGB transformation.
             if ($transformation === self::ICC_PROFILE_SIZE_THRESHOLD) {
                 $classes[self::CONVERT_TO_SRGB] = [
-                    'class' => self::getTransformation(self::CONVERT_TO_SRGB),
+                    'class' => new ConvertToSRGB(),
                     'values' => [
                         'profile' => $transformations[self::CONVERT_TO_SRGB]['profile'],
                         'size' => $transformations[$transformation]['number'],
