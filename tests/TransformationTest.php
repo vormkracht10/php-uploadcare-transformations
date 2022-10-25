@@ -147,7 +147,7 @@ it('can add an overlay', function () {
     // -/overlay/:uuid/:relative_dimensions/:coordinateX/
     $url = (string) $transformation->overlay($uuidOverlay, width: 100, height: 100, coordinateX: 'center');
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/100x100/center/');
-    
+
     // -/overlay/:uuid/:relative_dimensions/
     $url = (string) $transformation->overlay($uuidOverlay, width: 100, height: 100);
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/100x100/');

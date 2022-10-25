@@ -42,7 +42,7 @@ class Overlay implements TransformationInterface
             throw new \InvalidArgumentException('Invalid coordinate Y');
         }
 
-        if ($opacity && !self::isValidPercentage($opacity)) {
+        if ($opacity && ! self::isValidPercentage($opacity)) {
             throw new \InvalidArgumentException('Invalid opacity');
         }
 
