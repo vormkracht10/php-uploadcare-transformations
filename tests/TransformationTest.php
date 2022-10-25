@@ -121,3 +121,38 @@ it('can smart crop', function () {
     $url = (string) $transformation->smartCrop(width: 200, height: 200, type: 'smart', offsetX: '50p', offsetY: '50p');
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/scale_crop/200x200/smart/50p,50p/');
 });
+
+it('can add an overlay', function () {
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+    $uuidOverlay = 'e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a';
+
+    $transformation = uploadcare($uuid);
+
+    // -/overlay/:uuid/
+    $url = (string) $transformation->overlay($uuidOverlay);
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/');
+
+    // -/overlay/:uuid/:relative_dimensions/:coordinateX/:coordinateY/:opacity/
+    $url = (string) $transformation->overlay($uuidOverlay, width: 100, height: 100, coordinateX: 500, coordinateY: 300, opacity: '50p');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/100x100/500,300/50p/');
+
+    // -/overlay/:uuid/:relative_dimensions/:coordinateX/:coordinateY/
+    $url = (string) $transformation->overlay($uuidOverlay, width: 100, height: 100, coordinateX: 500, coordinateY: 300);
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/100x100/500,300/');
+
+    // -/overlay/:uuid/:relative_dimensions/:coordinateX/:coordinateY/
+    $url = (string) $transformation->overlay($uuidOverlay, width: 100, height: 100, coordinateX: '50p', coordinateY: '30p');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/100x100/50p,30p/');
+
+    // -/overlay/:uuid/:relative_dimensions/:coordinateX/
+    $url = (string) $transformation->overlay($uuidOverlay, width: 100, height: 100, coordinateX: 'center');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/100x100/center/');
+
+    // -/overlay/:uuid/:relative_dimensions/
+    $url = (string) $transformation->overlay($uuidOverlay, width: 100, height: 100);
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/100x100/');
+
+    // Test if skipping one of the parameters results in missing the remaining parameters
+    $url = (string) $transformation->overlay($uuidOverlay, width: 100, height: 100, coordinateX: 500, coordinateY: null, opacity: '50p');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/100x100/500/');
+});
