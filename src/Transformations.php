@@ -436,7 +436,7 @@ class Transformations
      * @param int|string|null $height,
      * @param int|string|null $coordinateX,
      * @param int|string|null $coordinateY,
-     * @param int|null $opacity
+     * @param string|null $opacity
      *
      * @return self
      */
