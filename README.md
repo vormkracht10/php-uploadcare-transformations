@@ -122,19 +122,19 @@ Your `.env` file:
 UPLOADCARE_CDN_URL=https://example.com/cdn/
 ```
 
-Your `config/uploadcare.php` file:
+Add to `config/services.php` file:
 
 ```php
-return [
+'uploadcare' => [
     'cdn_url' => env('UPLOADCARE_CDN_URL', 'https://ucarecdn.com'),
-    'proxy_url' => env('UPLOADCARE_CDN_URL', 'https://endpoint.ucr.io'),
-];
+    'proxy_url' => env('UPLOADCARE_PROXY_URL', 'https://endpoint.ucr.io'),
+],
 ```
 
 In your code:
 
 ```php
-$url = uc($uuid, config('uploadcare.cdn_url'))->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
+$url = uc($uuid, config('services.uploadcare.cdn_url'))->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
 ```
 
 ## Documentation
