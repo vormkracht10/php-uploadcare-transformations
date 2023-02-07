@@ -11,10 +11,10 @@ class UploadcareTransformation extends Transformations
     protected string $baseUrl;
     protected ?string $filename = null;
 
-    public function __construct(?string $uuid = null, ?string $cdnUrl = null, ?string $filename = null)
+    public function __construct(?string $uuid = null, ?string $cdnUrl = null, ?string $proxyUrl = null, ?string $filename = null)
     {
         $this->uuid = $uuid;
-        $this->baseUrl = $cdnUrl ?? 'https://ucarecdn.com/';
+        $this->baseUrl = $proxyUrl ?? $cdnUrl ?? 'https://ucarecdn.com/';
         $this->filename = $filename;
     }
 

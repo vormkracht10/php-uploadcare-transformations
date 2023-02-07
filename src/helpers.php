@@ -5,12 +5,16 @@ use Vormkracht10\UploadcareTransformations\UploadcareTransformation;
 if (! function_exists('uploadcare')) {
     function uploadcare(string $uuidOrUrl, ?string $cdnUrl = null): UploadcareTransformation
     {
-        if (is_null($cdnUrl) && defined('LARAVEL_START')) {
-            $cdnUrl = config('services.uploadcare.proxy_url');
-        }
-
         if (strpos($uuidOrUrl, 'http') === 0) {
-            return new UploadcareTransformation(cdnUrl: $cdnUrl, filename: $uuidOrUrl);
+            if (
+                is_null($cdnUrl) &&
+                defined('LARAVEL_START') &&
+                function_exists('config')
+            ) {
+                $proxyUrl = config('services.uploadcare.proxy_url');
+            }
+
+            return new UploadcareTransformation(proxyUrl: $proxyUrl, filename: $uuidOrUrl);
         }
 
         return new UploadcareTransformation(uuid: $uuidOrUrl, cdnUrl: $cdnUrl);
