@@ -20,7 +20,7 @@ class UploadcareTransformation extends Transformations
 
     public function filename(string $filename): string
     {
-        if(! is_null($this->filename)) {
+        if (! is_null($this->filename)) {
             throw new \InvalidArgumentException('Filename already set');
         }
 
