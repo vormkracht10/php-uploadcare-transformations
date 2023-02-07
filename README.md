@@ -78,7 +78,7 @@ composer require vormkracht10/php-uploadcare-transformations
         Set your CDN url (optional).
     </li>
      <li>
-        Create the transformation URL by chaining one or multiple methods to the UploadcareTransformation class. You can chain as much methods as you want. 
+        Create the transformation URL by chaining one or multiple methods to the UploadcareTransformation class. You can chain as much methods as you want.
     </li>
     <li>Use the output of the transformation as image source.</li>
 </ol>
@@ -119,21 +119,22 @@ When you are using the Laravel framework it might be better to define the CDN in
 Your `.env` file:
 
 ```dotenv
-UPLOADCARE_CDN=https://example.com/cdn/
+UPLOADCARE_CDN_URL=https://example.com/cdn/
 ```
 
 Your `config/uploadcare.php` file:
 
 ```php
 return [
-    'cdn' => env('UPLOADCARE_CDN', 'https://ucarecdn.com'),
+    'cdn_url' => env('UPLOADCARE_CDN_URL', 'https://ucarecdn.com'),
+    'proxy_url' => env('UPLOADCARE_CDN_URL', 'https://endpoint.ucr.io'),
 ];
 ```
 
 In your code:
 
 ```php
-$url = uc($uuid, config('uploadcare.cdn'))->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
+$url = uc($uuid, config('uploadcare.cdn_url'))->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
 ```
 
 ## Documentation
