@@ -3,9 +3,9 @@
 use Vormkracht10\UploadcareTransformations\UploadcareTransformation;
 
 if (! function_exists('uploadcare')) {
-    function uploadcare(?string $uuidOrUrl = '', string $cdnUrl = 'https://ucarecdn.com/'): UploadcareTransformation
+    function uploadcare(?string $uuidOrUrl = '', ?string $cdnUrl): UploadcareTransformation
     {
-        if (defined('LARAVEL_START')) {
+        if (is_null($cdnUrl) && defined('LARAVEL_START')) {
             $cdnUrl = config('services.uploadcare.proxy_url');
         }
 
@@ -19,7 +19,7 @@ if (! function_exists('uploadcare')) {
 }
 
 if (! function_exists('uc')) {
-    function uc(string $uuidOrUrl, string $cdnUrl = 'https://ucarecdn.com/'): UploadcareTransformation
+    function uc(string $uuidOrUrl, ?string $cdnUrl): UploadcareTransformation
     {
         return uploadcare($uuidOrUrl, $cdnUrl);
     }
