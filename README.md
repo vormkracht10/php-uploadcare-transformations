@@ -120,6 +120,7 @@ Your `.env` file:
 
 ```dotenv
 UPLOADCARE_CDN_URL=https://example.com/cdn/
+UPLOADCARE_PROXY_URL=https://example.com/cdn/
 ```
 
 Add to `config/services.php` file:
