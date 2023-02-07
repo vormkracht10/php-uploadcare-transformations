@@ -10,11 +10,10 @@ if (! function_exists('uploadcare')) {
         }
 
         if (strpos($uuidOrUrl, 'http') === 0) {
-            return uploadcare('', $cdnUrl)
-                ->filename($uuidOrUrl);
+            return new UploadcareTransformation(cdnUrl: $cdnUrl, filename: $uuidOrUrl);
         }
 
-        return new UploadcareTransformation($uuidOrUrl, $cdnUrl);
+        return new UploadcareTransformation(uuid: $uuidOrUrl, cdnUrl: $cdnUrl);
     }
 }
 

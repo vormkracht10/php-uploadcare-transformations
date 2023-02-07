@@ -11,14 +11,19 @@ class UploadcareTransformation extends Transformations
     protected string $baseUrl;
     protected ?string $filename = null;
 
-    public function __construct(?string $uuid = '', ?string $cdnUrl = null)
+    public function __construct(?string $uuid = null, ?string $cdnUrl = null, ?string $filename = null)
     {
         $this->uuid = $uuid;
         $this->baseUrl = $cdnUrl ?? 'https://ucarecdn.com/';
+        $this->filename = $filename;
     }
 
     public function filename(string $filename): string
     {
+        if(! is_null($this->filename)) {
+            throw new \InvalidArgumentException('Filename already set');
+        }
+
         $this->filename = $filename;
 
         return $this;
