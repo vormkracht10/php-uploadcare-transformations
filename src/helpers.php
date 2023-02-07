@@ -14,7 +14,7 @@ if (! function_exists('uploadcare')) {
                 ->filename($uuidOrUrl);
         }
 
-        return new UploadcareTransformation($uuid, $cdnUrl);
+        return new UploadcareTransformation($uuidOrUrl, $cdnUrl);
     }
 }
 
