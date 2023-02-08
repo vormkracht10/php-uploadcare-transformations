@@ -7,15 +7,15 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class Filter implements TransformationInterface
 {
-    public const NAME = 'name';
-    public const AMOUNT = 'amount';
+    final public const NAME = 'name';
+    final public const AMOUNT = 'amount';
 
     public static function transform(...$args): array
     {
         $name = $args[0];
         $amount = $args[1];
 
-        if (! FilterEnum::tryFrom($name)) {
+        if (FilterEnum::tryFrom($name) === null) {
             throw new \InvalidArgumentException('Invalid filter');
         }
 

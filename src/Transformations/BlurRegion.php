@@ -9,11 +9,11 @@ class BlurRegion implements TransformationInterface
 {
     use Validations;
 
-    public const DIMENSION_X = 'dimension_x';
-    public const DIMENSION_Y = 'dimension_y';
-    public const COORDINATE_X = 'coordinate_x';
-    public const COORDINATE_Y = 'coordinate_y';
-    public const STRENGTH = 'strength';
+    final public const DIMENSION_X = 'dimension_x';
+    final public const DIMENSION_Y = 'dimension_y';
+    final public const COORDINATE_X = 'coordinate_x';
+    final public const COORDINATE_Y = 'coordinate_y';
+    final public const STRENGTH = 'strength';
 
     public static function transform(...$args): array
     {

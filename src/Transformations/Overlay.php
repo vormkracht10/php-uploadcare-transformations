@@ -10,12 +10,12 @@ class Overlay implements TransformationInterface
 {
     use Validations;
 
-    public const UUID = 'uuid';
-    public const WIDTH = 'width';
-    public const HEIGHT = 'height';
-    public const COORDINATE_X = 'coordinateX';
-    public const COORDINATE_Y = 'coordinateY';
-    public const OPACITY = 'opacity';
+    final public const UUID = 'uuid';
+    final public const WIDTH = 'width';
+    final public const HEIGHT = 'height';
+    final public const COORDINATE_X = 'coordinateX';
+    final public const COORDINATE_Y = 'coordinateY';
+    final public const OPACITY = 'opacity';
 
     public static function transform(...$args): array
     {

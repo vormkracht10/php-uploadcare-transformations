@@ -6,7 +6,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class AutoRotate implements TransformationInterface
 {
-    public const AUTO_ROTATE = 'auto_rotate';
+    final public const AUTO_ROTATE = 'auto_rotate';
 
     public static function transform(...$args): array
     {

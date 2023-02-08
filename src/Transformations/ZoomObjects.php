@@ -6,7 +6,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class ZoomObjects implements TransformationInterface
 {
-    public const ZOOM = 'zoom';
+    final public const ZOOM = 'zoom';
 
     public static function transform(...$args): array
     {

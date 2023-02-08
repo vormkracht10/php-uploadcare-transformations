@@ -6,8 +6,8 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class Blur implements TransformationInterface
 {
-    public const STRENGTH = 'strength';
-    public const AMOUNT = 'amount';
+    final public const STRENGTH = 'strength';
+    final public const AMOUNT = 'amount';
 
     public static function transform(...$args): array
     {

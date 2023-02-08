@@ -10,11 +10,11 @@ class Crop implements TransformationInterface
 {
     use Validations;
 
-    public const WIDTH = 'width';
-    public const HEIGHT = 'height';
-    public const OFFSET_X = 'offset_x';
-    public const OFFSET_Y = 'offset_y';
-    public const ALIGN = 'align';
+    final public const WIDTH = 'width';
+    final public const HEIGHT = 'height';
+    final public const OFFSET_X = 'offset_x';
+    final public const OFFSET_Y = 'offset_y';
+    final public const ALIGN = 'align';
 
     public static function transform(...$args): array
     {
