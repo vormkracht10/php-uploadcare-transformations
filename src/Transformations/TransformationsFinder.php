@@ -4,41 +4,38 @@ namespace Vormkracht10\UploadcareTransformations\Transformations;
 
 class TransformationsFinder
 {
-    public const AUTO_ROTATE = 'auto_rotate';
-    public const BASIC_COLOR_ADJUSTMENTS = 'basic_color_adjustments';
-    public const BLUR = 'blur';
-    public const BLUR_FACES = 'blur_faces';
-    public const BLUR_REGION = 'blur_region';
-    public const CONVERT_TO_SRGB = 'convert_to_srgb';
-    public const CROP = 'crop';
-    public const CROP_BY_OBJECTS = 'crop_by_objects';
-    public const CROP_BY_RATIO = 'crop_by_ratio';
-    public const ENHANCE = 'enhance';
-    public const FILTER = 'filter';
-    public const FLIP = 'flip';
-    public const FORMAT = 'format';
-    public const GRAYSCALE = 'grayscale';
-    public const ICC_PROFILE_SIZE_THRESHOLD = 'icc_profile_size_threshold';
-    public const INVERT = 'invert';
-    public const MIRROR = 'mirror';
-    public const OVERLAY = 'overlay';
-    public const PREVIEW = 'preview';
-    public const PROGRESSIVE = 'progressive';
-    public const QUALITY = 'quality';
-    public const RESIZE = 'resize';
-    public const ROTATE = 'rotate';
-    public const SCALE_CROP = 'scale_crop';
-    public const SET_FILL = 'set_fill';
-    public const SHARPEN = 'sharpen';
-    public const SMART_CROP = 'smart_crop';
-    public const SMART_RESIZE = 'smart_resize';
-    public const ZOOM_OBJECTS = 'zoom_objects';
+    final public const AUTO_ROTATE = 'auto_rotate';
+    final public const BASIC_COLOR_ADJUSTMENTS = 'basic_color_adjustments';
+    final public const BLUR = 'blur';
+    final public const BLUR_FACES = 'blur_faces';
+    final public const BLUR_REGION = 'blur_region';
+    final public const CONVERT_TO_SRGB = 'convert_to_srgb';
+    final public const CROP = 'crop';
+    final public const CROP_BY_OBJECTS = 'crop_by_objects';
+    final public const CROP_BY_RATIO = 'crop_by_ratio';
+    final public const ENHANCE = 'enhance';
+    final public const FILTER = 'filter';
+    final public const FLIP = 'flip';
+    final public const FORMAT = 'format';
+    final public const GRAYSCALE = 'grayscale';
+    final public const ICC_PROFILE_SIZE_THRESHOLD = 'icc_profile_size_threshold';
+    final public const INVERT = 'invert';
+    final public const MIRROR = 'mirror';
+    final public const OVERLAY = 'overlay';
+    final public const PREVIEW = 'preview';
+    final public const PROGRESSIVE = 'progressive';
+    final public const QUALITY = 'quality';
+    final public const RESIZE = 'resize';
+    final public const ROTATE = 'rotate';
+    final public const SCALE_CROP = 'scale_crop';
+    final public const SET_FILL = 'set_fill';
+    final public const SHARPEN = 'sharpen';
+    final public const SMART_CROP = 'smart_crop';
+    final public const SMART_RESIZE = 'smart_resize';
+    final public const ZOOM_OBJECTS = 'zoom_objects';
 
     /**
      * Get transformation class
-     *
-     * @param string $key
-     * @return string|null
      */
     public static function getTransformation(string $key): string|null
     {

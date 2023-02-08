@@ -6,7 +6,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class BlurFaces implements TransformationInterface
 {
-    public const STRENGTH = 'strength';
+    final public const STRENGTH = 'strength';
 
     public static function transform(...$args): array
     {

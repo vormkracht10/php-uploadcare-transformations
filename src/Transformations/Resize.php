@@ -7,10 +7,10 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class Resize implements TransformationInterface
 {
-    public const WIDTH = 'width';
-    public const HEIGHT = 'height';
-    public const STRETCH = 'stretch';
-    public const MODE = 'mode';
+    final public const WIDTH = 'width';
+    final public const HEIGHT = 'height';
+    final public const STRETCH = 'stretch';
+    final public const MODE = 'mode';
 
     public static function transform(...$args): array
     {

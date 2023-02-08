@@ -6,8 +6,8 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class Preview implements TransformationInterface
 {
-    public const WIDTH = 'width';
-    public const HEIGHT = 'height';
+    final public const WIDTH = 'width';
+    final public const HEIGHT = 'height';
 
     public static function transform(...$args): array
     {

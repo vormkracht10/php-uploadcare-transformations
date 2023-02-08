@@ -6,7 +6,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class Rotate implements TransformationInterface
 {
-    public const ANGLE = 'angle';
+    final public const ANGLE = 'angle';
 
     public static function transform(...$args): array
     {

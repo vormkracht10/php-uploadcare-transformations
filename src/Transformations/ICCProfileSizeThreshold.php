@@ -6,7 +6,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class ICCProfileSizeThreshold implements TransformationInterface
 {
-    public const NUMBER = 'number';
+    final public const NUMBER = 'number';
 
     public static function transform(...$args): array
     {

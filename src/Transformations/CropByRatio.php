@@ -10,10 +10,10 @@ class CropByRatio implements TransformationInterface
 {
     use Validations;
 
-    public const RATIO = 'ratio';
-    public const OFFSET_X = 'offset_x';
-    public const OFFSET_Y = 'offset_y';
-    public const ALIGN = 'align';
+    final public const RATIO = 'ratio';
+    final public const OFFSET_X = 'offset_x';
+    final public const OFFSET_Y = 'offset_y';
+    final public const ALIGN = 'align';
 
     public static function transform(...$args): array
     {
@@ -58,7 +58,7 @@ class CropByRatio implements TransformationInterface
         $value = $args[0];
 
         if ($key === self::RATIO) {
-            return preg_match('/^[0-9]+:[0-9]+$/', $value);
+            return preg_match('/^\d+:\d+$/', (string) $value);
         }
 
         if ($key === self::OFFSET_X && is_string($value)) {

@@ -7,13 +7,13 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class Quality implements TransformationInterface
 {
-    public const QUALITY = 'quality';
+    final public const QUALITY = 'quality';
 
     public static function transform(...$args): array
     {
         $quality = QualityEnum::tryFrom($args[0]);
 
-        if (! $quality) {
+        if (!$quality instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\Quality) {
             throw new \InvalidArgumentException('Invalid quality');
         }
 

@@ -7,13 +7,13 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class ConvertToSRGB implements TransformationInterface
 {
-    public const PROFILE = 'profile';
+    final public const PROFILE = 'profile';
 
     public static function transform(...$args): array
     {
         $profile = $args[0];
 
-        if (! ColorProfile::tryFrom($profile)) {
+        if (ColorProfile::tryFrom($profile) === null) {
             throw new \InvalidArgumentException('Invalid color profile');
         }
 
