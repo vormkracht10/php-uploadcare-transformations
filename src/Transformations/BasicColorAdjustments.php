@@ -15,7 +15,7 @@ class BasicColorAdjustments implements TransformationInterface
         $color = Color::tryFrom($args[0]);
         $value = $args[1];
 
-        if (!$color instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\Color) {
+        if (! $color instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\Color) {
             throw new \InvalidArgumentException('Invalid color');
         }
 

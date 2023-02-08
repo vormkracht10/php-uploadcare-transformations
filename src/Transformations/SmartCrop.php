@@ -26,7 +26,7 @@ class SmartCrop implements TransformationInterface
         $offsetX = $args[3] ?? null;
         $offsetY = $args[4] ?? null;
 
-        if (!$type instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\CropType) {
+        if (! $type instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\CropType) {
             throw new \InvalidArgumentException('Invalid crop type');
         }
 

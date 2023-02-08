@@ -13,7 +13,7 @@ class Quality implements TransformationInterface
     {
         $quality = QualityEnum::tryFrom($args[0]);
 
-        if (!$quality instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\Quality) {
+        if (! $quality instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\Quality) {
             throw new \InvalidArgumentException('Invalid quality');
         }
 

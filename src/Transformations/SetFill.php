@@ -24,6 +24,7 @@ class SetFill implements TransformationInterface
     public static function validate(string $key, ...$args): bool
     {
         $value = $args[0];
+
         return $key === self::COLOR && preg_match('/^[a-f0-9]{6}$/i', (string) $value);
     }
 
