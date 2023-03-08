@@ -2,8 +2,6 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
-use Vormkracht10\UploadcareTransformations\Transformations\Rasterize;
-
 class TransformationsFinder
 {
     final public const AUTO_ROTATE = 'auto_rotate';
