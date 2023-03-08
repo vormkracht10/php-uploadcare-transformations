@@ -9,11 +9,11 @@ if (! function_exists('uploadcare')) {
             defined('LARAVEL_START') &&
             function_exists('config')
         ) {
-            if(is_null($cdnUrl)) {
+            if (is_null($cdnUrl)) {
                 $cdnUrl = config('services.uploadcare.cdn_url');
             }
 
-            if(is_null($proxyUrl)) {
+            if (is_null($proxyUrl)) {
                 $proxyUrl = config('services.uploadcare.proxy_url');
             }
         }
