@@ -27,8 +27,8 @@ if (! function_exists('uploadcare')) {
 }
 
 if (! function_exists('uc')) {
-    function uc(string $uuidOrUrl, ?string $cdnUrl = null): UploadcareTransformation
+    function uc(string $uuidOrUrl, ?string $cdnUrl = null, ?string $proxyUrl = null): UploadcareTransformation
     {
-        return uploadcare($uuidOrUrl, $cdnUrl);
+        return uploadcare($uuidOrUrl, $cdnUrl, $proxyUrl);
     }
 }

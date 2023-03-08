@@ -119,8 +119,8 @@ When you are using the Laravel framework it might be better to define the CDN in
 Your `.env` file:
 
 ```dotenv
-UPLOADCARE_CDN_URL=https://example.com/cdn/
-UPLOADCARE_PROXY_URL=https://example.com/cdn/
+UPLOADCARE_CDN_URL=https://ucarecdn.com
+UPLOADCARE_PROXY_URL=https://endpoint.ucr.io
 ```
 
 Add to `config/services.php` file:
