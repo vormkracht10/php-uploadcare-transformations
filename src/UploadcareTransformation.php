@@ -7,7 +7,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder
 class UploadcareTransformation extends Transformations implements \Stringable
 {
     protected ?string $uuid;
-    protected string $url;
+    protected string $baseUrl;
     protected ?string $filename = null;
 
     public function __construct(?string $uuid = null, ?string $cdnUrl = null, ?string $proxyUrl = null, ?string $filename = null)
