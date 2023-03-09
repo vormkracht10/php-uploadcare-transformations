@@ -38,3 +38,27 @@ it('can generate a url including filename with transformations', function () {
 
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/crop/320x50p/center/test.jpg');
 });
+
+it('adds preview automatically to url when using blur_region, enhance, filter or zoom_objects transformation when not already using preview, scale_crop or resize', function () {
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+
+    $url = (string) uploadcare($uuid)->blurRegion(0, 0, 100, 100, 20)->filename('test.jpg');
+
+    expect($url)->toContain('/preview/');
+
+    $url = (string) uploadcare($uuid)->enhance(50)->filename('test.jpg');
+
+    expect($url)->toContain('/preview/');
+
+    $url = (string) uploadcare($uuid)->filter('adaris', 50)->filename('test.jpg');
+
+    expect($url)->toContain('/preview/');
+
+    $url = (string) uploadcare($uuid)->zoomObjects(50)->filename('test.jpg');
+
+    expect($url)->toContain('/preview/');
+
+    $url = (string) uploadcare($uuid)->zoomObjects(50)->resize(200)->filename('test.jpg');
+
+    expect($url)->not->toContain('/preview/');
+});
