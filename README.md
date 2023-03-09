@@ -36,6 +36,7 @@ Generate [Uploadcare](https://uploadcare.com/?via=vk10) image processing URLs to
     -   [Preview](#preview)
     -   [Progressive](#progressive)
     -   [Quality](#quality)
+    -   [Rasterize](#rasterize)
     -   [Resize](#resize)
     -   [Rotate](#rotate)
     -   [Scale crop](#scale-crop)
@@ -185,6 +186,7 @@ The current list of possible transformations and where to find the documentation
 | [Preview](#preview)                                       |      <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-preview">Link</a>       |
 | [Progressive](#progressive)                               |    <a target="_blank" href="https://uploadcare.com/docs/transformations/image/compression/#operation-progressive">Link</a>     |
 | [Quality](#quality)                                       |      <a target="_blank" href="https://uploadcare.com/docs/transformations/image/compression/#operation-quality">Link</a>       |
+| [Rasterize](#rasterize)                                   |                   <a target="_blank" href="https://uploadcare.com/docs/transformations/image/#svg">Link</a>                    |
 | [Resize](#resize)                                         |       <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-resize">Link</a>       |
 | [Rotate](#rotate)                                         |         <a target="_blank" href="https://uploadcare.com/docs/transformations/image/colors/#operation-rotate">Link</a>          |
 | [Scale crop](#scale-crop)                                 |     <a target="_blank" href="https://uploadcare.com/docs/transformations/image/resize-crop/#operation-scale-crop">Link</a>     |
@@ -475,6 +477,14 @@ $url = $transformation->quality(quality: 'smart');
 // https://example.com/cdn/.../-/quality/smart/
 ```
 
+### Rasterize
+
+Rasterize SVG images.
+
+````php
+$url = $transformation->rasterize();
+// https://example.com/cdn/.../-/rasterize/
+
 ### Resize
 
 Resizes an image to one or two dimensions. When you set both width and height explicitly, it may result in a distorted image. If you specify either side, this operation will preserve the original aspect ratio and resize the image accordingly. Mode should be one of the following values: `on`, `off`, `fill`.
@@ -487,7 +497,7 @@ $url = $transformation->resize(width: 100, height: null, stretch: true, mode: 'f
 // Using only height, no stretch and no mode.
 $url = $transformations->resize(width: null, height: 250, stretch: false);
 // https://example.com/cdn/.../-/resize/250x/
-```
+````
 
 ### Rotate
 
