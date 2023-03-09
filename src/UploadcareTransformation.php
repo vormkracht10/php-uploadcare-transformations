@@ -4,11 +4,10 @@ namespace Vormkracht10\UploadcareTransformations;
 
 use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder;
 
-class UploadcareTransformation extends Transformations
+class UploadcareTransformation extends Transformations implements \Stringable
 {
     protected ?string $uuid;
     protected string $url;
-    protected string $baseUrl;
     protected ?string $filename = null;
 
     public function __construct(?string $uuid = null, ?string $cdnUrl = null, ?string $proxyUrl = null, ?string $filename = null)
@@ -35,18 +34,16 @@ class UploadcareTransformation extends Transformations
 
         // Check if url contains one of the following strings: 'blur_region', 'enhance', 'filter', 'zoom_objects'
         // because these transformations won't work if they do not contain the preview transformation as well.
-        if (str_contains($url, 'blur_region') ||
+        // Check if url contains 'resize', 'scale_crop' or 'preview'. If not add, add 'preview' to the url.
+        // By using 'preview' the image will not be changed and produce the biggest possible image.
+        if ((str_contains($url, 'blur_region') ||
             str_contains($url, 'enhance') ||
             str_contains($url, 'filter') ||
-            str_contains($url, 'zoom_objects')
+            str_contains($url, 'zoom_objects')) && (! str_contains($url, 'preview') ||
+            ! str_contains($url, 'scale_crop') ||
+            ! str_contains($url, 'resize'))
         ) {
-            // Check if url contains 'resize', 'scale_crop' or 'preview'. If not add, add 'preview' to the url.
-            // By using 'preview' the image will not be changed and produce the biggest possible image.
-            if (! str_contains($url, 'preview') ||
-                ! str_contains($url, 'scale_crop') ||
-                ! str_contains($url, 'resize')) {
-                $url .= '-/preview/';
-            }
+            $url .= '-/preview/';
         }
 
         if (! str_ends_with($url, '/')) {
@@ -67,9 +64,6 @@ class UploadcareTransformation extends Transformations
 
     /**
      * Apply all (chained) transformations to the given URL.
-     *
-     * @param string $url
-     * @return string
      */
     public function applyTransformations(string $url): string
     {

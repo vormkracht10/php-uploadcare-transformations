@@ -6,7 +6,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class Progressive implements TransformationInterface
 {
-    public const PROGRESSIVE = 'progressive';
+    final public const PROGRESSIVE = 'progressive';
 
     public static function transform(...$args): array
     {

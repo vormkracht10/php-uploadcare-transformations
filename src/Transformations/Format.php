@@ -7,13 +7,13 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class Format implements TransformationInterface
 {
-    public const FORMAT = 'format';
+    final public const FORMAT = 'format';
 
     public static function transform(...$args): array
     {
         $format = $args[0];
 
-        if (! FormatEnum::tryFrom($format)) {
+        if (FormatEnum::tryFrom($format) === null) {
             throw new \InvalidArgumentException('Invalid format');
         }
 

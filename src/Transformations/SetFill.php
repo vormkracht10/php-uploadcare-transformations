@@ -6,7 +6,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Interfaces\Transforma
 
 class SetFill implements TransformationInterface
 {
-    public const COLOR = 'color';
+    final public const COLOR = 'color';
 
     public static function transform(...$args): array
     {
@@ -25,13 +25,7 @@ class SetFill implements TransformationInterface
     {
         $value = $args[0];
 
-        if ($key === self::COLOR) {
-            if (preg_match('/^[a-f0-9]{6}$/i', $value)) {
-                return true;
-            }
-        }
-
-        return true;
+        return $key === self::COLOR && preg_match('/^[a-f0-9]{6}$/i', (string) $value);
     }
 
     public static function generateUrl(string $url, array $values): string

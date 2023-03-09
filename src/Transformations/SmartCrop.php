@@ -11,12 +11,12 @@ class SmartCrop implements TransformationInterface
 {
     use Validations;
 
-    public const WIDTH = 'width';
-    public const HEIGHT = 'height';
-    public const TYPE = 'type';
-    public const OFFSET_X = 'offset_x';
-    public const OFFSET_Y = 'offset_y';
-    public const ALIGN = 'align';
+    final public const WIDTH = 'width';
+    final public const HEIGHT = 'height';
+    final public const TYPE = 'type';
+    final public const OFFSET_X = 'offset_x';
+    final public const OFFSET_Y = 'offset_y';
+    final public const ALIGN = 'align';
 
     public static function transform(...$args): array
     {
@@ -26,7 +26,7 @@ class SmartCrop implements TransformationInterface
         $offsetX = $args[3] ?? null;
         $offsetY = $args[4] ?? null;
 
-        if (! $type) {
+        if (! $type instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\CropType) {
             throw new \InvalidArgumentException('Invalid crop type');
         }
 
