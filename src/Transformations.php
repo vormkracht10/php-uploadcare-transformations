@@ -22,6 +22,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\Mirror;
 use Vormkracht10\UploadcareTransformations\Transformations\Overlay;
 use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\Quality;
+use Vormkracht10\UploadcareTransformations\Transformations\Rasterize;
 use Vormkracht10\UploadcareTransformations\Transformations\Resize;
 use Vormkracht10\UploadcareTransformations\Transformations\Rotate;
 use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
@@ -337,6 +338,16 @@ class Transformations
     public function autoRotate(bool $rotate): self
     {
         $this->transformations['auto_rotate'] = AutoRotate::transform();
+
+        return $this;
+    }
+
+    /**
+     * Rasterize SVG images.
+     */
+    public function rasterize(): self
+    {
+        $this->transformations['rasterize'] = Rasterize::transform();
 
         return $this;
     }

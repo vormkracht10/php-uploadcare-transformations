@@ -25,6 +25,7 @@ class TransformationsFinder
     final public const PREVIEW = 'preview';
     final public const PROGRESSIVE = 'progressive';
     final public const QUALITY = 'quality';
+    final public const RASTERIZE = 'rasterize';
     final public const RESIZE = 'resize';
     final public const ROTATE = 'rotate';
     final public const SCALE_CROP = 'scale_crop';
@@ -61,6 +62,7 @@ class TransformationsFinder
             self::PREVIEW => Preview::class,
             self::PROGRESSIVE => Progressive::class,
             self::QUALITY => Quality::class,
+            self::RASTERIZE => Rasterize::class,
             self::RESIZE => Resize::class,
             self::ROTATE => Rotate::class,
             self::SCALE_CROP => ScaleCrop::class,
