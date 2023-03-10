@@ -37,8 +37,8 @@ class UploadcareTransformation extends Transformations implements \Stringable
         // Check if url contains 'resize', 'scale_crop' or 'preview'. If not add, add 'preview' to the url.
         // By using 'preview' the image will not be changed and produce the biggest possible image.
         if (
-            preg_match('~\/(blur_region|enhance|filter|zoom_objects)\/~', $url) &&
-            ! preg_match('~\/(preview|scale_crop|resize)\/~', $url)
+            preg_match('~\/(blur_region|enhance|filter|rasterize|zoom_objects)\/~', $url) &&
+            ! preg_match('~\/(preview|scale_crop|smart_resize|resize)\/~', $url)
         ) {
             $url .= '-/preview/';
         }
