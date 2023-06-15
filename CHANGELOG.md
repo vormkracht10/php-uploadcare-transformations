@@ -2,6 +2,24 @@
 
 All notable changes to `php-uploadcare-transformations` will be documented in this file.
 
+## v0.4.0 - 2023-06-15
+
+### What's Changed
+
+- Bump dependabot/fetch-metadata from 1.3.4 to 1.3.5 by @dependabot in https://github.com/vormkracht10/php-uploadcare-transformations/pull/23
+- Bump dependabot/fetch-metadata from 1.3.5 to 1.3.6 by @dependabot in https://github.com/vormkracht10/php-uploadcare-transformations/pull/24
+- Rector by @Baspa in https://github.com/vormkracht10/php-uploadcare-transformations/pull/26
+- [Feature] Add support for rasterize (for SVG images) by @markvaneijk in https://github.com/vormkracht10/php-uploadcare-transformations/pull/27
+- [Fix] Add tests for automatic preview addition by @markvaneijk in https://github.com/vormkracht10/php-uploadcare-transformations/pull/28
+- Bump dependabot/fetch-metadata from 1.3.6 to 1.4.0 by @dependabot in https://github.com/vormkracht10/php-uploadcare-transformations/pull/29
+- Bump dependabot/fetch-metadata from 1.4.0 to 1.5.1 by @dependabot in https://github.com/vormkracht10/php-uploadcare-transformations/pull/30
+
+### New Contributors
+
+- @markvaneijk made their first contribution in https://github.com/vormkracht10/php-uploadcare-transformations/pull/27
+
+**Full Changelog**: https://github.com/vormkracht10/php-uploadcare-transformations/compare/v0.3.3...v0.4.0
+
 ## v.0.3.3 - 2022-10-25
 
 ### What's Changed
