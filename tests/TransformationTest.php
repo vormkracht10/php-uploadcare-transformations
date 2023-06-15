@@ -1,6 +1,6 @@
 <?php
 
-it('can transform using array input', function() {
+it('can transform using array input', function () {
     $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
     $uc = uploadcare($uuid);
 
