@@ -28,6 +28,29 @@ class UploadcareTransformation extends Transformations implements \Stringable
         return $this;
     }
 
+    public function transform(array $transformations = []): self
+    {
+        foreach($transformations as $transformation => $parameters) {
+            $this->{$transformation}(...$parameters);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Apply all (chained) transformations to the given URL.
+     */
+    public function applyTransformations(string $url): string
+    {
+        $transformations = TransformationsFinder::for($this->transformations);
+
+        foreach ($transformations as $transformation) {
+            $url = $transformation['class']::generateUrl($url, $transformation['values']);
+        }
+
+        return $url;
+    }
+
     public function getUrl(): string
     {
         $url = $this->applyTransformations(rtrim($this->baseUrl . $this->uuid, '/') . '/');
@@ -57,19 +80,5 @@ class UploadcareTransformation extends Transformations implements \Stringable
     public function __toString(): string
     {
         return $this->getUrl();
-    }
-
-    /**
-     * Apply all (chained) transformations to the given URL.
-     */
-    public function applyTransformations(string $url): string
-    {
-        $transformations = TransformationsFinder::for($this->transformations);
-
-        foreach ($transformations as $transformation) {
-            $url = $transformation['class']::generateUrl($url, $transformation['values']);
-        }
-
-        return $url;
     }
 }

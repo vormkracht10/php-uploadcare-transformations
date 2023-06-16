@@ -1,5 +1,25 @@
 <?php
 
+it('can transform using array input', function () {
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+    $uc = uploadcare($uuid);
+
+    // transform using array input
+    $url = (string) $uc->transform([
+        'resize' => ['width' => 100, 'height' => 200],
+    ]);
+
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/resize/100x200/');
+
+    // combine transform function with chaining
+    $url = (string) $uc->transform([
+        'resize' => ['width' => 200, 'height' => 200],
+    ])
+    ->crop(300, 400);
+
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/resize/200x200/-/crop/300x400/');
+});
+
 it('can crop by objects', function () {
     $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
     $transformation = uploadcare($uuid);
