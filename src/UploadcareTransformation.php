@@ -6,15 +6,16 @@ use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder
 
 class UploadcareTransformation extends Transformations implements \Stringable
 {
-    protected string $url;
-    protected ?string $filename = null;
-
-    public function __construct(protected string $uuid, protected string $baseUrl = 'https://ucarecdn.com/')
+    public function __construct(protected ?string $uuid = null, protected ?string $baseUrl = 'https://ucarecdn.com/', protected ?string $filename = null)
     {
     }
 
     public function filename(string $filename): string
     {
+        if (! is_null($this->filename)) {
+            throw new \InvalidArgumentException('Filename already set');
+        }
+
         $this->filename = $filename;
 
         return $this;
@@ -45,7 +46,7 @@ class UploadcareTransformation extends Transformations implements \Stringable
 
     public function getUrl(): string
     {
-        $url = $this->applyTransformations($this->baseUrl . $this->uuid . '/');
+        $url = $this->applyTransformations(rtrim($this->baseUrl . $this->uuid, '/') . '/');
 
         // Check if url contains one of the following strings: 'blur_region', 'enhance', 'filter', 'zoom_objects'
         // because these transformations won't work if they do not contain the preview transformation as well.

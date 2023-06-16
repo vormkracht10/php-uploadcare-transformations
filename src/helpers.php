@@ -3,15 +3,38 @@
 use Vormkracht10\UploadcareTransformations\UploadcareTransformation;
 
 if (! function_exists('uploadcare')) {
-    function uploadcare(string $uuid, string $cdnUrl = 'https://ucarecdn.com/'): UploadcareTransformation
+    function uploadcare(string $uuidOrUrl, ?string $cdnOrProxyUrl = null): UploadcareTransformation
     {
-        return new UploadcareTransformation($uuid, $cdnUrl);
+        // proxy url
+        if (strpos($uuidOrUrl, 'http') === 0) {
+            if (is_laravel()) {
+                $proxyUrl = config('services.uploadcare.proxy_url');
+            }
+
+            return new UploadcareTransformation(baseUrl: $cdnOrProxyUrl ?? $proxyUrl ?? 'https://example.ucr.io/', filename: $uuidOrUrl);
+        }
+
+        // without proxy url
+        if (is_laravel()) {
+            $cdnUrl = config('services.uploadcare.cdn_url');
+        }
+
+        return new UploadcareTransformation(uuid: $uuidOrUrl, baseUrl: $cdnOrProxyUrl ?? $cdnUrl ?? 'https://ucarecdn.com/');
     }
 }
 
 if (! function_exists('uc')) {
-    function uc(string $uuid, string $cdnUrl = 'https://ucarecdn.com/'): UploadcareTransformation
+    function uc(string $uuidOrUrl, ?string $cdnOrProxyUrl = null): UploadcareTransformation
     {
-        return uploadcare($uuid, $cdnUrl);
+        return uploadcare($uuidOrUrl, $cdnOrProxyUrl);
+    }
+}
+
+
+if(! function_exists('is_laravel')) {
+    function is_laravel(): bool
+    {
+        return defined('LARAVEL_START') &&
+            function_exists('config');
     }
 }

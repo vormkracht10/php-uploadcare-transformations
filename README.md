@@ -120,21 +120,23 @@ When you are using the Laravel framework it might be better to define the CDN in
 Your `.env` file:
 
 ```dotenv
-UPLOADCARE_CDN=https://example.com/cdn/
+UPLOADCARE_CDN_URL=https://ucarecdn.com
+UPLOADCARE_PROXY_URL=https://endpoint.ucr.io
 ```
 
-Your `config/uploadcare.php` file:
+Add to `config/services.php` file:
 
 ```php
-return [
-    'cdn' => env('UPLOADCARE_CDN', 'https://ucarecdn.com'),
-];
+'uploadcare' => [
+    'cdn_url' => env('UPLOADCARE_CDN_URL', 'https://ucarecdn.com'),
+    'proxy_url' => env('UPLOADCARE_PROXY_URL', 'https://endpoint.ucr.io'),
+],
 ```
 
 In your code:
 
 ```php
-$url = uc($uuid, config('uploadcare.cdn'))->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
+$url = uc($uuid, config('services.uploadcare.cdn_url'))->crop(width: 320, height: '50p', offsetX: 'center')->setFill(color: 'ffffff');
 ```
 
 ## Documentation
