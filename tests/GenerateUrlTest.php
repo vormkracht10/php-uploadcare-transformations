@@ -63,7 +63,7 @@ it('adds preview automatically to url when using blur_region, enhance, filter or
     expect($url)->not->toContain('/preview/');
 });
 
-it('can generate a proxy url for urls', function() {
+it('can generate a proxy url for urls', function () {
     $url = (string) uploadcare('https://vormkracht10.nl/favicon.ico', 'https://35af4783157afd60f75d.ucr.io/');
 
     expect($url)->toBe('https://35af4783157afd60f75d.ucr.io/https://vormkracht10.nl/favicon.ico');

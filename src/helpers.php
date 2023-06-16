@@ -1,6 +1,5 @@
 <?php
 
-use PhpCsFixer\Differ\NullDiffer;
 use Vormkracht10\UploadcareTransformations\UploadcareTransformation;
 
 if (! function_exists('uploadcare')) {
