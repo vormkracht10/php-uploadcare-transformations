@@ -6,15 +6,8 @@ use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder
 
 class UploadcareTransformation extends Transformations implements \Stringable
 {
-    protected ?string $uuid;
-    protected string $baseUrl;
-    protected ?string $filename = null;
-
-    public function __construct(?string $uuid = null, ?string $cdnUrl = null, ?string $proxyUrl = null, ?string $filename = null)
+    public function __construct(protected ?string $uuid = null, protected ?string $baseUrl = 'https://ucarecdn.com/', protected ?string $filename = null)
     {
-        $this->uuid = $uuid;
-        $this->baseUrl = $proxyUrl ?? $cdnUrl ?? 'https://ucarecdn.com/';
-        $this->filename = $filename;
     }
 
     public function filename(string $filename): string

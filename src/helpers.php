@@ -1,34 +1,41 @@
 <?php
 
+use PhpCsFixer\Differ\NullDiffer;
 use Vormkracht10\UploadcareTransformations\UploadcareTransformation;
 
 if (! function_exists('uploadcare')) {
-    function uploadcare(string $uuidOrUrl, ?string $cdnUrl = null, ?string $proxyUrl = null): UploadcareTransformation
+    function uploadcare(string $uuidOrUrl, ?string $cdnOrProxyUrl = null): UploadcareTransformation
     {
-        if (
-            defined('LARAVEL_START') &&
-            function_exists('config')
-        ) {
-            if (is_null($cdnUrl)) {
-                $cdnUrl = config('services.uploadcare.cdn_url');
-            }
-
-            if (is_null($proxyUrl)) {
+        // proxy url
+        if (strpos($uuidOrUrl, 'http') === 0) {
+            if (is_laravel()) {
                 $proxyUrl = config('services.uploadcare.proxy_url');
             }
+
+            return new UploadcareTransformation(baseUrl: $cdnOrProxyUrl ?? $proxyUrl ?? 'https://example.ucr.io/', filename: $uuidOrUrl);
         }
 
-        if (strpos($uuidOrUrl, 'http') === 0) {
-            return new UploadcareTransformation(proxyUrl: $proxyUrl, filename: $uuidOrUrl);
+        // without proxy url
+        if (is_laravel()) {
+            $cdnUrl = config('services.uploadcare.cdn_url');
         }
 
-        return new UploadcareTransformation(uuid: $uuidOrUrl, cdnUrl: $cdnUrl);
+        return new UploadcareTransformation(uuid: $uuidOrUrl, baseUrl: $cdnOrProxyUrl ?? $cdnUrl ?? 'https://ucarecdn.com/');
     }
 }
 
 if (! function_exists('uc')) {
-    function uc(string $uuidOrUrl, ?string $cdnUrl = null, ?string $proxyUrl = null): UploadcareTransformation
+    function uc(string $uuidOrUrl, ?string $cdnOrProxyUrl = null): UploadcareTransformation
     {
-        return uploadcare($uuidOrUrl, $cdnUrl, $proxyUrl);
+        return uploadcare($uuidOrUrl, $cdnOrProxyUrl);
+    }
+}
+
+
+if(! function_exists('is_laravel')) {
+    function is_laravel(): bool
+    {
+        return defined('LARAVEL_START') &&
+            function_exists('config');
     }
 }
