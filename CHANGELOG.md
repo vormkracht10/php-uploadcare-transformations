@@ -2,6 +2,10 @@
 
 All notable changes to `php-uploadcare-transformations` will be documented in this file.
 
+## v1.0.0 - 2023-06-16
+
+- Support for Proxy URLs (https://uploadcare.com/docs/delivery/proxy/)
+
 ## First stable release with support for proxy URLs - 2023-06-16
 
 Support for Proxy URLs (https://uploadcare.com/docs/delivery/proxy/)
