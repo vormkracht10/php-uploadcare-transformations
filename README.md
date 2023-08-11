@@ -481,9 +481,10 @@ $url = $transformation->quality(quality: 'smart');
 
 Rasterize SVG images.
 
-````php
+```php
 $url = $transformation->rasterize();
 // https://example.com/cdn/.../-/rasterize/
+```
 
 ### Resize
 
