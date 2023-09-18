@@ -8,6 +8,7 @@ if (! function_exists('uploadcare')) {
         // proxy url
         if (strpos($uuidOrUrl, 'http') === 0) {
             if (is_laravel()) {
+                /** @phpstan-ignore-next-line */
                 $proxyUrl = config('services.uploadcare.proxy_url');
             }
 
@@ -16,6 +17,7 @@ if (! function_exists('uploadcare')) {
 
         // without proxy url
         if (is_laravel()) {
+            /** @phpstan-ignore-next-line */
             $cdnUrl = config('services.uploadcare.cdn_url');
         }
 
@@ -29,7 +31,6 @@ if (! function_exists('uc')) {
         return uploadcare($uuidOrUrl, $cdnOrProxyUrl);
     }
 }
-
 
 if(! function_exists('is_laravel')) {
     function is_laravel(): bool
