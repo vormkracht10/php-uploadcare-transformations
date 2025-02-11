@@ -32,7 +32,7 @@ if (! function_exists('uc')) {
     }
 }
 
-if(! function_exists('is_laravel')) {
+if (! function_exists('is_laravel')) {
     function is_laravel(): bool
     {
         return defined('LARAVEL_START') &&
