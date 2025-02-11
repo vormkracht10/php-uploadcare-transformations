@@ -24,7 +24,7 @@ class UploadcareTransformation extends Transformations implements \Stringable
     /** @param array<string, mixed> $transformations */
     public function transform(array $transformations = []): self
     {
-        foreach($transformations as $transformation => $parameters) {
+        foreach ($transformations as $transformation => $parameters) {
             $this->{$transformation}(...$parameters);
         }
 
