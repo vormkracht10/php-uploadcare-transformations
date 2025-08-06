@@ -405,4 +405,14 @@ class Transformations
 
         return $this;
     }
+
+    /**
+     * Strips metadata from the image.
+     */
+    public function stripMeta(): self
+    {
+        $this->transformations['strip_meta'] = true;
+
+        return $this;
+    }
 }

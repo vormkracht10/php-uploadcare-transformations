@@ -176,3 +176,13 @@ it('can add an overlay', function () {
     $url = (string) $transformation->overlay($uuidOverlay, width: 100, height: 100, coordinateX: 500, coordinateY: null, opacity: '50p');
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/overlay/e6b0c1c0-1b1a-4b1a-9b1a-1b1a1b1a1b1a/100x100/500/');
 });
+
+
+it('can strip meta information', function () {
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+    $transformation = uploadcare($uuid);
+
+    // -/strip_meta/
+    $url = (string) $transformation->stripMeta();
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/strip_meta/');
+});
