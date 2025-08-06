@@ -2,35 +2,36 @@
 
 namespace Vormkracht10\UploadcareTransformations;
 
-use Vormkracht10\UploadcareTransformations\Transformations\AutoRotate;
-use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
 use Vormkracht10\UploadcareTransformations\Transformations\Blur;
-use Vormkracht10\UploadcareTransformations\Transformations\BlurFaces;
-use Vormkracht10\UploadcareTransformations\Transformations\BlurRegion;
-use Vormkracht10\UploadcareTransformations\Transformations\ConvertToSRGB;
 use Vormkracht10\UploadcareTransformations\Transformations\Crop;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
-use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
-use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
-use Vormkracht10\UploadcareTransformations\Transformations\Filter;
 use Vormkracht10\UploadcareTransformations\Transformations\Flip;
+use Vormkracht10\UploadcareTransformations\Transformations\Filter;
 use Vormkracht10\UploadcareTransformations\Transformations\Format;
-use Vormkracht10\UploadcareTransformations\Transformations\Grayscale;
-use Vormkracht10\UploadcareTransformations\Transformations\ICCProfileSizeThreshold;
 use Vormkracht10\UploadcareTransformations\Transformations\Invert;
 use Vormkracht10\UploadcareTransformations\Transformations\Mirror;
-use Vormkracht10\UploadcareTransformations\Transformations\Overlay;
-use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
-use Vormkracht10\UploadcareTransformations\Transformations\Quality;
-use Vormkracht10\UploadcareTransformations\Transformations\Rasterize;
 use Vormkracht10\UploadcareTransformations\Transformations\Resize;
 use Vormkracht10\UploadcareTransformations\Transformations\Rotate;
-use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
+use Vormkracht10\UploadcareTransformations\Transformations\Overlay;
+use Vormkracht10\UploadcareTransformations\Transformations\Quality;
 use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
 use Vormkracht10\UploadcareTransformations\Transformations\Sharpen;
+use Vormkracht10\UploadcareTransformations\Transformations\BlurFaces;
+use Vormkracht10\UploadcareTransformations\Transformations\Grayscale;
+use Vormkracht10\UploadcareTransformations\Transformations\Rasterize;
+use Vormkracht10\UploadcareTransformations\Transformations\ScaleCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
+use Vormkracht10\UploadcareTransformations\Transformations\StripMeta;
+use Vormkracht10\UploadcareTransformations\Transformations\AutoRotate;
+use Vormkracht10\UploadcareTransformations\Transformations\BlurRegion;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\Progressive;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\ConvertToSRGB;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
+use Vormkracht10\UploadcareTransformations\Transformations\ICCProfileSizeThreshold;
 
 class Transformations
 {
@@ -408,10 +409,12 @@ class Transformations
 
     /**
      * Strips metadata from the image.
+     *
+     * @param string $value one of the values: all, none, sensitive
      */
-    public function stripMeta(): self
+    public function stripMeta(string $value = 'all'): self
     {
-        $this->transformations['strip_meta'] = true;
+        $this->transformations['strip_meta'] = StripMeta::transform($value);
 
         return $this;
     }
