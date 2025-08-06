@@ -8,4 +8,5 @@ enum Format: string
     case PNG = 'png';
     case WEBP = 'webp';
     case AUTO = 'auto';
+    case PRESERVE = 'preserve';
 }
