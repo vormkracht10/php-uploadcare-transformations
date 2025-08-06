@@ -31,6 +31,7 @@ class TransformationsFinder
     final public const SCALE_CROP = 'scale_crop';
     final public const SET_FILL = 'set_fill';
     final public const SHARPEN = 'sharpen';
+    final public const STRIP_META = 'strip_meta';
     final public const SMART_CROP = 'smart_crop';
     final public const SMART_RESIZE = 'smart_resize';
     final public const ZOOM_OBJECTS = 'zoom_objects';
@@ -67,6 +68,7 @@ class TransformationsFinder
             self::ROTATE => Rotate::class,
             self::SCALE_CROP => ScaleCrop::class,
             self::SET_FILL => SetFill::class,
+            self::STRIP_META => StripMeta::class,
             self::SHARPEN => Sharpen::class,
             self::SMART_CROP => SmartCrop::class,
             self::SMART_RESIZE => SmartResize::class,

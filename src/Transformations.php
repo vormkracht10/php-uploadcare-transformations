@@ -30,6 +30,7 @@ use Vormkracht10\UploadcareTransformations\Transformations\SetFill;
 use Vormkracht10\UploadcareTransformations\Transformations\Sharpen;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartCrop;
 use Vormkracht10\UploadcareTransformations\Transformations\SmartResize;
+use Vormkracht10\UploadcareTransformations\Transformations\StripMeta;
 use Vormkracht10\UploadcareTransformations\Transformations\ZoomObjects;
 
 class Transformations
@@ -402,6 +403,18 @@ class Transformations
         string|null $opacity = null
     ): self {
         $this->transformations['overlay'] = Overlay::transform($uuid, $width, $height, $coordinateX, $coordinateY, $opacity);
+
+        return $this;
+    }
+
+    /**
+     * Strips metadata from the image.
+     *
+     * @param string $value one of the values: all, none, sensitive
+     */
+    public function stripMeta(string $value = 'all'): self
+    {
+        $this->transformations['strip_meta'] = StripMeta::transform($value);
 
         return $this;
     }
