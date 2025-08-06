@@ -2,6 +2,18 @@
 
 namespace Vormkracht10\UploadcareTransformations\Transformations;
 
+use Vormkracht10\UploadcareTransformations\Transformations\Blur;
+use Vormkracht10\UploadcareTransformations\Transformations\Crop;
+use Vormkracht10\UploadcareTransformations\Transformations\Enhance;
+use Vormkracht10\UploadcareTransformations\Transformations\BlurFaces;
+use Vormkracht10\UploadcareTransformations\Transformations\StripMeta;
+use Vormkracht10\UploadcareTransformations\Transformations\AutoRotate;
+use Vormkracht10\UploadcareTransformations\Transformations\BlurRegion;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByRatio;
+use Vormkracht10\UploadcareTransformations\Transformations\ConvertToSRGB;
+use Vormkracht10\UploadcareTransformations\Transformations\CropByObjects;
+use Vormkracht10\UploadcareTransformations\Transformations\BasicColorAdjustments;
+
 class TransformationsFinder
 {
     final public const AUTO_ROTATE = 'auto_rotate';
@@ -31,6 +43,7 @@ class TransformationsFinder
     final public const SCALE_CROP = 'scale_crop';
     final public const SET_FILL = 'set_fill';
     final public const SHARPEN = 'sharpen';
+    final public const STRIP_META = 'strip_meta';
     final public const SMART_CROP = 'smart_crop';
     final public const SMART_RESIZE = 'smart_resize';
     final public const ZOOM_OBJECTS = 'zoom_objects';
@@ -67,6 +80,7 @@ class TransformationsFinder
             self::ROTATE => Rotate::class,
             self::SCALE_CROP => ScaleCrop::class,
             self::SET_FILL => SetFill::class,
+            self::STRIP_META => StripMeta::class,
             self::SHARPEN => Sharpen::class,
             self::SMART_CROP => SmartCrop::class,
             self::SMART_RESIZE => SmartResize::class,
