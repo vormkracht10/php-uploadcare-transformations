@@ -182,19 +182,19 @@ it('can strip meta information', function () {
     $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
     $transformation = uploadcare($uuid);
 
-    // -/strip_meta/
+    // -/strip_meta/all/ (default)
     $url = (string) $transformation->stripMeta();
-    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/strip_meta/');
+    expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/strip_meta/all/');
 
-    // -/strip_meta/:value/
+    // -/strip_meta/all/
     $url = (string) $transformation->stripMeta('all');
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/strip_meta/all/');
 
-    // -/strip_meta/:value/
+    // -/strip_meta/none/
     $url = (string) $transformation->stripMeta('none');
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/strip_meta/none/');
 
-    // -/strip_meta/:value/
+    // -/strip_meta/sensitive/
     $url = (string) $transformation->stripMeta('sensitive');
     expect($url)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/strip_meta/sensitive/');
 });
