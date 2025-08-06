@@ -58,7 +58,7 @@ class Transformations
      * @param int|null $height in pixels.
      * @param string|null $mode one of the resize modes.
      */
-    public function resize(int $width = null, int $height = null, bool $stretch = false, string $mode = null): self
+    public function resize(int|null $width = null, int|null $height = null, bool $stretch = false, string|null $mode = null): self
     {
         $this->transformations['resize'] = Resize::transform($width, $height, $stretch, $mode);
 
@@ -86,7 +86,7 @@ class Transformations
      * @param int $height in pixels or percents.
      * @param int|string $offsetX horizontal and vertical offsets in pixels or percents (e.g. 50p) or shortcuts.
      */
-    public function crop(int|string $width, int|string $height, int|string $offsetX = null, int|string $offsetY = null): self
+    public function crop(int|string $width, int|string $height, int|string|null $offsetX = null, int|string|null $offsetY = null): self
     {
         $this->transformations['crop'] = Crop::transform($width, $height, $offsetX, $offsetY);
 
@@ -100,7 +100,7 @@ class Transformations
      * @param int|string $offsetX horizontal and vertical offsets in pixels or percents or shortcuts.
      * @param string|null $offsetY horizontal and vertical offsets in percents.
      */
-    public function cropByRatio(string $ratio, int|string $offsetX = null, string|null $offsetY = null): self
+    public function cropByRatio(string $ratio, int|string|null $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['crop_by_ratio'] = CropByRatio::transform($ratio, $offsetX, $offsetY);
 
@@ -117,7 +117,7 @@ class Transformations
      * @param int|string $offsetX horizontal and vertical offsets in percents or shortcuts.
      * @param string|null $offsetY horizontal and vertical offsets in percents.
      */
-    public function cropByObjects(string $tag, string $ratio = null, string $width = null, string $height = null, int|string $offsetX = null, string|null $offsetY = null): self
+    public function cropByObjects(string $tag, string|null $ratio = null, string|null $width = null, string|null $height = null, int|string|null $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['crop_by_objects'] = CropByObjects::transform($tag, $ratio, $width, $height, $offsetX, $offsetY);
 
@@ -132,7 +132,7 @@ class Transformations
      * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
      * @param string|null $offsetY horizontal and vertical offsets in percents.
      */
-    public function scaleCrop(int $width, int $height, string $offsetX = null, string|null $offsetY = null): self
+    public function scaleCrop(int $width, int $height, string|null $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['scale_crop'] = ScaleCrop::transform($width, $height, $offsetX, $offsetY);
 
@@ -148,7 +148,7 @@ class Transformations
      * @param string $offsetX horizontal and vertical offsets in percents or shortcuts.
      * @param string|null $offsetY horizontal and vertical offsets in percents.
      */
-    public function smartCrop(int $width, int $height, string $type, string $offsetX = null, string|null $offsetY = null): self
+    public function smartCrop(int $width, int $height, string $type, string|null $offsetX = null, string|null $offsetY = null): self
     {
         $this->transformations['smart_crop'] = SmartCrop::transform($width, $height, $type, $offsetX, $offsetY);
 
@@ -281,7 +281,7 @@ class Transformations
      * @param string $name one of the filters.
      * @param int $value optional value for the filter.
      */
-    public function filter(string $name, int $value = null): self
+    public function filter(string $name, int|null $value = null): self
     {
         $this->transformations['filter'] = Filter::transform($name, $value);
 
@@ -291,7 +291,7 @@ class Transformations
     /**
      * Blurs images by the :strength factor.
      */
-    public function blur(int $strength = null, int $amount = null): self
+    public function blur(int|null $strength = null, int|null $amount = null): self
     {
         $this->transformations['blur'] = Blur::transform($strength, $amount);
 
@@ -306,7 +306,7 @@ class Transformations
      * @param int $coordinateX in pixels or percentages.
      * @param int $coordinateY in pixels or percentages.
      */
-    public function blurRegion(int $dimensionX, int|string $dimensionY, int|string $coordinateX, int|string $coordinateY, int $strength = null): self
+    public function blurRegion(int $dimensionX, int|string $dimensionY, int|string $coordinateX, int|string $coordinateY, int|null $strength = null): self
     {
         $this->transformations['blur_region'] = BlurRegion::transform($dimensionX, $dimensionY, $coordinateX, $coordinateY, $strength);
 
@@ -316,7 +316,7 @@ class Transformations
     /**
      * When faces is specified the regions are selected automatically by utilizing face detection.
      */
-    public function blurFaces(int $strength = null): self
+    public function blurFaces(int|null $strength = null): self
     {
         $this->transformations['blur_faces'] = BlurFaces::transform($strength);
 
@@ -326,7 +326,7 @@ class Transformations
     /**
      * Sharpens an image, might be especially useful with images that were subjected to downscaling.
      */
-    public function sharpen(int $strength = null): self
+    public function sharpen(int|null $strength = null): self
     {
         $this->transformations['sharpen'] = Sharpen::transform($strength);
 
