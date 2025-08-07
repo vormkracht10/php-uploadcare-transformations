@@ -6,9 +6,12 @@ use Vormkracht10\UploadcareTransformations\Transformations\TransformationsFinder
 
 class UploadcareTransformation extends Transformations implements \Stringable
 {
-    public function __construct(protected ?string $uuid = null, protected ?string $baseUrl = 'https://ucarecdn.com/', protected ?string $filename = null)
-    {
-    }
+    public function __construct(
+        protected ?string $uuid = null,
+        protected ?string $baseUrl = 'https://ucarecdn.com/',
+        protected ?string $filename = null,
+        protected ?string $proxyUrl = null,
+    ) {}
 
     public function filename(string $filename): string
     {
@@ -29,6 +32,17 @@ class UploadcareTransformation extends Transformations implements \Stringable
         }
 
         return $this;
+    }
+
+    /**
+     * Clone the current object to allow reuse for multiple transformations.
+     */
+    public function clone(): self
+    {
+        $clone = new self($this->uuid, $this->baseUrl, $this->filename);
+        $clone->transformations = $this->transformations;
+
+        return $clone;
     }
 
     /**

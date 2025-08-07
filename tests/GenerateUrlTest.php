@@ -68,3 +68,33 @@ it('can generate a proxy url for urls', function () {
 
     expect($url)->toBe('https://35af4783157afd60f75d.ucr.io/https://vormkracht10.nl/favicon.ico');
 });
+
+it('can clone objects for multiple transformations', function () {
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+    $baseImage = uploadcare($uuid)->resize(1024);
+
+    // Clone the base image and create different formats
+    $webp = $baseImage->clone()->format('webp');
+    $jpeg = $baseImage->clone()->format('jpeg');
+    $png = $baseImage->clone()->format('png')->quality('best');
+
+    // Verify that each clone has the base transformations plus their specific format
+    expect((string) $webp)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/resize/1024x/-/format/webp/');
+    expect((string) $jpeg)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/resize/1024x/-/format/jpeg/');
+    expect((string) $png)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/resize/1024x/-/format/png/-/quality/best/');
+
+    // Verify that the original object is unchanged
+    expect((string) $baseImage)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/resize/1024x/');
+});
+
+it('can use uc_clone helper function', function () {
+    $uuid = '12a3456b-c789-1234-1de2-3cfa83096e25';
+    $baseImage = uploadcare($uuid)->resize(800);
+
+    // Use the helper function to clone
+    $webp = uc_clone($baseImage)->format('webp');
+    $jpeg = uc_clone($baseImage)->format('jpeg');
+
+    expect((string) $webp)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/resize/800x/-/format/webp/');
+    expect((string) $jpeg)->toBe('https://ucarecdn.com/12a3456b-c789-1234-1de2-3cfa83096e25/-/resize/800x/-/format/jpeg/');
+});
