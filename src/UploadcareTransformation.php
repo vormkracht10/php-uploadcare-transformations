@@ -11,7 +11,8 @@ class UploadcareTransformation extends Transformations implements \Stringable
         protected ?string $baseUrl = 'https://ucarecdn.com/',
         protected ?string $filename = null,
         protected ?string $proxyUrl = null,
-    ) {}
+    ) {
+    }
 
     public function filename(string $filename): string
     {
