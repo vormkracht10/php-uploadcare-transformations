@@ -32,6 +32,13 @@ if (! function_exists('uc')) {
     }
 }
 
+if (! function_exists('uc_clone')) {
+    function uc_clone(UploadcareTransformation $transformation): UploadcareTransformation
+    {
+        return $transformation->clone();
+    }
+}
+
 if (! function_exists('is_laravel')) {
     function is_laravel(): bool
     {

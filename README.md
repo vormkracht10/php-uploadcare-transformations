@@ -114,9 +114,40 @@ echo $url;
 // https://example.com/cdn/12a3456b-c789-1234-1de2-3cfa83096e25/-/crop/320x50p/center/-/set_fill/ffffff
 ```
 
+### Reusing Objects for Multiple Transformations
+
+When you want to reuse an object for multiple transformations (like creating different formats for a picture element), you can use the `clone()` method. This is especially useful when you want to create multiple versions of the same image with different formats or transformations.
+
+```php
+$image = uc('your-uuid-here')->resize(width: 1024);
+
+// Create different versions of the same image
+$webp = $image->clone()->format('webp');
+$jpeg = $image->clone()->format('jpeg');
+$png = $image->clone()->format('png')->quality('best');
+```
+
+You can also use the `uc_clone()` helper function:
+
+```php
+$image = uc('your-uuid-here')->resize(width: 1024);
+$webp = uc_clone($image)->format('webp');
+$jpeg = uc_clone($image)->format('jpeg');
+```
+
+This is particularly useful in Blade components for creating responsive images:
+
+```blade
+<picture>
+    <source srcset="{{ $webp }}" type="image/webp">
+    <source srcset="{{ $jpeg }}" type="image/jpeg">
+    <img src="{{ $jpeg }}" alt="Image">
+</picture>
+```
+
 ### Using the Laravel framework
 
-When you are using the Laravel framework it might be better to define the CDN in your `.env` file and get the value from the `.env` file in a config file. You can create a dedicated `config/uploadcare` config or add it to the `config/services` file.
+When you are using the Laravel framework it might be better to define the CDN in your `.env` file and get the value from the `.env` file in a config file. You can create a `config/uploadcare` config or add it to the `config/services` file.
 
 Your `.env` file:
 
@@ -499,7 +530,7 @@ $url = $transformation->resize(width: 100, height: null, stretch: true, mode: 'f
 // Using only height, no stretch and no mode.
 $url = $transformations->resize(width: null, height: 250, stretch: false);
 // https://example.com/cdn/.../-/resize/250x/
-````
+```
 
 ### Rotate
 
