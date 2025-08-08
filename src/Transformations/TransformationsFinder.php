@@ -82,7 +82,7 @@ class TransformationsFinder
      * Get all transformations
      *
      * @param array<array<array<string>>> $transformations
-     * @return array<array{class: object, values: array<array<string>>}>
+     * @return array<array{class: \Vormkracht10\UploadcareTransformations\Transformations\Interfaces\TransformationInterface, values: array<array<string>>}>
      */
     public static function for(array $transformations): array
     {
@@ -110,7 +110,7 @@ class TransformationsFinder
             }
 
             $classes[$transformation] = [
-                'class' => self::getTransformation($transformation),
+                'class' => $class,
                 'values' => $transformations[$transformation],
             ];
         }

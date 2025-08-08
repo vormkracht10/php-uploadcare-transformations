@@ -39,7 +39,7 @@ class Crop implements TransformationInterface
             throw new \InvalidArgumentException('Invalid offset Y');
         }
 
-        if (isset($offsetX) && Offset::tryFrom($offsetX)) {
+        if (isset($offsetX) && (is_string($offsetX) || is_int($offsetX)) && Offset::tryFrom((string) $offsetX)) {
             return [
                 self::WIDTH => $width,
                 self::HEIGHT => $height,

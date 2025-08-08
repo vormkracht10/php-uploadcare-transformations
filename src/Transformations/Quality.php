@@ -11,7 +11,12 @@ class Quality implements TransformationInterface
 
     public static function transform(...$args): array
     {
-        $quality = QualityEnum::tryFrom($args[0]);
+        $qualityValue = is_string($args[0]) || is_int($args[0]) ? (string) $args[0] : null;
+        if ($qualityValue === null) {
+            throw new \InvalidArgumentException('Invalid quality value type');
+        }
+
+        $quality = QualityEnum::tryFrom($qualityValue);
 
         if (! $quality instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\Quality) {
             throw new \InvalidArgumentException('Invalid quality');

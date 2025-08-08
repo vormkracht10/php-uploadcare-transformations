@@ -28,8 +28,12 @@ class CropByObjects implements TransformationInterface
         $offsetX = $args[4] ?? null;
         $offsetY = $args[5] ?? null;
 
+        $tagValue = is_string($tag) || is_int($tag) ? (string) $tag : null;
+        if ($tagValue === null) {
+            throw new \InvalidArgumentException('Invalid tag value type');
+        }
 
-        if (Tag::tryFrom($tag) === null) {
+        if (Tag::tryFrom($tagValue) === null) {
             throw new \InvalidArgumentException('Invalid tag');
         }
 
@@ -70,7 +74,7 @@ class CropByObjects implements TransformationInterface
         $value = $args[0];
 
         if ($key === self::RATIO) {
-            return preg_match('/^\d+:\d+$/', (string) $value);
+            return (bool) preg_match('/^\d+:\d+$/', (string) $value);
         }
 
         if ($key === self::OFFSET_X) {
