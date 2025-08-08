@@ -19,7 +19,7 @@ class Resize implements TransformationInterface
         $stretch = $args[2] ?? false;
         $mode = $args[3] ?? null;
 
-        if ($mode && ! ResizeMode::tryFrom($mode)) {
+        if ($mode && (is_string($mode) || is_int($mode)) && ! ResizeMode::tryFrom((string) $mode)) {
             throw new \InvalidArgumentException('Invalid resize mode');
         }
 

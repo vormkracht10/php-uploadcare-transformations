@@ -39,7 +39,8 @@ class UploadcareTransformation extends Transformations implements \Stringable
         $transformations = TransformationsFinder::for($this->transformations);
 
         foreach ($transformations as $transformation) {
-            $url = $transformation['class']::generateUrl($url, $transformation['values']);
+            $className = get_class($transformation['class']);
+            $url = $className::generateUrl($url, $transformation['values']);
         }
 
         return $url;

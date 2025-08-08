@@ -15,7 +15,12 @@ class Filter implements TransformationInterface
         $name = $args[0];
         $amount = $args[1];
 
-        if (FilterEnum::tryFrom($name) === null) {
+        $nameValue = is_string($name) || is_int($name) ? (string) $name : null;
+        if ($nameValue === null) {
+            throw new \InvalidArgumentException('Invalid filter name type');
+        }
+
+        if (FilterEnum::tryFrom($nameValue) === null) {
             throw new \InvalidArgumentException('Invalid filter');
         }
 

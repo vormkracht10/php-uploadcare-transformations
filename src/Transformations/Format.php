@@ -13,12 +13,17 @@ class Format implements TransformationInterface
     {
         $format = $args[0];
 
-        if (FormatEnum::tryFrom($format) === null) {
+        $formatValue = is_string($format) || is_int($format) ? (string) $format : null;
+        if ($formatValue === null) {
+            throw new \InvalidArgumentException('Invalid format value type');
+        }
+
+        if (FormatEnum::tryFrom($formatValue) === null) {
             throw new \InvalidArgumentException('Invalid format');
         }
 
         return [
-            self::FORMAT => $format,
+            self::FORMAT => $formatValue,
         ];
     }
 

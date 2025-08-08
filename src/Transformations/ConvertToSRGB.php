@@ -11,14 +11,17 @@ class ConvertToSRGB implements TransformationInterface
 
     public static function transform(...$args): array
     {
-        $profile = $args[0];
+        $profileValue = is_string($args[0]) || is_int($args[0]) ? (string) $args[0] : null;
+        if ($profileValue === null) {
+            throw new \InvalidArgumentException('Invalid profile value type');
+        }
 
-        if (ColorProfile::tryFrom($profile) === null) {
+        if (ColorProfile::tryFrom($profileValue) === null) {
             throw new \InvalidArgumentException('Invalid color profile');
         }
 
         return [
-            self::PROFILE => $profile,
+            self::PROFILE => $profileValue,
         ];
     }
 

@@ -22,7 +22,12 @@ class SmartCrop implements TransformationInterface
     {
         $width = $args[0];
         $height = $args[1];
-        $type = CropType::tryFrom($args[2]);
+        $typeValue = is_string($args[2]) || is_int($args[2]) ? (string) $args[2] : null;
+        if ($typeValue === null) {
+            throw new \InvalidArgumentException('Invalid crop type value type');
+        }
+
+        $type = CropType::tryFrom($typeValue);
         $offsetX = $args[3] ?? null;
         $offsetY = $args[4] ?? null;
 

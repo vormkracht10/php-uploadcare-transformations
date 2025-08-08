@@ -12,7 +12,12 @@ class BasicColorAdjustments implements TransformationInterface
 
     public static function transform(...$args): array
     {
-        $color = Color::tryFrom($args[0]);
+        $colorValue = is_string($args[0]) || is_int($args[0]) ? (string) $args[0] : null;
+        if ($colorValue === null) {
+            throw new \InvalidArgumentException('Invalid color value type');
+        }
+
+        $color = Color::tryFrom($colorValue);
         $value = $args[1];
 
         if (! $color instanceof \Vormkracht10\UploadcareTransformations\Transformations\Enums\Color) {
